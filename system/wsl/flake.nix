@@ -9,7 +9,7 @@
       wsl-nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          nixos-wsl.nixosModules.default
+          nixos-wsl.nixosModules.wsl
           ./configuration.nix
         ];
       };
