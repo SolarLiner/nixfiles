@@ -1,3 +1,6 @@
 [submodule "home/solarliner"]
 	path = home/solarliner
 	url = https://github.com/SolarLiner/home-manager
+[submodule "system/wsl/nixos-wsl"]
+	path = system/wsl/nixos-wsl
+	url = https://github.com/nix-community/NixOS-WSL.git
