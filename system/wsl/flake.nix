@@ -11,6 +11,7 @@
         modules = [
           nixos-wsl.nixosModules.wsl
           ./configuration.nix
+          ./users-nixos.nix
         ];
       };
     };
