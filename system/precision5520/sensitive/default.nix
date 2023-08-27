@@ -1,0 +1,6 @@
+{ ... }:
+{
+  imports = [
+    ./user-solarliner.nix
+  ];
+}
