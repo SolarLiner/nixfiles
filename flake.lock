@@ -95,7 +95,7 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-RoGQD8wVJFxHjif2ERxzYt1N69ZetH23ohVO1+/KGo8=",
+        "narHash": "sha256-PzyAjWSE4pSDKyOzRQoC3pqwejBGQw2gfI9gc7lanOE=",
         "path": "./solarliner",
         "type": "path"
       },
@@ -110,7 +110,7 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-PbCXKgB19WzyXrqadjbR/hXxMPDRSRBiVbgH3tgVArA=",
+        "narHash": "sha256-QtiCkp7K4drvP5wCLAlh3ApN2v2m3ALVhcErMui93oQ=",
         "path": "./home",
         "type": "path"
       },
@@ -227,11 +227,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1692734709,
-        "narHash": "sha256-SCFnyHCyYjwEmgUsHDDuU0TsbVMKeU1vwkR+r7uS2Rg=",
+        "lastModified": 1693003285,
+        "narHash": "sha256-5nm4yrEHKupjn62MibENtfqlP6pWcRTuSKrMiH9bLkc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "b85ed9dcbf187b909ef7964774f8847d554fab3b",
+        "rev": "5690c4271f2998c304a45c91a0aeb8fb69feaea7",
         "type": "github"
       },
       "original": {
@@ -284,7 +284,7 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-2dAPxP301S65hSWqSbsq41abc+D6hTym9oypwDwYMNQ=",
+        "narHash": "sha256-VZlJakXFZ1J/5jNBGMwLMz8EwoqNWzN6a4H6j68+x9s=",
         "path": "./wsl",
         "type": "path"
       },
@@ -314,7 +314,7 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-qDQH7GPah1cMwhpBYRTD6Akx4gcvI0Xzjym94zpkTkI=",
+        "narHash": "sha256-Uyq/93RGKb8QVgs1UolO42SEiaLqHQ2lzWfXpas/lVw=",
         "path": "./system",
         "type": "path"
       },
