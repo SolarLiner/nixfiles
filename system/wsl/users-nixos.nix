@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  users.nixos = {
+  users.users.nixos = {
     shell = pkgs.zsh;
   };
 }
