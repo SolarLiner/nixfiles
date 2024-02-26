@@ -54,15 +54,15 @@
 
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
-    nixosConfigurations =
-    let 
-      config = specific-path: nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs outputs; };
-        modules = [
-          ./nixos/configuration.nix
-          specific-path
-        ];
-      };
+    nixosConfigurations = let
+      config = specific-path:
+        nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs outputs;};
+          modules = [
+            ./nixos/configuration.nix
+            specific-path
+          ];
+        };
     in {
       precision5520 = config ./nixos/hardware/precision5520;
     };

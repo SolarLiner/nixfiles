@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   imports = [
     ./solarliner.nix
   ];

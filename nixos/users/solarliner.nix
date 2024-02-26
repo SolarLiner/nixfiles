@@ -1,5 +1,8 @@
-{ pkgs, lib, ... }:
-let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   #ocenaudio = pkgs.ocenaudio.overrideAttrs (_: _: rec {
   #  version = "3.12.5";
   #  src = builtins.fetchurl {
@@ -16,8 +19,7 @@ let
   #    sha256 = "sZTHMWMeE5J22/OmWkEMSMGW+pHsrN7SrJJoVbrH+Ss=";
   #  };
   #});
-in
-{
+in {
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.mutableUsers = false;
   users.users.solarliner = {
@@ -25,7 +27,7 @@ in
     isNormalUser = true;
     createHome = true;
     description = "Nathan Graule";
-    extraGroups = [ "networkmanager" "wheel" "audio" "video" "docker" ];
+    extraGroups = ["networkmanager" "wheel" "audio" "video" "docker"];
     packages = with pkgs; [
       # Basic
       home-manager

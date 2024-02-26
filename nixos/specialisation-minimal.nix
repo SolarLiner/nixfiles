@@ -1,6 +1,5 @@
 # vim: ai:et:ts=2:sw=2
-{ nixos-hardware, ... }:
-{
+{nixos-hardware, ...}: {
   specialisation.minimal.inheritParentConfig = false;
   specialisation.minimal.configuration = {
     imports = [
