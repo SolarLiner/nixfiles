@@ -1,6 +1,6 @@
 SYSTEM ?= $(shell hostname)
 USER ?= $(shell whoami)
-FLAKE ?= path:.
+FLAKE ?= .
 EXTRA_ARGS ?= -j 10
 
 all: home system

@@ -15,6 +15,7 @@ in {
     jetbrains-mono
     iosevka
   ] ++ optionals isWSL [curl wget];
+  home.stateVersion = "23.11";
 
   fonts.fontconfig.enable = !isWSL && !pkgs.stdenv.isDarwin;
 
