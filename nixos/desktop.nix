@@ -1,12 +1,19 @@
-{ ... }:
-{
-  # Windowing
-  services.xserver.enable = true;
+{ pkgs, ... }: {
+  programs = {
+    kdeconnect = {
+      enable = true;
+      package = pkgs.gnomeExtensions.gsconnect;
+    };
+  };
 
-  # Desktop environment
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services = {
+    xserver = {
+      enable = true;
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
+    };
 
-  # Desktop software
-  services.flatpak.enable = true;
+    # Desktop software
+    flatpak.enable = true;
+  };
 }

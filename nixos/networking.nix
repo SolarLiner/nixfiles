@@ -1,6 +1,5 @@
 { ... }:
 {
-  # Disable networking
   networking.networkmanager.enable = true;
 
   # Firewall
