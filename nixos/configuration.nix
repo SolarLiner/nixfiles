@@ -47,6 +47,8 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [wget curl gnumake neovim];
 
+  musnix.enable = true;
+
   nix.settings = {
     # Enable flakes and new 'nix' command
     experimental-features = "nix-command flakes";

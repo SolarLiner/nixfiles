@@ -9,6 +9,9 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
+    # NixOS modules
+    musnix.url = github:musnix/musnix;
+
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -66,7 +69,7 @@
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {inherit inputs outputs;};
-          modules = [./nixos/configuration.nix specific-path];
+          modules = [inputs.musnix.nixosModules.musnix ./nixos/configuration.nix specific-path];
         };
     in {
       precision5520 = config "x86_64-linux" ./nixos/hardware/precision5520;

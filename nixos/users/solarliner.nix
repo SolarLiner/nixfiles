@@ -21,6 +21,7 @@ in {
       # Wine
       wineWowPackages.waylandFull
       winetricks
+      wineasio
       # Programming
       kate
       vscode-fhs
@@ -33,6 +34,13 @@ in {
       distrho
       vcv-rack
       ocenaudio
+      reaper
+      bitwig-studio
+      vital
+      surge-XT
+      stochas
+      lsp-plugins
+      calf
     ];
   };
 }

@@ -17,8 +17,8 @@ home: update
 fmt:
 	nix fmt
 
-commit:
-	git commit -am "system=$(shell nixos-rebuild list-generations | grep current | cut -d' ' -f-4) | home-manager=$(shell home-manager generations | head -n1 | cut -d' ' -f-5)"
+commit: fmt
+	git commit -am "system=$(shell nixos-rebuild list-generations 2> /dev/null | grep current | cut -d' ' -f-4) | home-manager=$(shell home-manager generations 2> /dev/null | head -n1 | cut -d' ' -f-5)"
 
 
 .PHONY: update system home fmt commit
