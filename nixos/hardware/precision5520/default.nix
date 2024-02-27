@@ -6,5 +6,7 @@
     ./specialisation-minimal.nix
   ];
 
+  musnix.soundcardPciId = "0:1f.3";
+
   networking.hostName = "precision5520";
 }
