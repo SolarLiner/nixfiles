@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   imports = [
     ./minimal.nix
     ../modules/terminal.nix

@@ -1,5 +1,10 @@
-{ config, lib, pkgs, isWSL ? false, ... }:
-let
+{
+  config,
+  lib,
+  pkgs,
+  isWSL ? false,
+  ...
+}: let
   inherit (lib) mkIf;
   inherit (pkgs) stdenv;
 in {
@@ -16,7 +21,7 @@ in {
       set surround
     '';
   };
-  xdg.configFile."environment.d/10-jetbrains.conf" = { 
+  xdg.configFile."environment.d/10-jetbrains.conf" = {
     enable = !stdenv.isDarwin;
     text = ''
       JETBRAINS_TOOLBOX_HOME=$HOME/.local/share/JetBrains/Toolbox
@@ -29,4 +34,3 @@ in {
     '';
   };
 }
-

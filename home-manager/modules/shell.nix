@@ -1,5 +1,10 @@
-{ config, pkgs, lib, isWSL ? false, ... }:
-let
+{
+  config,
+  pkgs,
+  lib,
+  isWSL ? false,
+  ...
+}: let
   inherit (lib) mkIf;
   zsh-256color = rec {
     name = "zsh-256color";
@@ -12,19 +17,18 @@ let
     };
   };
   zsh-autopair = {
-    inherit(pkgs.zsh-autopair) name src;
+    inherit (pkgs.zsh-autopair) name src;
     file = "autopair.plugin.zsh";
   };
   zsh-you-should-use = {
-    inherit(pkgs.zsh-you-should-use) name src;
+    inherit (pkgs.zsh-you-should-use) name src;
     file = "you-should-use.plugin.zsh";
   };
   zsh-vi-mode = {
-    inherit(pkgs.zsh-vi-mode) name src;
+    inherit (pkgs.zsh-vi-mode) name src;
     file = "you-should-use.plugin.zsh";
   };
-in
-{
+in {
   home.packages = with pkgs; [
     docker-buildx
     docker-compose
@@ -74,10 +78,10 @@ in
     enableCompletion = true;
     enableAutosuggestions = true;
     syntaxHighlighting.enable = true;
-    plugins = [ zsh-256color zsh-autopair zsh-you-should-use zsh-vi-mode ];
+    plugins = [zsh-256color zsh-autopair zsh-you-should-use zsh-vi-mode];
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "sudo" "rust" "autojump" "vscode" ];
+      plugins = ["git" "sudo" "rust" "autojump" "vscode"];
       extraConfig = ''
         export NIX_PATH=$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
         export PATH=$HOME/.nix-profile/bin:$PATH
@@ -88,27 +92,5 @@ in
       '';
     };
   };
-  systemd.user.services =
-    let mkFuseService = { description, exec, folder }: {
-      Unit = {
-        Description = description;
-        After = ["network.target"];
-      };
-      Install.WantedBy = ["default.target"];
-      Service = {
-        ExecStartPre = "mkdir -p '${folder}'";
-        ExecStart = "${exec folder}";
-        ExecStop = "fusermount -u '${folder}'";
-        ExecStopPost = "rmdir '${folder}' || exit 0";
-        Restart = "always";
-        Type = "forking";
-      };
-    };
-    in mkIf (!isWSL) {
-      google-drive-ocamlfuse = mkFuseService {
-        description = "Google Drive FUSE mount";
-        exec = folder: "${pkgs.google-drive-ocamlfuse}/bin/google-drive-ocamlfuse '${folder}'";
-        folder = "%h/Google Drive";
-      };
-  };
+  services.google-drive-ocamlfuse.enable = true;
 }

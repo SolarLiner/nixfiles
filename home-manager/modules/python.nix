@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.zsh.initExtra = ''
     # Pyenv
     export PYENV_ROOT=$HOME/.local/share/pyenv

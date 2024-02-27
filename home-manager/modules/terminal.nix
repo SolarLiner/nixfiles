@@ -1,7 +1,16 @@
-{ config, lib, pkgs, isWSL ? false, ... }:
-with lib.lists;
 {
-  home.packages = with pkgs; [ zellij ];
+  config,
+  lib,
+  pkgs,
+  isWSL ? false,
+  ...
+}:
+with lib.lists; {
+  programs.zellij = {
+    enable = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+  };
   programs.kitty = {
     enable = !isWSL;
     font = {

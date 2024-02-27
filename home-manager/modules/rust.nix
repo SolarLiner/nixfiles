@@ -1,8 +1,11 @@
-{ pkgs, lib, ... }:
-let inherit (pkgs) stdenv;
-in
 {
-  home.packages = with pkgs; [ rustup mold ];
+  pkgs,
+  lib,
+  ...
+}: let
+  inherit (pkgs) stdenv;
+in {
+  home.packages = with pkgs; [rustup mold];
   programs.zsh.initExtra = lib.mkIf stdenv.isDarwin ''
     export CARGO_HOME=$HOME/.cargo
     export PATH=$CARGO_HOME/bin:$PATH

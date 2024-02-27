@@ -38,13 +38,20 @@
   in {
     # Your custom packages
     # Accessible through 'nix build', 'nix shell', etc
-    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+    packages = forAllSystems (system: let
+      pkgs = import nixpkgs {inherit system;};
+    in
+      import ./pkgs pkgs);
     # Formatter for your nix files, available through 'nix fmt'
     # Other options beside 'alejandra' include 'nixpkgs-fmt'
-    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+    formatter =
+      forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
     # Your custom packages and modifications, exported as overlays
-    overlays = import ./overlays {inherit inputs;};
+    overlays = import ./overlays {
+      inherit inputs;
+      inherit (nixpkgs) lib;
+    };
     # Reusable nixos modules you might want to export
     # These are usually stuff you would upstream into nixpkgs
     nixosModules = import ./modules/nixos;
@@ -55,31 +62,37 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = let
-      config = specific-path:
+      config = system: specific-path:
         nixpkgs.lib.nixosSystem {
+          inherit system;
           specialArgs = {inherit inputs outputs;};
-          modules = [
-            ./nixos/configuration.nix
-            specific-path
-          ];
+          modules = [./nixos/configuration.nix specific-path];
         };
     in {
-      precision5520 = config ./nixos/hardware/precision5520;
+      precision5520 = config "x86_64-linux" ./nixos/hardware/precision5520;
     };
 
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
-    homeConfigurations = {
-      # FIXME replace with your username@hostname
-      "solarliner" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs; username = "solarliner"; isWSL = false;};
-        modules = [
-          # > Our main home-manager configuration file <
-          ./home-manager/home.nix
-          ./home-manager/users/solarliner.nix
-        ];
-      };
+    homeConfigurations = let
+      system = "x86_64-linux";
+      mkConfig = specific-path:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          extraSpecialArgs = {
+            inherit inputs outputs;
+            username = "solarliner";
+            isWSL = false;
+          };
+          modules = [
+            ./modules/home-manager/google-drive.nix
+            ./home-manager/home.nix
+            specific-path
+          ];
+        };
+    in {
+      "solarliner@precision5520" =
+        mkConfig ./home-manager/users/solarliner.nix;
     };
   };
 }

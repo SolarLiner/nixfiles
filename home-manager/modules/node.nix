@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.zsh.oh-my-zsh.plugins = ["nvm"];
   programs.zsh.initExtra = ''
     # NVM

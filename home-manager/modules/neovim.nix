@@ -1,126 +1,8 @@
-{ pkgs, lib, ... }:
-let
-  inherit (pkgs) stdenv;
-  clangd = pkgs.stdenv.mkDerivation rec {
-    pname = "clangd";
-    version = "15.0.6";
-    src = pkgs.fetchzip {
-      url =
-        "https://github.com/clangd/clangd/releases/download/${version}/clangd-linux-${version}.zip";
-      sha256 = "sha256-5z2Iud+a/9SbOzsdbJOfdAqmv7U4MLSeC4oxPXJh/qc=";
-    };
-    phases = [ "installPhase" ];
-    installPhase = ''
-      cp -rv $src $out
-    '';
-  };
-  nvim-web-tools = pkgs.vimUtils.buildVimPlugin {
-    name = "web-tools";
-    src = pkgs.fetchFromGitHub {
-      repo = "web-tools.nvim";
-      owner = "ray-x";
-      rev = "a289af77e14d224ab9770f9802d090f176dd340f";
-      sha256 = "0XUGe0XaPOB9VJ6ODa0dTs2D/Ks0dfX0I3H00Vnohv0=";
-    };
-  };
-  utilsnips = pkgs.vimUtils.buildVimPlugin {
-    pname = "utilsnips";
-    src = pkgs.fetchFromGitHub {
-      repo = "utilsnips";
-      owner = "SirVer";
-      rev = "a289af77e14d224ab9770f9802d090f176dd340f";
-      sha256 = "";
-    };
-  };
-  wgsl_analyzer = pkgs.stdenvNoCC.mkDerivation rec {
-    pname = "wgsl_analyzer";
-    version = "0.7.0";
-    src = builtins.fetchurl {
-      url =
-        "https://github.com/wgsl-analyzer/wgsl-analyzer/releases/download/v${version}/wgsl_analyzer-linux-x64";
-      sha256 = "01mc41s5csm7lwcw2s4hhdlfjhwvkavy7wkjjcghjwnpzfyizx0y";
-    };
-    nativeBuildInputs =
-      lib.optionals (!stdenv.isDarwin) [ pkgs.autoPatchelfHook ];
-    phases = [ "installPhase" ];
-    installPhase = ''
-      mkdir -p $out/bin
-      pwd
-      ls -a $src
-      install -m755 -D $src $out/bin/${pname}
-    '';
-  };
-  vscode-nvim = pkgs.vimUtils.buildVimPlugin {
-    pname = "vscode.nvim";
-    version = "2024-02-01";
-    src = pkgs.fetchFromGitHub {
-      owner = "Mofiqul";
-      repo = "vscode.nvim";
-      rev = "380c1068612b1bfbe35d70a4f2e58be5030a0707";
-      sha256 = "1lq1j6wlh8xxzikpab2gciw6gg88hya92bswz0kk75l6fphp41kl";
-    };
-    meta.homepage = "https://github.com/Mofiqul/vscode.nvim/";
-  };
-  mkGrammar = with pkgs;
-    {
-    # language name
-    language
-    # version of tree-sitter
-    , version
-    # source for the language grammar
-    , source, location ? null }:
-
-    stdenv.mkDerivation rec {
-
-      pname = "${language}-grammar";
-      inherit version;
-
-      src = if location == null then source else "${source}/${location}";
-
-      buildInputs = [ tree-sitter ];
-
-      dontUnpack = true;
-      dontConfigure = true;
-
-      CFLAGS = [ "-I${src}/src" "-O2" ];
-      CXXFLAGS = [ "-I${src}/src" "-O2" ];
-
-      stripDebugList = [ "parser" ];
-
-      # When both scanner.{c,cc} exist, we should not link both since they may be the same but in
-      # different languages. Just randomly prefer C++ if that happens.
-      buildPhase = ''
-        runHook preBuild
-        if [[ -e "$src/src/scanner.cc" ]]; then
-          $CXX -fPIC -c "$src/src/scanner.cc" -o scanner.o $CXXFLAGS
-        elif [[ -e "$src/src/scanner.c" ]]; then
-          $CC -fPIC -c "$src/src/scanner.c" -o scanner.o $CFLAGS
-        fi
-        $CC -fPIC -c "$src/src/parser.c" -o parser.o $CFLAGS
-        $CXX -shared -o parser *.o
-        runHook postBuild
-      '';
-
-      installPhase = ''
-        runHook preInstall
-        mkdir $out
-        mv parser $out/
-        if [[ -d "$src/queries" ]]; then
-          cp -r $src/queries $out/
-        fi
-        runHook postInstall
-      '';
-    };
-  tree-sitter-wgsl = mkGrammar {
-    language = "wgsl";
-    version = "master";
-    source = pkgs.fetchFromGitHub {
-      repo = "tree-sitter-wgsl";
-      owner = "szebniok";
-      rev = "272e89ef2aeac74178edb9db4a83c1ffef80a463";
-      sha256 = "x42qHPwzv3uXVahHE9xYy3RkrYFctJGNEJmu6w1/2Qo=";
-    };
-  };
+{
+  pkgs,
+  lib,
+  ...
+}: let
 in {
   home.packages = with pkgs;
     [
@@ -134,9 +16,10 @@ in {
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       sumneko-lua-language-server
-      wgsl_analyzer
+      wgsl-analyzer
       clangd
-    ] ++ lib.optionals (!pkgs.stdenv.isDarwin) [
+    ]
+    ++ lib.optionals (!pkgs.stdenv.isDarwin) [
       slint-lsp
       # Clipboard support
       xclip
@@ -166,7 +49,8 @@ in {
       end, 70)
       EOF
     '';
-    plugins = with pkgs.vimPlugins; [
+    plugins = with pkgs.vimPlugins;
+    with pkgs.extraVimPlugins; [
       vim-surround
       indentLine
       luasnip
@@ -193,8 +77,9 @@ in {
       }
 
       # Filetypes
-      (nvim-treesitter.withPlugins
-        (plugins: pkgs.tree-sitter.allGrammars ++ [ tree-sitter-wgsl ]))
+      (nvim-treesitter.withPlugins (plugins:
+        pkgs.tree-sitter.allGrammars
+        ++ [pkgs.vimPlugins.nvim-treesitter-parsers.wgsl_bevy]))
       vim-nix
       vim-glsl
 
@@ -225,5 +110,5 @@ in {
       #neorg
     ];
   };
-  programs.zsh = { sessionVariables = { EDITOR = "nvim"; }; };
+  programs.zsh = {sessionVariables = {EDITOR = "nvim";};};
 }

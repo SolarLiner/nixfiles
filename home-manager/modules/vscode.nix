@@ -1,6 +1,11 @@
-{ config, lib, pkgs, isWSL ? false, ... }:
-with lib;
 {
+  config,
+  lib,
+  pkgs,
+  isWSL ? false,
+  ...
+}:
+with lib; {
   home.packages = with pkgs; [
     nixfmt
     nixd
