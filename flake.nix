@@ -69,7 +69,7 @@
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {inherit inputs outputs;};
-          modules = [./nixos/configuration.nix specific-path];
+          modules = [inputs.musnix.nixosModules.musnix ./nixos/configuration.nix specific-path];
         };
     in {
       precision5520 = config "x86_64-linux" ./nixos/hardware/precision5520;

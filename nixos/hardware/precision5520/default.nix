@@ -4,7 +4,6 @@
     ./hardware-configuration.nix
     ./gpu.nix
     ./specialisation-minimal.nix
-    ./specialisation-musnix.nix
   ];
 
   networking.hostName = "precision5520";
