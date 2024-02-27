@@ -34,8 +34,11 @@ in {
       distrho
       vcv-rack
       ocenaudio
+      reaper
+      bitwig-studio
       vital
       surge-XT
+      stochas
       lsp-plugins
       calf
     ];
