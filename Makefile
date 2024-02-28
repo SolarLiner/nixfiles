@@ -8,10 +8,10 @@ all: system home fmt commit
 update:
 	nix flake update $(FLAKE)
 
-system: update
+system:
 	sudo nixos-rebuild switch $(EXTRA_ARGS) --flake $(FLAKE)#$(SYSTEM)
 
-home: update
+home:
 	home-manager switch $(EXTRA_ARGS) --flake "$(FLAKE)#$(USER)@$(SYSTEM)"
 
 fmt:

@@ -78,8 +78,7 @@
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = let
-      system = "x86_64-linux";
-      mkConfig = specific-path:
+      mkConfig = system: specific-path:
         home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${system};
           extraSpecialArgs = {
@@ -95,7 +94,9 @@
         };
     in {
       "solarliner@precision5520" =
-        mkConfig ./home-manager/users/solarliner.nix;
+        mkConfig "x86_64-linux" ./home-manager/users/solarliner.nix;
+      "nathangraule@SolarMac" =
+        mkConfig "x86_64-darwin" ./home-manager/users/nathangraule.nix;
     };
   };
 }

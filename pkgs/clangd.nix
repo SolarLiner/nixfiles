@@ -14,7 +14,7 @@ with lib;
       sha256 = "sha256-dwgD0a4zYLZPnoc4Kr2UBULuta/T/DKnIUKDMkIcqaY=";
     };
     # phases = [ "installPhase" ];
-    nativeBuildInputs = [autoPatchelfHook];
+    nativeBuildInputs = lib.optionals (!isDarwin) [autoPatchelfHook];
     installPhase = ''
       runHook preInstall
       cp -rv $src $out
