@@ -12,6 +12,10 @@
     # NixOS modules
     musnix.url = github:musnix/musnix;
 
+    # Nix Darwin
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -23,6 +27,7 @@
   outputs = {
     self,
     nixpkgs,
+    nix-darwin,
     home-manager,
     ...
   } @ inputs: let
@@ -73,6 +78,13 @@
         };
     in {
       precision5520 = config "x86_64-linux" ./nixos/hardware/precision5520;
+    };
+
+    darwinConfigurations = {
+      "SolarMac" = nix-darwin.lib.darwinSystem {
+        modules = [./nix-darwin/configuration.nix];
+        specialArgs = {inherit inputs outputs self;};
+      };
     };
 
     # Standalone home-manager configuration entrypoint
