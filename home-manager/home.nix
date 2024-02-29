@@ -12,6 +12,7 @@ in {
   nixpkgs.overlays = builtins.attrValues outputs.overlays;
   home.packages = with pkgs;
     [
+      cachix
       # Utilities
       # Language tooling
       #coq
