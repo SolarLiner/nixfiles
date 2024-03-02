@@ -51,12 +51,16 @@ in {
     '';
     plugins = with pkgs.vimPlugins;
     with pkgs.extraVimPlugins; [
+      # Editing
       vim-surround
       indentLine
       luasnip
       {
         plugin = nvim-autopairs;
-        config = "lua require'nvim-autopairs'.setup{}";
+        config = ''
+          packadd! nvim-autopairs.lua
+          lua require'nvim-autopairs'.setup{}
+        '';
       }
       {
         plugin = vim-auto-save;
