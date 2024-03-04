@@ -8,15 +8,16 @@
 with lib.lists; {
   programs.zellij = {
     enable = true;
-    enableBashIntegration = true;
-    enableZshIntegration = true;
   };
   programs.kitty = {
     enable = !isWSL;
     font = {
       package = pkgs.iosevka;
       name = "Iosevka";
-      size = 10;
+      size =
+        if pkgs.stdenv.isDarwin
+        then 13
+        else 10;
     };
     settings = {
       adjust_line_height = "130%";
@@ -25,12 +26,12 @@ with lib.lists; {
       visual_bell_duration = "0.1";
       window_margin_width = 0;
       tab_bar_style = "powerline";
+      shell = "${pkgs.zellij}/bin/zellij";
     };
     shellIntegration = {
       mode = "enabled";
       enableZshIntegration = true;
     };
-    theme = "Material Dark";
-    extraConfig = "shell zellij a -c main";
+    theme = "Adwaita dark";
   };
 }
