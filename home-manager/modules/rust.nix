@@ -5,7 +5,21 @@
 }: let
   inherit (pkgs) stdenv;
 in {
-  home.packages = with pkgs; [rustup mold];
+  home.packages = with pkgs; [
+    rustup
+    mold
+    #cargo-about
+    cargo-audit
+    cargo-bump
+    cargo-expand
+    cargo-flamegraph
+    cargo-fuzz
+    cargo-geiger
+    cargo-generate
+    cargo-insta
+    cargo-watch
+    cargo-wipe
+  ];
   programs.zsh.initExtra = lib.mkIf stdenv.isDarwin ''
     export CARGO_HOME=$HOME/.cargo
     export PATH=$CARGO_HOME/bin:$PATH
