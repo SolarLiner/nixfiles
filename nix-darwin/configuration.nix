@@ -14,6 +14,7 @@
   environment.systemPackages = with pkgs; [
     neovim
     neofetch
+    qalculate-qt
   ];
 
   # Auto upgrade nix package and the daemon service.

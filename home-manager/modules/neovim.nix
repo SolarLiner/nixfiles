@@ -77,9 +77,7 @@ in {
       }
 
       # Filetypes
-      (nvim-treesitter.withPlugins (plugins:
-        pkgs.tree-sitter.allGrammars
-        ++ [pkgs.vimPlugins.nvim-treesitter-parsers.wgsl_bevy]))
+      nvim-treesitter.withAllGrammars
       vim-nix
       vim-glsl
 

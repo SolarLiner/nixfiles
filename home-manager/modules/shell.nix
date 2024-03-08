@@ -35,7 +35,6 @@ in {
     tree
     jq
     jiq
-    cachix
     ripgrep
     htop
     neofetch

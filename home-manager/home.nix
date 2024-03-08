@@ -9,10 +9,12 @@
 with lib.lists; let
   inherit (config.home) username;
 in {
-  nixpkgs.overlays = builtins.attrValues outputs.overlays;
+  nixpkgs = {
+    config.permittedInsecurePackages = with pkgs; ["nix-2.16.2"];
+    overlays = builtins.attrValues outputs.overlays;
+  };
   home.packages = with pkgs;
     [
-      cachix
       # Utilities
       # Language tooling
       #coq

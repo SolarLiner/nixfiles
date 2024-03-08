@@ -17,6 +17,7 @@ in {
     cargo-geiger
     cargo-generate
     cargo-insta
+    cargo-semver-checks
     cargo-watch
     cargo-wipe
   ];
