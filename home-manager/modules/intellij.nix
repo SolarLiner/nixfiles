@@ -21,6 +21,14 @@ in {
       set surround
     '';
   };
+  programs.zsh.initExtra = let
+    toolboxPath =
+      if stdenv.isDarwin
+      then "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+      else "$HOME/.local/share/JetBrains/Toolbox/scripts";
+  in ''
+    export PATH="${toolboxPath}:$PATH"
+  '';
   xdg.configFile."environment.d/10-jetbrains.conf" = {
     enable = !stdenv.isDarwin;
     text = ''

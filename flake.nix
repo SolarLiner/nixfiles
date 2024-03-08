@@ -80,11 +80,14 @@
       precision5520 = config "x86_64-linux" ./nixos/hardware/precision5520;
     };
 
-    darwinConfigurations = {
-      "SolarMac" = nix-darwin.lib.darwinSystem {
-        modules = [./nix-darwin/configuration.nix];
-        specialArgs = {inherit inputs outputs self;};
-      };
+    darwinConfigurations = let
+      mkSystem = system:
+        nix-darwin.lib.darwinSystem {
+          modules = [./nix-darwin/configuration.nix];
+          specialArgs = {inherit inputs outputs self system;};
+        };
+    in {
+      "SolarM3" = mkSystem "aarch64-darwin";
     };
 
     # Standalone home-manager configuration entrypoint
@@ -107,8 +110,8 @@
     in {
       "solarliner@precision5520" =
         mkConfig "x86_64-linux" ./home-manager/users/solarliner.nix;
-      "nathangraule@SolarMac" =
-        mkConfig "x86_64-darwin" ./home-manager/users/nathangraule.nix;
+      "nathangraule@SolarM3" =
+        mkConfig "aarch64-darwin" ./home-manager/users/nathangraule.nix;
     };
   };
 }
