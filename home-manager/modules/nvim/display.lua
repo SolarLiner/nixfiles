@@ -29,3 +29,6 @@ require('vscode').setup({
     }
 })
 require('vscode').load()
+
+-- dressing
+require("dressing").setup {}

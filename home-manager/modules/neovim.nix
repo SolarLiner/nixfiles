@@ -37,7 +37,7 @@ in {
       lua << EOF
       vim.defer_fn(function()
       vim.cmd [[
-        luafile ${./nvim/colortheme.lua}
+        luafile ${./nvim/display.lua}
         luafile ${./nvim/cmp.lua}
         luafile ${./nvim/lspconfig.lua}
         luafile ${./nvim/bufferline.lua}
@@ -85,10 +85,7 @@ in {
       lspkind-nvim
 
       # UI
-      {
-        plugin = dressing-nvim;
-        config = "lua require'dressing'.setup {}";
-      }
+      dressing-nvim
       nvim-web-devicons
       nvim-tree-lua
       popup-nvim
