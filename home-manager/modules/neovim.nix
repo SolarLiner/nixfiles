@@ -37,6 +37,7 @@ in {
       lua << EOF
       vim.defer_fn(function()
       vim.cmd [[
+        luafile ${./nvim/colortheme.lua}
         luafile ${./nvim/cmp.lua}
         luafile ${./nvim/lspconfig.lua}
         luafile ${./nvim/bufferline.lua}
@@ -67,12 +68,7 @@ in {
       nvim-web-tools
 
       # Colortheme
-      {
-        plugin = vscode-nvim;
-        config = ''
-          luafile ${./nvim/colortheme.lua}
-        '';
-      }
+      vscode-nvim
 
       # Filetypes
       nvim-treesitter.withAllGrammars
