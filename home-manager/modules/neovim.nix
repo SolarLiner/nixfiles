@@ -58,7 +58,6 @@ in {
       {
         plugin = nvim-autopairs;
         config = ''
-          packadd! nvim-autopairs.lua
           lua require'nvim-autopairs'.setup{}
         '';
       }
