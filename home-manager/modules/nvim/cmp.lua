@@ -109,6 +109,7 @@ cmp.setup.cmdline(':', {
 })
 
 -- Setup for nvim-autopairs
+require "nvim-autopairs".setup {}
 local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 cmp.event:on(
     'confirm_done',

@@ -55,12 +55,7 @@ in {
       vim-surround
       indentLine
       luasnip
-      {
-        plugin = nvim-autopairs;
-        config = ''
-          lua require'nvim-autopairs'.setup{}
-        '';
-      }
+      nvim-autopairs
       {
         plugin = vim-auto-save;
         config = ''
