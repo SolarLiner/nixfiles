@@ -32,21 +32,21 @@ in {
     vimdiffAlias = true;
     extraConfig = ''
       luafile ${./nvim/init.lua}
-      luafile ${./nvim/tree-sitter.lua}
 
       lua << EOF
       vim.defer_fn(function()
-      vim.cmd [[
-        luafile ${./nvim/display.lua}
-        luafile ${./nvim/cmp.lua}
-        luafile ${./nvim/lspconfig.lua}
-        luafile ${./nvim/bufferline.lua}
-        luafile ${./nvim/lualine.lua}
-        luafile ${./nvim/neorg.lua}
-        luafile ${./nvim/nvim-tree.lua}
-        luafile ${./nvim/toggleterm.lua}
-        luafile ${./nvim/telescope.lua}
-      ]]
+        vim.cmd [[
+          luafile ${./nvim/display.lua}
+          luafile ${./nvim/tree-sitter.lua}
+          luafile ${./nvim/cmp.lua}
+          luafile ${./nvim/lspconfig.lua}
+          luafile ${./nvim/bufferline.lua}
+          luafile ${./nvim/lualine.lua}
+          luafile ${./nvim/neorg.lua}
+          luafile ${./nvim/nvim-tree.lua}
+          luafile ${./nvim/toggleterm.lua}
+          luafile ${./nvim/telescope.lua}
+        ]]
       end, 70)
       EOF
     '';
