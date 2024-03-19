@@ -41,6 +41,7 @@ in {
       stochas
       lsp-plugins
       calf
+      plugdata
     ];
   };
 }

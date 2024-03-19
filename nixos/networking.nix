@@ -1,5 +1,11 @@
-{...}: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   networking.networkmanager.enable = true;
+  networking.networkmanager.logLevel = "DEBUG";
 
   # Firewall
   networking.firewall = {

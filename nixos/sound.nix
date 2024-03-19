@@ -3,6 +3,9 @@
   pkgs,
   ...
 }: {
+  environment.systemPackages = with pkgs; [
+    qpwgraph
+  ];
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   services.pipewire = {
@@ -10,7 +13,6 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
     jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,

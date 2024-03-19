@@ -3,7 +3,7 @@
     inputs.hardware.nixosModules.dell-precision-5530
     ./hardware-configuration.nix
     ./gpu.nix
-    ./specialisation-minimal.nix
+    # ./specialisation-minimal.nix
   ];
 
   musnix.soundcardPciId = "0:1f.3";

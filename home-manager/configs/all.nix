@@ -5,6 +5,7 @@
     ../modules/terminal.nix
     ../modules/vscode.nix
     ../modules/node.nix
+    ../modules/plasma.nix
     ../modules/python.nix
     ../modules/rust.nix
     ../modules/ocaml.nix

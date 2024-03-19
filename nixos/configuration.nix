@@ -13,6 +13,7 @@
     ./boot.nix
     ./desktop.nix
     ./i18n.nix
+    ./networking.nix
     ./sound.nix
     ./virtualization.nix
   ];

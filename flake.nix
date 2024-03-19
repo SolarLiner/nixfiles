@@ -19,7 +19,11 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    plasma-manager.url = "github:pjones/plasma-manager";
+    plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
+    plasma-manager.inputs.home-manager.follows = "home-manager";
 
+    # Other
     hardware.url = "github:nixos/nixos-hardware";
     nix-colors.url = "github:misterio77/nix-colors";
   };
@@ -29,6 +33,7 @@
     nixpkgs,
     nix-darwin,
     home-manager,
+    plasma-manager,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -47,7 +52,10 @@
     # Your custom packages
     # Accessible through 'nix build', 'nix shell', etc
     packages = forAllSystems (system: let
-      pkgs = import nixpkgs {inherit system;};
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = builtins.attrValues outputs.overlays;
+      };
     in
       import ./pkgs pkgs);
     # Formatter for your nix files, available through 'nix fmt'
@@ -102,6 +110,7 @@
             isWSL = false;
           };
           modules = [
+            plasma-manager.homeManagerModules.plasma-manager
             ./modules/home-manager/google-drive.nix
             ./home-manager/home.nix
             specific-path
