@@ -1,5 +1,6 @@
 {
   inputs,
+  outputs,
   self,
   pkgs,
   system,
@@ -36,4 +37,6 @@
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = system;
+  nixpkgs.overlays = builtins.attrValues outputs.overlays;
+  nixpkgs.config.permittedInsecurePackages = ["nix-2.16.2"];
 }
