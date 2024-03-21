@@ -5,6 +5,7 @@
     packages = with pkgs; [
       cmake
       ninja
+      tracy_0_9_1
     ];
   };
 }
