@@ -1,4 +1,9 @@
-{tracy, fetchFromGitHub,...}: tracy.overrideAttrs (oldAttrs: rec {
+{
+  tracy,
+  fetchFromGitHub,
+  ...
+}:
+tracy.overrideAttrs (oldAttrs: rec {
   version = "0.9.1";
   src = fetchFromGitHub {
     owner = "wolfpld";
