@@ -24,6 +24,8 @@ in {
       # Fonts
       jetbrains-mono
       iosevka
+      # Programs
+      gimp
     ]
     ++ optionals isWSL [curl wget];
   home.stateVersion = "23.11";
