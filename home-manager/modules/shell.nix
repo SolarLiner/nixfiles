@@ -41,6 +41,7 @@ in {
     pv
     kubeseal
     nix-output-monitor
+    pre-commit
   ];
   programs.autojump.enable = true;
   programs.bat.enable = true;
