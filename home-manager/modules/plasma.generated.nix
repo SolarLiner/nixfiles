@@ -820,10 +820,9 @@
       "kwinrc"."Desktops"."Id_1".value = "a7ed4214-8dc6-4877-bb42-233bf04e618f";
       "kwinrc"."Desktops"."Number".value = 1;
       "kwinrc"."Desktops"."Rows".value = 1;
-      "kwinrc"."Effect-windowview"."BorderActivate".value = 7;
+      "kwinrc"."Effect-windowview"."BorderActivate".value = 3;
       "kwinrc"."Effect-windowview"."BorderActivateAll".value = 9;
-      "kwinrc"."ElectricBorders"."Top".value = "KRunner";
-      "kwinrc"."ElectricBorders"."TopRight".value = "ShowDesktop";
+      "kwinrc"."ElectricBorders"."BottomLeft".value = "ShowDesktop";
       "kwinrc"."NightColor"."Active".value = true;
       "kwinrc"."Plugins"."desktopchangeosdEnabled".value = true;
       "kwinrc"."Plugins"."kwin4_effect_dimscreenEnabled".value = true;
