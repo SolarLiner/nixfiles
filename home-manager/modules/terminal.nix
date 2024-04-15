@@ -32,6 +32,6 @@ with lib.lists; {
       mode = "enabled";
       enableZshIntegration = true;
     };
-    theme = "Adwaita dark";
+    theme = "GitHub Dark Dimmed";
   };
 }
