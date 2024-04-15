@@ -25,13 +25,7 @@ in {
         done
       '';
     });
-    plugdata = (mkUnstable final.system).plugdata.overrideAttrs (oldAttrs: rec {
-      version = "0.8.3";
-      src = oldAttrs.src.overrideAttrs (old: {
-        rev = "v${version}";
-        sha256 = "";
-      });
-    });
+    plugdata = (mkUnstable final.system).plugdata;
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
