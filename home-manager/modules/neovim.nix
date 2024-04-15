@@ -30,74 +30,14 @@ in {
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-    extraConfig = ''
-      luafile ${./nvim/init.lua}
-
-      lua << EOF
-      vim.defer_fn(function()
-        vim.cmd [[
-          luafile ${./nvim/display.lua}
-          luafile ${./nvim/tree-sitter.lua}
-          luafile ${./nvim/cmp.lua}
-          luafile ${./nvim/lspconfig.lua}
-          luafile ${./nvim/bufferline.lua}
-          luafile ${./nvim/lualine.lua}
-          luafile ${./nvim/neorg.lua}
-          luafile ${./nvim/nvim-tree.lua}
-          luafile ${./nvim/toggleterm.lua}
-          luafile ${./nvim/telescope.lua}
-        ]]
-      end, 70)
-      EOF
-    '';
-    plugins = with pkgs.vimPlugins;
-    with pkgs.extraVimPlugins; [
-      # Editing
-      vim-surround
-      indentLine
-      luasnip
-      nvim-autopairs
-      {
-        plugin = vim-auto-save;
-        config = ''
-          let g:auto_save = 1
-          let g:auto_save_silent = 1
-          let g:auto_save_events = ["InsertLeave", "TextChanged"]
-        '';
-      }
-      nvim-web-tools
-
-      # Colortheme
-      vscode-nvim
-
-      # Filetypes
+    extraLuaConfig = builtins.readFile ./nvim/init.lua;
+    defaultEditor = true;
+    plugins = with pkgs.vimPlugins; [
       nvim-treesitter.withAllGrammars
-      vim-nix
-      vim-glsl
-
-      # LSP
-      nvim-lspconfig
-      nvim-cmp
-      cmp-nvim-lsp
-      cmp-nvim-lsp-document-symbol
-      cmp-nvim-lsp-signature-help
-      cmp_luasnip
-      lspkind-nvim
-
-      # UI
-      dressing-nvim
-      nvim-web-devicons
-      nvim-tree-lua
-      popup-nvim
-      plenary-nvim
-      telescope-nvim
-      bufferline-nvim
-      lualine-nvim
-      toggleterm-nvim
-
-      # Neorg
-      #neorg
     ];
   };
-  programs.zsh = {sessionVariables = {EDITOR = "nvim";};};
+  home.file."./.config/nvim/lua/plugins" = {
+    source = ./nvim/plugins;
+    recursive = true;
+  };
 }
