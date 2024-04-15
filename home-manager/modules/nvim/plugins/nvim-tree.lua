@@ -35,7 +35,9 @@ return {
         end,
       })
 
-      vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeToggle<CR>", {})
+      vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeToggle<CR>", {
+        desc = "Tree [E]xplorer toggle",
+      })
     end,
   },
 }
