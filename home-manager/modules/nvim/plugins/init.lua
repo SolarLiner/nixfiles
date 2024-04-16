@@ -105,7 +105,6 @@ return {
   --
   -- Use the `dependencies` key to specify the dependencies of a particular plugin
 
-  ,
   { -- Autoformat
     "stevearc/conform.nvim",
     lazy = false,
