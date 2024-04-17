@@ -4,8 +4,9 @@ return {
     opts = {},
     -- Optional dependencies
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      vim.keymap.set("n", "<leader>-", "<cmd>Oil<CR>", { desc = "Open file browser (oil)" })
-    end,
+    cmd = "Oil",
+    keys = {
+      { "<leader>-", "<cmd>Oil<CR>", desc = "[-] Open file browser (oil)" },
+    },
   },
 }
