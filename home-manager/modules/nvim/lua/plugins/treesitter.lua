@@ -5,6 +5,7 @@ return {
       local configs = require("nvim-treesitter.configs")
 
       configs.setup({
+        ensure_installed = { "c", "cpp", "lua", "rust", "vim", "query", "wgsl" },
         sync_install = false,
         indent = { enable = true },
         autopairs = { enable = true },
