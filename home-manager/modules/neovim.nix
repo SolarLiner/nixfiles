@@ -37,7 +37,7 @@ in {
     ];
   };
   home.file."./.config/nvim/lua/plugins" = {
-    source = ./nvim/plugins;
+    source = ./nvim/lua/plugins;
     recursive = true;
   };
 }
