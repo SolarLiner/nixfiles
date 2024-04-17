@@ -8,13 +8,14 @@ return {
         options = {
           styles = {
             comments = "italic",
-            keywords = "italic,bold",
+            keywords = "bold",
             types = "bold",
+            variables = "italic",
           },
         },
       })
 
-      vim.cmd("colorscheme github_dark_dimmed")
+      vim.cmd("colorscheme github_dark")
     end,
   },
 }

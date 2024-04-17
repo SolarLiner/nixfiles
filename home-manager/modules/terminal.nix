@@ -1,11 +1,8 @@
 {
-  config,
-  lib,
   pkgs,
   isWSL ? false,
   ...
-}:
-with lib.lists; {
+}: {
   programs.zellij = {
     enable = true;
   };
@@ -32,6 +29,6 @@ with lib.lists; {
       mode = "enabled";
       enableZshIntegration = true;
     };
-    theme = "GitHub Dark Dimmed";
+    theme = "GitHub Dark";
   };
 }
