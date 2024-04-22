@@ -10,12 +10,12 @@ return {
             comments = "italic",
             keywords = "bold",
             types = "bold",
-            variables = "italic",
+            functions = "italic",
           },
         },
       })
 
-      vim.cmd("colorscheme github_dark")
+      vim.cmd("colorscheme github_dark_dimmed")
     end,
   },
 }
