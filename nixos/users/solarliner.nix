@@ -33,7 +33,7 @@ in {
       cardinal
       distrho
       vcv-rack
-      ocenaudio
+      #ocenaudio
       reaper
       bitwig-studio
       vital
