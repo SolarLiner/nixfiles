@@ -2,8 +2,7 @@
   pkgs,
   lib,
   ...
-}: let
-in {
+}: {
   home.packages = with pkgs;
     [
       nodePackages.browser-sync
