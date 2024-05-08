@@ -35,6 +35,7 @@ in {
     plugins = with pkgs.vimPlugins; [
       nvim-treesitter.withAllGrammars
     ];
+    extraPackages = with pkgs; [zig fzf nodejs_21];
   };
   home.file."./.config/nvim/lua/plugins" = {
     source = ./nvim/lua/plugins;

@@ -9,8 +9,8 @@
   programs.kitty = {
     enable = !isWSL;
     font = {
-      package = pkgs.iosevka;
-      name = "Iosevka";
+      package = pkgs.iosevka-nerd-fonts;
+      name = "Iosevka Nerd Font";
       size =
         if pkgs.stdenv.isDarwin
         then 13

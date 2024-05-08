@@ -17,14 +17,6 @@ in {
   # You can change versions, add patches, set compilation flags, anything really.
   # https://nixos.wiki/wiki/Overlays
   modifications = final: prev: {
-    iosevka = prev.iosevka.overrideAttrs (oldAttrs: rec {
-      nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [final.nerd-font-patcher];
-      postInstall = ''
-        for file in $out/share/fonts/truetype/*.ttf; do
-          nerd-font-patcher $file
-        done
-      '';
-    });
     plugdata = (mkUnstable final.system).plugdata;
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...

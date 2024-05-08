@@ -24,6 +24,7 @@ in {
       # Fonts
       jetbrains-mono
       iosevka
+      iosevka-nerd-fonts
       # Programs
       gimp
     ]

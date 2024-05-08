@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     iosevka
+    iosevka-nerd-fonts
     inter
   ];
   programs = {

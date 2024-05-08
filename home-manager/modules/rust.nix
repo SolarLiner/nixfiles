@@ -8,6 +8,7 @@ in {
   home.packages = with pkgs; [
     rustup
     mold
+    bacon
     #cargo-about
     cargo-audit
     cargo-bump
