@@ -14,8 +14,8 @@
       enable = true;
       displayManager = {
         sddm.enable = true;
-        sddm.wayland.enable = true;
-        defaultSession = "plasma";
+        sddm.wayland.enable = false;
+        defaultSession = "plasmawayland";
       };
       desktopManager.plasma5.enable = true;
     };
