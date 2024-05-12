@@ -17,6 +17,10 @@
       sumneko-lua-language-server
       wgsl-analyzer
       clangd
+      nodejs
+      zig
+      fzf
+      unzip
     ]
     ++ lib.optionals (!pkgs.stdenv.isDarwin) [
       slint-lsp
