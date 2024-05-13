@@ -14,6 +14,7 @@
     ./desktop.nix
     ./i18n.nix
     ./networking.nix
+    ./nix-ld.nix
     ./sound.nix
     ./virtualization.nix
   ];
@@ -61,8 +62,6 @@
     enable = true;
     lfs.enable = true;
   };
-
-  programs.nix-ld.enable = true;
 
   # https://nixos.wiki/wiki/Automatic_system_upgrades
   system.autoUpgrade = {

@@ -20,9 +20,11 @@ in {
     plugdata = (mkUnstable final.system).plugdata;
     jetbrains-toolbox = prev.jetbrains-toolbox.overrideAttrs (oldAttrs: {
       nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [prev.makeWrapper];
-      postFixup = ''
+      postFixup = let
+        binPath = lib.makeBinPath (with final; [python3 rustup cargo cmake ninja clang final.stdenv.cc.cc gdb lldb]);
+      in ''
         wrapProgram $out/bin/jetbrains-toolbox \
-          --set PATH ${lib.makeBinPath (with final; [cmake ninja clang final.stdenv.cc.cc gdb lldb])}
+          --set PATH ${binPath}
       '';
     });
     # example = prev.example.overrideAttrs (oldAttrs: rec {
