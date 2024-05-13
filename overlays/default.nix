@@ -18,6 +18,13 @@ in {
   # https://nixos.wiki/wiki/Overlays
   modifications = final: prev: {
     plugdata = (mkUnstable final.system).plugdata;
+    jetbrains-toolbox = prev.jetbrains-toolbox.overrideAttrs (oldAttrs: {
+      nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [prev.makeWrapper];
+      postFixup = ''
+        wrapProgram $out/bin/jetbrains-toolbox \
+          --set PATH ${lib.makeBinPath (with final; [cmake ninja clang final.stdenv.cc.cc gdb lldb])}
+      '';
+    });
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
