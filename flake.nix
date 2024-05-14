@@ -57,7 +57,7 @@
         overlays = builtins.attrValues outputs.overlays;
       };
     in
-      import ./pkgs { inherit pkgs inputs; });
+      import ./pkgs {inherit pkgs inputs;});
 
     # Formatter for your nix files, available through 'nix fmt'
     # Other options beside 'alejandra' include 'nixpkgs-fmt'
