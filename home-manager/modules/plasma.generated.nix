@@ -319,6 +319,9 @@
       "kded5rc"."PlasmaBrowserIntegration"."shownCount" = 4;
       "kdeglobals"."DirSelect Dialog"."DirSelectDialog Size" = "906,600";
       "kdeglobals"."General"."AllowKDEAppsToRememberWindowPositions" = true;
+      "kdeglobals"."General"."BrowserApplication" = "firefox.desktop";
+      "kdeglobals"."General"."TerminalApplication" = "kitty";
+      "kdeglobals"."General"."TerminalService" = "kitty.desktop";
       "kdeglobals"."General"."XftHintStyle" = "hintslight";
       "kdeglobals"."General"."XftSubPixel" = "none";
       "kdeglobals"."General"."fixed" = "Iosevka,11,-1,5,50,0,0,0,0,0";
@@ -370,7 +373,7 @@
       "kglobalshortcutsrc"."org.kde.plasma.emojier.desktop"."_k_friendly_name" = "Sélecteur d'émoticônes";
       "kglobalshortcutsrc"."org.kde.spectacle.desktop"."_k_friendly_name" = "Spectacle";
       "kglobalshortcutsrc"."org_kde_powerdevil"."_k_friendly_name" = "Gestion de l'énergie";
-      "kglobalshortcutsrc"."plasmashell"."_k_friendly_name" = "Latte Dock";
+      "kglobalshortcutsrc"."plasmashell"."_k_friendly_name" = "Plasma";
       "kglobalshortcutsrc"."systemsettings.desktop"."_k_friendly_name" = "Configuration du système";
       "khotkeysrc"."Data"."DataCount" = 3;
       "khotkeysrc"."Data_1"."Comment" = "KMenuEdit Global Shortcuts";
@@ -856,8 +859,11 @@
       "khotkeysrc"."Data_3_9Triggers0"."Type" = "GESTURE";
       "khotkeysrc"."DirSelect Dialog"."DirSelectDialog Size[$d]" = "";
       "khotkeysrc"."General"."AllowKDEAppsToRememberWindowPositions[$d]" = "";
+      "khotkeysrc"."General"."BrowserApplication[$d]" = "";
       "khotkeysrc"."General"."ColorSchemeHash[$d]" = "";
       "khotkeysrc"."General"."ColorScheme[$d]" = "";
+      "khotkeysrc"."General"."TerminalApplication[$d]" = "";
+      "khotkeysrc"."General"."TerminalService[$d]" = "";
       "khotkeysrc"."General"."XftHintStyle[$d]" = "";
       "khotkeysrc"."General"."XftSubPixel[$d]" = "";
       "khotkeysrc"."General"."fixed[$d]" = "";
@@ -904,6 +910,7 @@
       "khotkeysrc"."WM"."inactiveBlend[$d]" = "";
       "khotkeysrc"."WM"."inactiveForeground[$d]" = "";
       "krunnerrc"."General"."FreeFloating" = true;
+      "krunnerrc"."Plugins"."appstreamEnabled" = false;
       "ksplashrc"."KSplash"."Engine" = "none";
       "kwalletrc"."Wallet"."First Use" = false;
       "kwinrc"."Desktops"."Id_1" = "a7ed4214-8dc6-4877-bb42-233bf04e618f";
