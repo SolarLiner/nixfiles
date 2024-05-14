@@ -1,15 +1,16 @@
 # Custom packages, that can be defined similarly to ones from nixpkgs
 # You can build them using 'nix build .#example'
-pkgs:
+{ pkgs, inputs }:
+let home-manager = inputs.home-manager.packages.${pkgs.system}.home-manager; in
 with pkgs; {
   bootstrap = writeShellApplication {
     name = "bootstrap";
-    runtimeInputs = [git gnumake];
+    runtimeInputs = [git gnumake home-manager];
     text = ''
       NIXFILES_DIR=$HOME/.config/nixfiles
       mkdir -p "$NIXFILES_DIR"
       git clone https://github.com/solarliner/nixfiles.git "$NIXFILES_DIR"
-      make -C "$NIXFILES_DIR" home
+      make -C "$NIXFILES_DIR" init
     '';
   };
   clangd = callPackage ./clangd.nix {};

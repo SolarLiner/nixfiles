@@ -14,12 +14,15 @@ HOME_MANAGER_CURGEN := home-manager generations 2> /dev/null | head -n1 | cut -d
 
 all: system home fmt commit
 
+home-init:
+	home-manager init --switch --flake "$(FLAKE)#$(USER)@$(SYSTEM)"
+
 update:
 	nix flake update $(FLAKE)
 
 system:
-	$(SYSTEM_REBUILD) build $(EXTRA_ARGS) --flake $(FLAKE)#$(SYSTEM)
-	sudo $(SYSTEM_REBUILD) switch $(EXTRA_ARGS) --flake $(FLAKE)#$(SYSTEM)
+	$(SYSTEM_REBUILD) build $(EXTRA_ARGS) --flake "$(FLAKE)#$(SYSTEM)"
+	sudo $(SYSTEM_REBUILD) switch $(EXTRA_ARGS) --flake "$(FLAKE)#$(SYSTEM)"
 
 home:
 	home-manager switch $(EXTRA_ARGS) --flake "$(FLAKE)#$(USER)@$(SYSTEM)"
@@ -31,4 +34,4 @@ commit: fmt
 	git commit -am"system=$(shell $(SYSTEM_CURGEN)) | home-manager=$(shell $(HOME_MANAGER_CURGEN))"
 
 
-.PHONY: update system home fmt commit
+.PHONY: home-init update system home fmt commit
