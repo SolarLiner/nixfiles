@@ -58,6 +58,7 @@
       };
     in
       import ./pkgs pkgs);
+
     # Formatter for your nix files, available through 'nix fmt'
     # Other options beside 'alejandra' include 'nixpkgs-fmt'
     formatter =
