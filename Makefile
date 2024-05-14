@@ -14,9 +14,6 @@ HOME_MANAGER_CURGEN := home-manager generations 2> /dev/null | head -n1 | cut -d
 
 all: system home fmt commit
 
-home-init:
-	home-manager init --switch --flake "$(FLAKE)#$(USER)@$(SYSTEM)"
-
 update:
 	nix flake update $(FLAKE)
 
