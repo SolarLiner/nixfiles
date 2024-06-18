@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, isServer, ...}: {
   environment.systemPackages = with pkgs; [
     iosevka
     iosevka-nerd-fonts
@@ -11,16 +11,16 @@
   };
   services = {
     xserver = {
-      enable = true;
+      enable = !isServer;
       displayManager = {
-        sddm.enable = true;
+        sddm.enable = !isServer;
         sddm.wayland.enable = true;
         defaultSession = "plasmawayland";
       };
-      desktopManager.plasma5.enable = true;
+      desktopManager.plasma5.enable = !isServer;
     };
 
     # Desktop software
-    flatpak.enable = true;
+    flatpak.enable = !isServer;
   };
 }

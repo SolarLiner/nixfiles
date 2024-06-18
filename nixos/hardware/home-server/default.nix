@@ -2,14 +2,22 @@
   imports = [
     inputs.hardware.nixosModules.dell-inspiron-7405
     inputs.home-manager.nixosModules.home-manager
+    ./users
     ./hardware-configuration.nix
     ./ssh.nix
     ./docker.nix
     ./jupyterhub.nix
+    ./postgres.nix
     # ./specialisation-minimal.nix
   ];
 
   networking.hostName = "home-server";
+  networking.firewall = {
+    interfaces = {
+      "enp0s20f0u1".allowedTCPPorts = [ 21 22 80 443 5432 8000 8080 9443 ];
+    };
+  };
+
   i18n.defaultLocale = lib.mkForce "en_US.UTF-8";
   console = {
     font = "Lat2-Terminus16";

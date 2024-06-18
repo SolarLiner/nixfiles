@@ -79,15 +79,15 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = let
-      config = system: specific-path:
+      config = system: specific-path: { isServer ? false, ... }:
         nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = {inherit inputs outputs;};
+          specialArgs = {inherit inputs outputs isServer; };
           modules = [inputs.musnix.nixosModules.musnix ./nixos/configuration.nix specific-path];
         };
     in {
-      home-server = config "x86_64-linux" ./nixos/hardware/home-server;
-      precision5520 = config "x86_64-linux" ./nixos/hardware/precision5520;
+      home-server = config "x86_64-linux" ./nixos/hardware/home-server { isServer = true; };
+      precision5520 = config "x86_64-linux" ./nixos/hardware/precision5520 {};
     };
 
     darwinConfigurations = let
