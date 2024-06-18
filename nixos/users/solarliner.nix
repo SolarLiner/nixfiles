@@ -2,8 +2,7 @@
   pkgs,
   lib,
   ...
-}: let
-in {
+}: {
   programs.zsh.enable = true;
 
   users.users.solarliner = {

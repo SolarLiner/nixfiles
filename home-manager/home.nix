@@ -9,8 +9,6 @@
 with lib.lists; let
   inherit (config.home) username;
 in {
-  nixpkgs.overlays = builtins.attrValues outputs.overlays;
-  nixpkgs.config.permittedInsecurePackages = ["nix-2.16.2"];
   home.packages = with pkgs;
     [
       # Utilities

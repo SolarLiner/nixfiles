@@ -92,5 +92,5 @@ in {
       '';
     };
   };
-  services.google-drive-ocamlfuse.enable = true;
+  services.google-drive-ocamlfuse.enable = !isWSL;
 }
