@@ -7,6 +7,7 @@
     ./ssh.nix
     ./docker.nix
     ./jupyterhub.nix
+    ./plex.nix
     ./postgres.nix
     # ./specialisation-minimal.nix
   ];
@@ -16,6 +17,14 @@
     interfaces = {
       "enp0s20f0u1".allowedTCPPorts = [ 21 22 80 443 5432 8000 8080 9443 ];
     };
+  };
+  services.resolved = {
+    enable = true;
+    fallbackDns = [
+      "192.168.1.254"
+      "8.8.8.8"
+      "1.1.1.1"
+    ];
   };
 
   i18n.defaultLocale = lib.mkForce "en_US.UTF-8";
