@@ -6,6 +6,7 @@
     ./hardware-configuration.nix
     ./ssh.nix
     ./docker.nix
+    ./jellyfin.nix
     ./jupyterhub.nix
     ./plex.nix
     ./postgres.nix
