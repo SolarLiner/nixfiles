@@ -8,7 +8,6 @@
     ./docker.nix
     ./jellyfin.nix
     ./jupyterhub.nix
-    ./plex.nix
     ./postgres.nix
     # ./specialisation-minimal.nix
   ];
@@ -16,9 +15,10 @@
   networking.hostName = "home-server";
   networking.firewall = {
     interfaces = {
-      "enp0s20f0u1".allowedTCPPorts = [ 21 22 80 443 5432 8000 8080 9443 ];
+      "enp0s20f0u1".allowedTCPPorts = [ 21 22 80 443 5353 8000 8080 9443 ];
     };
   };
+  
   services.resolved = {
     enable = true;
     fallbackDns = [
