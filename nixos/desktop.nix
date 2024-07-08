@@ -1,4 +1,8 @@
-{pkgs, isServer, ...}: {
+{
+  pkgs,
+  isServer,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     iosevka
     iosevka-nerd-fonts

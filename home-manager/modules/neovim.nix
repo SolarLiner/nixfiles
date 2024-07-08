@@ -15,8 +15,8 @@
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       sumneko-lua-language-server
-      wgsl-analyzer
-      clangd
+      #wgsl-analyzer
+      #clangd
       nodejs
       zig
       fzf

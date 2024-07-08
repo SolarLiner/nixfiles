@@ -1,17 +1,22 @@
-{ lib, pkgs, ... }:
-
 {
+  lib,
+  pkgs,
+  ...
+}: {
   services.jupyterhub = {
     enable = true;
     kernels = {
-      python3 = let env = (pkgs.python3.withPackages (p: with p; [
-        ipykernel
-        numpy
-        scipy
-        sympy
-        matplotlib
-        pandas 
-      ])); in {
+      python3 = let
+        env = pkgs.python3.withPackages (p:
+          with p; [
+            ipykernel
+            numpy
+            scipy
+            sympy
+            matplotlib
+            pandas
+          ]);
+      in {
         displayName = "Python 3 (Data science)";
         argv = ["${env.interpreter}" "-m" "ipykernel_launcher" "-f" "{connection_file}"];
         language = "python";
@@ -21,4 +26,3 @@
     };
   };
 }
-

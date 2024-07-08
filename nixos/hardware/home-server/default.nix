@@ -1,4 +1,9 @@
-{ inputs, outputs, lib, ... }: {
+{
+  inputs,
+  outputs,
+  lib,
+  ...
+}: {
   imports = [
     inputs.hardware.nixosModules.dell-inspiron-7405
     inputs.home-manager.nixosModules.home-manager
@@ -15,10 +20,10 @@
   networking.hostName = "home-server";
   networking.firewall = {
     interfaces = {
-      "enp0s20f0u1".allowedTCPPorts = [ 21 22 80 443 5353 8000 8080 9443 ];
+      "enp0s20f0u1".allowedTCPPorts = [21 22 80 443 5353 8000 8080 9443];
     };
   };
-  
+
   services.resolved = {
     enable = true;
     fallbackDns = [
