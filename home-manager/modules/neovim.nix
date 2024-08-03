@@ -5,11 +5,11 @@
 }: {
   home.packages = with pkgs;
     [
-      nodePackages.browser-sync
+      #nodePackages.browser-sync
       nixd
       nodePackages.diagnostic-languageserver
-      nodePackages.eslint
-      nodePackages.eslint_d
+      #nodePackages.eslint
+      #nodePackages.eslint_d
       nodePackages.pyright
       nodePackages.typescript
       nodePackages.typescript-language-server

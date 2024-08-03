@@ -41,7 +41,7 @@ in {
     pv
     kubeseal
     nix-output-monitor
-    #pre-commit
+    pre-commit
   ];
   programs.autojump.enable = true;
   programs.bat.enable = true;
@@ -89,5 +89,5 @@ in {
       '';
     };
   };
-  services.google-drive-ocamlfuse.enable = !isWSL;
+  services.google-drive-ocamlfuse.enable = false; # Disabled while waiting for dev to re-enable authentication
 }
