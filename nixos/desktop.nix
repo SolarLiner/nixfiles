@@ -1,12 +1,14 @@
 {
   pkgs,
   isServer,
+  outputs,
   ...
 }: {
   environment.systemPackages = with pkgs; [
     iosevka
-    iosevka-nerd-fonts
+    jetbrains-mono
     inter
+    nerd-fonts
   ];
   programs = {
     kdeconnect = {

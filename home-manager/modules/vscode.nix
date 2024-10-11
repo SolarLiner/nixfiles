@@ -7,7 +7,7 @@
 }:
 with lib; {
   home.packages = with pkgs; [
-    nixfmt
+    nixfmt-rfc-style
     nixd
   ];
   home.file.".vscode-server/server-env-setup" = mkIf isWSL {

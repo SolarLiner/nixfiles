@@ -37,18 +37,15 @@ in {
     jiq
     ripgrep
     htop
-    neofetch
+    fastfetch
     pv
     kubeseal
     nix-output-monitor
-    pre-commit
+    #pre-commit
   ];
   programs.autojump.enable = true;
   programs.bat.enable = true;
-  programs.eza = {
-    enable = true;
-    enableAliases = true;
-  };
+  programs.eza.enable = true;
   programs.bash.enable = false;
   programs.direnv = {
     enable = true;
@@ -76,7 +73,7 @@ in {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     plugins = [zsh-256color zsh-autopair zsh-you-should-use zsh-vi-mode];
     oh-my-zsh = {

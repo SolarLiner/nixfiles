@@ -22,7 +22,7 @@ in {
       # Fonts
       jetbrains-mono
       iosevka
-      #iosevka-nerd-fonts
+      nerd-fonts
       # Programs
       gimp
     ]

@@ -9,7 +9,7 @@
   programs.kitty = {
     enable = !isWSL;
     font = {
-      package = pkgs.iosevka;
+      package = pkgs.nerd-fonts;
       name = "Iosevka Nerd Font";
       size =
         if pkgs.stdenv.isDarwin

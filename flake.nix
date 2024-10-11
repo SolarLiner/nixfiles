@@ -3,29 +3,35 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
-    # NixOS modules
-    musnix.url = github:musnix/musnix;
-
     # Nix Darwin
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-bundle = {
+      url = "github:homebrew/homebrew-bundle";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-23.11";
+    home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.url = "github:pjones/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
-
-    # Other
-    hardware.url = "github:nixos/nixos-hardware";
-    nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = {
@@ -34,6 +40,7 @@
     nix-darwin,
     home-manager,
     plasma-manager,
+    nix-homebrew,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -86,18 +93,30 @@
           modules = [inputs.musnix.nixosModules.musnix ./nixos/configuration.nix specific-path];
         };
     in {
-      home-server = config "x86_64-linux" ./nixos/hardware/home-server {isServer = true;};
-      precision5520 = config "x86_64-linux" ./nixos/hardware/precision5520 {};
+      #home-server = config "x86_64-linux" ./nixos/hardware/home-server {isServer = true;};
+      #precision5520 = config "x86_64-linux" ./nixos/hardware/precision5520 {};
     };
 
     darwinConfigurations = let
-      mkSystem = system:
+      mkSystem = {
+        system,
+        username,
+      }:
         nix-darwin.lib.darwinSystem {
-          modules = [./nix-darwin/configuration.nix];
-          specialArgs = {inherit inputs outputs self system;};
+          modules = [
+            nix-homebrew.darwinModules.nix-homebrew
+            ./nix-darwin/configuration.nix
+          ];
+          specialArgs = {
+            inherit inputs outputs self system username;
+            overlays = builtins.attrValues outputs.overlays;
+          };
         };
     in {
-      "SolarM3" = mkSystem "aarch64-darwin";
+      "SolarM3" = mkSystem {
+        system = "aarch64-darwin";
+        username = "nathangraule";
+      };
     };
 
     # Standalone home-manager configuration entrypoint
@@ -105,7 +124,10 @@
     homeConfigurations = let
       mkConfig = system: specific-path:
         home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${system};
+          pkgs = import nixpkgs {
+            inherit system;
+            overlays = builtins.attrValues outputs.overlays;
+          };
           extraSpecialArgs = {
             inherit inputs outputs;
             username = "solarliner";
