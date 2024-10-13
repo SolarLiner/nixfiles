@@ -1,7 +1,7 @@
 SYSTEM ?= $(shell hostname)
 USER ?= $(shell whoami)
 FLAKE ?= .
-EXTRA_ARGS ?= -j 10
+EXTRA_ARGS ?= -L --keep-failed -j 10
 
 ifeq ($(shell uname), Linux)
 	SYSTEM_REBUILD := nixos-rebuild
@@ -17,7 +17,7 @@ HOME_MANAGER_CURGEN := home-manager generations 2> /dev/null | head -n1 | cut -d
 all: system home fmt commit
 
 update:
-	nix flake update $(FLAKE)
+	nix flake update --flake $(FLAKE)
 
 system:
 	$(SYSTEM_REBUILD) build $(EXTRA_ARGS) --flake "$(FLAKE)#$(SYSTEM)"

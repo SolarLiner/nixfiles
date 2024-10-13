@@ -13,7 +13,7 @@
       nodePackages.pyright
       nodePackages.typescript
       nodePackages.typescript-language-server
-      nodePackages.vscode-langservers-extracted
+      unstable.nodePackages.vscode-langservers-extracted
       sumneko-lua-language-server
       #wgsl-analyzer
       #clangd
