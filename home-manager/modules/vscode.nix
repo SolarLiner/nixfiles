@@ -15,4 +15,9 @@ with lib; {
     target = ".vscode-server/server-env-setup";
     executable = true;
   };
+  xdg.configFile."environment.d/10-electron.conf" = mkIf (!isWSL) {
+    text = ''
+      ELECTRON_OZONE_PLATFORM_HINT=auto
+    '';
+  };
 }
