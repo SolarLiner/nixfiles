@@ -20,8 +20,8 @@
     Xcode = 497799835;
   };
   system.defaults.dock.persistent-apps = [
-    "/Applications/Thunderbird.app"
     "/Applications/Firefox.app"
+    "/Applications/Thunderbird.app"
     "/Applications/Skype.app"
     "/Applications/Mattermost.app"
     "/Users/nathangraule/Applications/CLion.app"
