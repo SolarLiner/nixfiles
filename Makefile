@@ -17,7 +17,7 @@ HOME_MANAGER_CURGEN := home-manager generations 2> /dev/null | head -n1 | cut -d
 all: system home fmt commit
 
 update:
-	nix flake update --flake $(FLAKE)
+	nix flake update $(FLAKE)
 
 system:
 	$(SYSTEM_REBUILD) build $(EXTRA_ARGS) --flake "$(FLAKE)#$(SYSTEM)"
