@@ -1,7 +1,4 @@
-{pkgs, ...}: let
-  inherit (pkgs) stdenv;
-  inherit (stdenv) isDarwin;
-in {
+{pkgs, ...}: {
   imports = [
     ../configs/work.nix
   ];

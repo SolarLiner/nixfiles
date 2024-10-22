@@ -1,14 +1,15 @@
 {...}: {
   imports = [
     ./minimal.nix
+    ../modules/firefox.nix
+    ../modules/flatpak.nix
     ../modules/intellij.nix
-    ../modules/terminal.nix
-    ../modules/vscode.nix
     ../modules/node.nix
+    ../modules/ocaml.nix
     ../modules/plasma.nix
     ../modules/python.nix
     ../modules/rust.nix
-    ../modules/ocaml.nix
-    ../modules/firefox.nix
+    ../modules/terminal.nix
+    ../modules/vscode.nix
   ];
 }

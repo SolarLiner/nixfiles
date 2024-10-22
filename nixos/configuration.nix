@@ -9,9 +9,11 @@
   ...
 }: {
   imports = [
+    inputs.declarative-flatpaks.nixosModules.default
     ./users
     ./boot.nix
     ./desktop.nix
+    ./flatpak.nix
     ./i18n.nix
     ./networking.nix
     ./nix-ld.nix

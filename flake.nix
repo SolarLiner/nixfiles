@@ -32,6 +32,7 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    declarative-flatpaks.url = "github:GermanBread/declarative-flatpak/stable-v3";
     plasma-manager.url = "github:pjones/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
@@ -42,6 +43,7 @@
     nixpkgs,
     nix-darwin,
     home-manager,
+    declarative-flatpaks,
     plasma-manager,
     nix-homebrew,
     ...
@@ -137,6 +139,7 @@
             isWSL = false;
           };
           modules = [
+            declarative-flatpaks.homeManagerModules.default
             plasma-manager.homeManagerModules.plasma-manager
             ./modules/home-manager/google-drive.nix
             ./home-manager/home.nix

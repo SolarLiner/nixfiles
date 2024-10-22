@@ -15,8 +15,6 @@
     packages = with pkgs; [
       # Basic
       home-manager
-      firefox
-      thunderbird
       # Wine
       wineWowPackages.waylandFull
       winetricks
@@ -32,9 +30,6 @@
       cardinal
       distrho
       vcv-rack
-      #ocenaudio
-      reaper
-      bitwig-studio
       vital
       surge-XT
       stochas
