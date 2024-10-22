@@ -9,6 +9,9 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
+    # NixOS
+    hardware.url = "github:nixos/nixos-hardware";
+
     # Nix Darwin
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -90,11 +93,11 @@
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {inherit inputs outputs isServer;};
-          modules = [inputs.musnix.nixosModules.musnix ./nixos/configuration.nix specific-path];
+          modules = [./nixos/configuration.nix specific-path];
         };
     in {
       #home-server = config "x86_64-linux" ./nixos/hardware/home-server {isServer = true;};
-      #precision5520 = config "x86_64-linux" ./nixos/hardware/precision5520 {};
+      precision5520 = config "x86_64-linux" ./nixos/hardware/precision5520 {};
     };
 
     darwinConfigurations = let

@@ -1,4 +1,4 @@
 {pkgs, ...}: {
   imports = [./plasma.generated.nix];
-  home.packages = with pkgs; [iosevka nerd-fonts inter latte-dock];
+  home.packages = with pkgs; [iosevka nerd-fonts inter];
 }

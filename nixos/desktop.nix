@@ -16,15 +16,12 @@
     };
   };
   services = {
-    xserver = {
-      enable = !isServer;
-      displayManager = {
-        sddm.enable = !isServer;
-        sddm.wayland.enable = true;
-        defaultSession = "plasmawayland";
-      };
-      desktopManager.plasma5.enable = !isServer;
+    displayManager = {
+      sddm.enable = !isServer;
+      sddm.wayland.enable = true;
+      defaultSession = "plasma";
     };
+    desktopManager.plasma6.enable = !isServer;
 
     # Desktop software
     flatpak.enable = !isServer;
