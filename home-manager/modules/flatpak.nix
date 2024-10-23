@@ -16,7 +16,6 @@ in {
       "flathub:app/org.gnome.DejaDup//stable"
       "flathub:app/org.gnome.seahorse.Application//stable"
       "flathub:app/com.bitwarden.desktop//stable"
-      "flathub:app/org.mozilla.firefox//stable"
       "flathub:app/net.nokyan.Resources//stable"
       "flathub:app/com.usebottles.bottles//stable"
       "flathub:app/org.mozilla.Thunderbird//stable"
@@ -41,58 +40,12 @@ in {
       "flathub:app/org.freedesktop.LinuxAudio.Plugins.DPF-Plugins//stable"
       "flathub:app/org.freedesktop.LinuxAudio.Plugins.DragonflyReverb//stable"
     ];
-    overrides = let
-      electron = {
+    overrides = {
+      "global" = {
         environment = {
           ELECTRON_OZONE_PLATFORM_HINT = "auto";
         };
       };
-      x11 = {
-        sockets = ["x11" "fallback-x11" "wayland"];
-      };
-    in {
-      "global" = {
-        filesystems = [
-          "/usr/share/fonts/:ro"
-          "/usr/share/icons/:ro"
-          "${config.home.homeDirectory}/.local/share/fonts:ro"
-          "${config.home.homeDirectory}/.local/share/icons:ro"
-          "/nix/store:ro"
-          "home"
-        ];
-        sockets = [
-          "!x11"
-          "!fallback-x11"
-        ];
-        environment = {
-          XCURSOR_PATH = "/run/host/user-share/icons:/run/host/share/icons";
-        };
-      };
-      "org.mozilla.Firefox" = {
-        environment = {
-          "MOZ_ENABLE_WAYLAND" = 1;
-        };
-      };
-      "fm.reaper.Reaper" = x11;
-      "com.bitwig.BitwigStudio" = x11;
     };
-  };
-  systemd.user.mounts = let
-    mkMount = name: path: pathsToLink: {
-      Unit = {
-        Description = "Bind-mount ${name} for user flatpaks";
-      };
-      Mount = {
-        What = pkgs.buildEnv {
-          name = "home-${name}";
-          paths = config.home.packages;
-          inherit pathsToLink;
-        };
-        Where = config.home.homeDirectory + "/${path}";
-      };
-    };
-  in {
-    flatpak-icons = mkMount "icons" ".local/share/icons" ["/share/icons"];
-    flatpak-fonts = mkMount "fonts" ".local/share/fonts" ["/share/fonts"];
   };
 }

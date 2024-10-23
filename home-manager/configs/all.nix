@@ -1,7 +1,6 @@
 {...}: {
   imports = [
     ./minimal.nix
-    ../modules/firefox.nix
     ../modules/flatpak.nix
     ../modules/intellij.nix
     ../modules/node.nix
