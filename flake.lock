@@ -23,11 +23,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1728804768,
-        "narHash": "sha256-WG8KWmT72SA1XrmixxJwI1RRWrT9D97kkYSE5OfOJdg=",
+        "lastModified": 1730294700,
+        "narHash": "sha256-piHI881ekHn14FEqwGyKkTEHTgXJrsKjX37gJFYx9G8=",
         "owner": "GermanBread",
         "repo": "declarative-flatpak",
-        "rev": "42cc2c4d97a03889d551cc82c43a0b124fd403f6",
+        "rev": "09b73f988d4a8376b81d0d22126bc8c2e039d36d",
         "type": "github"
       },
       "original": {
@@ -57,11 +57,11 @@
     },
     "hardware": {
       "locked": {
-        "lastModified": 1729509737,
-        "narHash": "sha256-8OHgqz+tFo21h3hg4/GHizFPws+MMzpEru/+62Z0E8c=",
+        "lastModified": 1730537918,
+        "narHash": "sha256-GJB1/aaTnAtt9sso/EQ77TAGJ/rt6uvlP0RqZFnWue8=",
         "owner": "nixos",
         "repo": "nixos-hardware",
-        "rev": "cc2d3c0e060f981905d52337340ee6ec8b8eb037",
+        "rev": "f6e0cd5c47d150c4718199084e5764f968f1b560",
         "type": "github"
       },
       "original": {
