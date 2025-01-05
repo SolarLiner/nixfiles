@@ -10,7 +10,7 @@
       nodePackages.diagnostic-languageserver
       #nodePackages.eslint
       #nodePackages.eslint_d
-      nodePackages.pyright
+      #nodePackages.pyright
       nodePackages.typescript
       nodePackages.typescript-language-server
       unstable.nodePackages.vscode-langservers-extracted
