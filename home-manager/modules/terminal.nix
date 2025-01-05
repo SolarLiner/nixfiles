@@ -10,7 +10,7 @@
     enable = !isWSL;
     font = {
       package = pkgs.nerd-fonts;
-      name = "Iosevka Nerd Font";
+      name = "Iosevka";
       size =
         if pkgs.stdenv.isDarwin
         then 13
