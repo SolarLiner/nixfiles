@@ -139,7 +139,7 @@
             isWSL = false;
           };
           modules = [
-            declarative-flatpaks.homeManagerModules.default
+            declarative-flatpaks.homeManagerModules.declarative-flatpak
             plasma-manager.homeManagerModules.plasma-manager
             ./modules/home-manager/google-drive.nix
             ./home-manager/home.nix
