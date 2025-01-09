@@ -4,7 +4,8 @@
   ...
 }: {
   programs.git = {
-    package = pkgs.gitAndTools.gitFull;
+    # Needed on Fedora to support GSSAPI patches
+    package = pkgs.gitAndTools.gitFull.override ({ openssh = pkgs.openssh_gssapi; });
     enable = true;
     difftastic.enable = true;
     lfs.enable = true;
