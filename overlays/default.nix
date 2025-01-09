@@ -10,6 +10,7 @@
       config.allowUnfree = true;
     };
 in {
+  nixgl = inputs.nixgl.overlay;
   # This one brings our custom packages from the 'pkgs' directory
   additions = _final: prev:
     import ../pkgs {

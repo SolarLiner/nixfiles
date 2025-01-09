@@ -16,7 +16,7 @@ return {
         },
         modules = {},
         ignore_install = {},
-        auto_install = true,
+        auto_install = false,
         parser_install_dir = vim.call("stdpath", "data")
       })
     end,

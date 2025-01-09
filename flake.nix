@@ -36,6 +36,7 @@
     plasma-manager.url = "github:pjones/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
+    nixgl.url = "github:nix-community/nixGL";
   };
 
   outputs = {
@@ -46,6 +47,7 @@
     declarative-flatpaks,
     plasma-manager,
     nix-homebrew,
+    nixgl,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -94,6 +96,7 @@
       config = system: specific-path: {isServer ? false, ...}:
         nixpkgs.lib.nixosSystem {
           inherit system;
+          overlays = builtins.attrValues import outputs.overlays;
           specialArgs = {inherit inputs outputs isServer;};
           modules = [./nixos/configuration.nix specific-path];
         };
@@ -142,12 +145,15 @@
             declarative-flatpaks.homeManagerModules.declarative-flatpak
             plasma-manager.homeManagerModules.plasma-manager
             ./modules/home-manager/google-drive.nix
+            ./modules/home-manager/nixgl.nix
             ./home-manager/home.nix
             specific-path
           ];
         };
     in {
       "solarliner@precision5520" =
+        mkConfig "x86_64-linux" ./home-manager/users/solarliner.nix;
+      "solarliner@homepc" =
         mkConfig "x86_64-linux" ./home-manager/users/solarliner.nix;
       "nathangraule@SolarM3" =
         mkConfig "aarch64-darwin" ./home-manager/users/nathangraule.nix;

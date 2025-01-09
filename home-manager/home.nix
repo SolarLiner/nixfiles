@@ -1,14 +1,14 @@
 {
   config,
-  outputs,
   pkgs,
   lib,
   isWSL ? false,
   ...
 }:
 with lib.lists; let
-  inherit (config.home) username;
+  gl = config.nixGL.wrapper;
 in {
+  nixGL.enable = true;
   home.packages = with pkgs;
     [
       # Utilities
@@ -24,7 +24,7 @@ in {
       iosevka
       nerd-fonts
       # Programs
-      gimp
+      (gl gimp)
     ]
     ++ optionals isWSL [curl wget];
   home.stateVersion = "23.11";

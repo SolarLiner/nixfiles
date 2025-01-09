@@ -1,13 +1,15 @@
 {
   pkgs,
+  config,
   isWSL ? false,
   ...
-}: {
+}: let gl = config.nixGL.wrapper; in {
   programs.zellij = {
     enable = true;
   };
   programs.kitty = {
     enable = !isWSL;
+    package = gl pkgs.kitty;
     font = {
       package = pkgs.nerd-fonts;
       name = "Iosevka";
@@ -29,6 +31,6 @@
       mode = "enabled";
       enableZshIntegration = true;
     };
-    themeFile = "VsCode_Dark";
+    themeFile = "VSCode_Dark";
   };
 }

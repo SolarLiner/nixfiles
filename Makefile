@@ -27,7 +27,7 @@ home:
 	home-manager switch $(EXTRA_ARGS) --flake "$(FLAKE)#$(USER)@$(SYSTEM)"
 
 fmt:
-	nix fmt
+	nix fmt $(wildcard **/*.nix)
 
 commit: fmt
 	git commit -am"system=$(shell $(SYSTEM_CURGEN)) | home-manager=$(shell $(HOME_MANAGER_CURGEN))"
