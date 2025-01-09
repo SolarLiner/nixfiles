@@ -29,6 +29,6 @@
       mode = "enabled";
       enableZshIntegration = true;
     };
-    themeFile = "GitHub_Dark_Dimmed";
+    themeFile = "VsCode_Dark";
   };
 }
