@@ -14,6 +14,10 @@ return {
           -- `false` will disable the whole extension
           enable = true,
         },
+        modules = {},
+        ignore_install = {},
+        auto_install = true,
+        parser_install_dir = vim.call("stdpath", "data")
       })
     end,
   },

@@ -6,16 +6,12 @@ return {
       "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter",
+      { "folke/lazydev.nvim", opts = { library = { { plugins = { "neotest" }, types = true } } } },
     },
-    config = function()
-      require("neodev").setup({
-        library = { plugins = { "neotest" }, types = true },
-      })
-      require("neotest").setup({
-        adapters = {
-          require("rustaceanvim.neotest"),
-        },
-      })
+    opts = function()
+      return {
+        adapters = require("rustaceanvim.neotest"),
+      }
     end,
   },
 }
