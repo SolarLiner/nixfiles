@@ -6,9 +6,10 @@
   ...
 }:
 with lib.lists; let
+  inherit (pkgs.stdenv) isDarwin;
   gl = config.nixGL.wrapper;
 in {
-  nixGL.enable = true;
+  nixGL.enable = !isDarwin;
   home.packages = with pkgs;
     [
       # Utilities
@@ -29,7 +30,7 @@ in {
     ++ optionals isWSL [curl wget];
   home.stateVersion = "23.11";
 
-  fonts.fontconfig.enable = !isWSL && !pkgs.stdenv.isDarwin;
+  fonts.fontconfig.enable = !isWSL && !isDarwin;
 
   programs.home-manager.enable = true;
 }
