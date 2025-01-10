@@ -11,7 +11,7 @@ in
       buffer_font_size = 13;
       buffer_font_family = "Iosevka";
       autosave = "on_focus_change";
-      format_on_save = false;
+      format_on_save = "off";
       remove_trailing_whitespace_on_save = true;
       ensure_final_newline_on_save = true;
       theme = "VSCode Dark Modern";
