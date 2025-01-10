@@ -6,5 +6,6 @@
     ../modules/terminal.nix
     ../modules/vscode.nix
     ../modules/intellij.nix
+    ../modules/zed.nix
   ];
 }

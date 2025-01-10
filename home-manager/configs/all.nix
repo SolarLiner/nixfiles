@@ -10,5 +10,6 @@
     ../modules/rust.nix
     ../modules/terminal.nix
     ../modules/vscode.nix
+    ../modules/zed.nix
   ];
 }
