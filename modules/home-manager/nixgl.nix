@@ -13,9 +13,9 @@ with lib; let
     wrapper = mkOption {
       type = none;
       default = pkg:
-      #if config.nixGLPrefix == "" then
-      #  pkg
-      #else
+      if !cfg.enable then
+        pkg
+      else
       # Wrap the package's binaries with nixGL, while preserving the rest of
       # the outputs and derivation attributes.
       (pkg.overrideAttrs (old: {
