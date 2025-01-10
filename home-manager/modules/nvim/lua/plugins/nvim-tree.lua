@@ -27,6 +27,9 @@ return {
             "Makefile",
           },
         },
+        update_focused_file = {
+          enable = true,
+        },
       })
 
       vim.api.nvim_create_autocmd({ "VimEnter" }, {
