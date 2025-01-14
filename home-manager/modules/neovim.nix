@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   lib,
   ...
 }: {
@@ -34,7 +35,7 @@
     vimAlias = true;
     vimdiffAlias = true;
     extraLuaConfig = builtins.readFile ./nvim/init.lua;
-    defaultEditor = true;
+    #defaultEditor = true; # Deactivated: sudo -e needs absolute path
     plugins = with pkgs.vimPlugins; [
       nvim-treesitter.withAllGrammars
     ];
@@ -44,4 +45,5 @@
     source = ./nvim/lua/plugins;
     recursive = true;
   };
+  home.sessionVariables = { EDITOR = "${config.programs.neovim.package}/bin/nvim"; };
 }

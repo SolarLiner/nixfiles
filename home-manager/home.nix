@@ -26,6 +26,7 @@ in {
       nerd-fonts
       # Programs
       (gl gimp)
+      ocenaudio
     ]
     ++ optionals isWSL [curl wget];
   home.stateVersion = "23.11";
@@ -33,4 +34,12 @@ in {
   fonts.fontconfig.enable = !isWSL && !isDarwin;
 
   programs.home-manager.enable = true;
+
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnfreePredicate = pkg:
+      builtins.elem (nixpkgs.lib.getName pkg) [
+        "ocenaudio"
+      ];
+  };
 }

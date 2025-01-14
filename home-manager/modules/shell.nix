@@ -43,6 +43,9 @@ in {
     nix-output-monitor
     pre-commit
   ];
+  home.sessionVariables = {
+    VISUAL = config.home.sessionVariables.EDITOR;
+  };
   programs.autojump.enable = true;
   programs.bat.enable = true;
   programs.eza.enable = true;
