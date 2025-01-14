@@ -76,21 +76,23 @@ in {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
+    enableVteIntegration = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     plugins = [zsh-256color zsh-autopair zsh-you-should-use zsh-vi-mode];
     oh-my-zsh = {
       enable = true;
       plugins = ["git" "sudo" "rust" "autojump" "vscode"];
-      extraConfig = ''
-        export NIX_PATH=$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
-        export PATH=$HOME/.nix-profile/bin:$PATH
-
-        alias zr="zellij run --"
-        alias ze="zellij edit --"
-        alias za="zellij action"
-      '';
+    };
+    shellAliases = mkIf config.programs.zellij.enable {
+      zr = "zellij run --";
+      ze = "zellij edit --";
+      za = "zellij action";
     };
   };
+  home.sessionVariables = {
+  NIX_PATH=''$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH'';
+  };
+  home.sessionPath = ["$HOME/.nix-profile/bin"];
   services.google-drive-ocamlfuse.enable = false; # Disabled while waiting for dev to re-enable authentication
 }

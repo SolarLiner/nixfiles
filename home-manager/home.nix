@@ -9,6 +9,7 @@ with lib.lists; let
   inherit (pkgs.stdenv) isDarwin;
   gl = config.nixGL.wrapper;
 in {
+  home.environmentd.enable = !isDarwin;
   nixGL.enable = !isDarwin;
   home.packages = with pkgs;
     [
@@ -26,6 +27,7 @@ in {
       nerd-fonts
       # Programs
       (gl gimp)
+      ghostty
       ocenaudio
     ]
     ++ optionals isWSL [curl wget];

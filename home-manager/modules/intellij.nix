@@ -29,16 +29,9 @@ in {
   in ''
     export PATH="${toolboxPath}:$PATH"
   '';
-  xdg.configFile."environment.d/10-jetbrains.conf" = {
-    enable = !stdenv.isDarwin;
-    text = ''
-      JETBRAINS_TOOLBOX_HOME=$HOME/.local/share/JetBrains/Toolbox
-      PATH=$JETBRAINS_TOOLBOX_HOME/scripts:$PATH
-    '';
+  home.sessionVariables = {
+    _JAVA_AWT_WM_NONREPARENTING = "1";
+    JETBRAINS_TOOLBOX_HOME = "$HOME/.local/share/JetBrains/Toolbox/"; 
   };
-  xdg.configFile."environment.d/10-AWT.conf" = mkIf (!isWSL) {
-    text = ''
-      _JAVA_AWT_WM_NONREPARENTING=1
-    '';
-  };
+  home.sessionPath = ["$JETBRAINS_TOOLBOX_HOME/scripts"];
 }

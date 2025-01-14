@@ -34,10 +34,8 @@ in {
         "-C", "link-arg=-fuse-ld=${pkgs.mold}/bin/mold",
     ]
   '';
-  xdg.configFile."environment.d/99-rustup.conf" = lib.mkIf (!stdenv.isDarwin) {
-    text = ''
-      CARGO_HOME=$HOME/.local/share/cargo
-      PATH=$CARGO_HOME/bin:$PATH
-    '';
-  };
+home.sessionVariables = {
+  CARGO_HOME = "$HOME/.local/share/cargo";
+};
+home.sessionPath = ["$CARGO_HOME/bin"];
 }

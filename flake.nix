@@ -144,6 +144,7 @@
           modules = [
             declarative-flatpaks.homeManagerModules.declarative-flatpak
             plasma-manager.homeManagerModules.plasma-manager
+            ./modules/home-manager/environmentd.nix
             ./modules/home-manager/google-drive.nix
             ./modules/home-manager/nixgl.nix
             ./home-manager/home.nix
