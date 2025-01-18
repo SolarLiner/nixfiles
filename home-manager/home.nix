@@ -27,7 +27,6 @@ in {
       nerd-fonts
       # Programs
       (gl gimp)
-      ghostty
       ocenaudio
     ]
     ++ optionals isWSL [curl wget];

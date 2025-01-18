@@ -3,6 +3,7 @@
     ./minimal.nix
     ../modules/flatpak.nix
     ../modules/intellij.nix
+    ../modules/lapce.nix
     ../modules/node.nix
     ../modules/ocaml.nix
     ../modules/plasma.nix
