@@ -3,12 +3,12 @@
   config,
   isWSL ? false,
   ...
-}: let gl = config.nixGL.wrapper; in {
+}: let inherit(pkgs) stdenv; gl = config.nixGL.wrapper; in {
   programs.zellij = {
     enable = true;
   };
   programs.ghostty = {
-    enable = true;
+    enable = !stdenv.isDarwin && !isWSL;
     package = gl pkgs.ghostty;
     enableZshIntegration = true;
     installVimSyntax = true;
@@ -52,7 +52,7 @@ palette = [
     };
   };
   programs.kitty = {
-    enable = !isWSL;
+    enable = !isWSL && stdenv.isDarwin;
     package = gl pkgs.kitty;
     font = {
       package = pkgs.nerd-fonts;

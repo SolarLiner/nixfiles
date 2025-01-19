@@ -27,9 +27,9 @@ in {
       nerd-fonts
       # Programs
       (gl gimp)
-      ocenaudio
     ]
-    ++ optionals isWSL [curl wget];
+    ++ optionals isWSL [curl wget]
+    ++ optionals (!isDarwin) [ocenaudio];
   home.stateVersion = "23.11";
 
   fonts.fontconfig.enable = !isWSL && !isDarwin;

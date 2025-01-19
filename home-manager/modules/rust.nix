@@ -9,7 +9,7 @@ in {
     rustup
     mold
     bacon
-    #cargo-about
+    cargo-about
     cargo-audit
     cargo-bump
     cargo-expand
@@ -20,6 +20,7 @@ in {
     cargo-insta
     cargo-release
     cargo-semver-checks
+    cargo-update
     cargo-watch
     cargo-wipe
   ];
