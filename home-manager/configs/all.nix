@@ -10,6 +10,7 @@
     ../modules/python.nix
     ../modules/rust.nix
     ../modules/terminal.nix
+    ../modules/topgrade.nix
     ../modules/vscode.nix
     ../modules/zed.nix
   ];

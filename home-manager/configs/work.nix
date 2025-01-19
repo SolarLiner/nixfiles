@@ -1,11 +1,12 @@
 {...}: {
   imports = [
     ./minimal.nix
+    ../modules/intellij.nix
     ../modules/python.nix
     ../modules/rust.nix
     ../modules/terminal.nix
+    ../modules/topgrade.nix
     ../modules/vscode.nix
-    ../modules/intellij.nix
     ../modules/zed.nix
   ];
 }
