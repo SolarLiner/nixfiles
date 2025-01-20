@@ -2,14 +2,14 @@
   programs.plasma = {
     enable = true;
     shortcuts = {
-      "ActivityManager"."switch-to-activity-7d1fa105-2f48-4354-bdad-d819583e50c3" = [ ];
-      "ActivityManager"."switch-to-activity-d6b7106a-60fd-44fe-9a05-62a40b8d1edc" = [ ];
+      "ActivityManager"."switch-to-activity-7d1fa105-2f48-4354-bdad-d819583e50c3" = "Meta+&,none,Passer à l'activité « Gaming »";
+      "ActivityManager"."switch-to-activity-d6b7106a-60fd-44fe-9a05-62a40b8d1edc" = "Meta+É,none,Passer à l'activité « Programming »";
       "KDE Keyboard Layout Switcher"."Switch to Last-Used Keyboard Layout" = "Meta+Alt+L";
       "KDE Keyboard Layout Switcher"."Switch to Next Keyboard Layout" = "Meta+Alt+K";
       "kaccess"."Toggle Screen Reader On and Off" = "Meta+Alt+S";
       "kcm_touchpad"."Disable Touchpad" = "Touchpad Off";
       "kcm_touchpad"."Enable Touchpad" = "Touchpad On";
-      "kcm_touchpad"."Toggle Touchpad" = ["Touchpad Toggle\\, Touchpad Toggle" "Meta+Ctrl+Zenkaku Hankaku,Touchpad Toggle" "Meta+Ctrl+Zenkaku Hankaku"];
+      "kcm_touchpad"."Toggle Touchpad" = ["Touchpad Toggle" "Meta+Ctrl+Zenkaku Hankaku,Touchpad Toggle" "Meta+Ctrl+Zenkaku Hankaku"];
       "khotkeys"."{d03619b6-9b3c-48cc-9d9c-a2aadb485550}" = [ ];
       "kmix"."decrease_microphone_volume" = "Microphone Volume Down";
       "kmix"."decrease_volume" = "Volume Down";
@@ -103,7 +103,7 @@
       "kwin"."Walk Through Desktops" = [ ];
       "kwin"."Walk Through Desktops (Reverse)" = [ ];
       "kwin"."Walk Through Windows" = "Alt+Tab";
-      "kwin"."Walk Through Windows (Reverse)" = "Alt+Shift+Backtab\\, Alt+Shift+Tab,Alt+Shift+Tab,Naviguer parmi les fenêtres (en ordre inverse)";
+      "kwin"."Walk Through Windows (Reverse)" = "Alt+Shift+Tab";
       "kwin"."Walk Through Windows Alternative" = "none,,Naviguer parmi les alternatives de fenêtres";
       "kwin"."Walk Through Windows Alternative (Reverse)" = "none,,Naviguer parmi les alternatives de fenêtres (en ordre inverse)";
       "kwin"."Walk Through Windows of Current Application" = "Alt+`";
@@ -183,7 +183,7 @@
       "kwin"."Window to Screen 5" = "none,,Déplacer une fenêtre sur l'écran 5";
       "kwin"."Window to Screen 6" = "none,,Déplacer une fenêtre sur l'écran 6";
       "kwin"."Window to Screen 7" = "none,,Déplacer une fenêtre sur l'écran 7";
-      "kwin"."view_actual_size" = "none,Meta+0,Zoomer jusqu'à la taille actuelle";
+      "kwin"."view_actual_size" = "\\, Meta+0,Meta+0,Zoomer jusqu'à la taille actuelle";
       "kwin"."view_zoom_in" = ["Meta++" "Meta+=,Meta++" "Meta+=,Zoom avant"];
       "kwin"."view_zoom_out" = "Meta+-";
       "mediacontrol"."mediavolumedown" = "none,,Diminution du volume pour le média";
@@ -209,7 +209,7 @@
       "org_kde_powerdevil"."powerProfile" = ["Battery" "Meta+B,Battery" "Meta+B,Changer de profil de gestion d'énergie"];
       "plasmashell"."activate application launcher" = ["Meta" "Alt+F1,Meta" "Alt+F1,Activer le lanceur d'applications"];
       "plasmashell"."activate task manager entry 1" = "Meta+1";
-      "plasmashell"."activate task manager entry 10" = "\\, Meta+0,Meta+0,Activer l'entrée du gestionnaire de tâches 10";
+      "plasmashell"."activate task manager entry 10" = "none,Meta+0,Activer l'entrée du gestionnaire de tâches 10";
       "plasmashell"."activate task manager entry 2" = "Meta+2";
       "plasmashell"."activate task manager entry 3" = "Meta+3";
       "plasmashell"."activate task manager entry 4" = "Meta+4";
@@ -218,7 +218,7 @@
       "plasmashell"."activate task manager entry 7" = "Meta+7";
       "plasmashell"."activate task manager entry 8" = "Meta+8";
       "plasmashell"."activate task manager entry 9" = "Meta+9";
-      "plasmashell"."clear-history" = [ ];
+      "plasmashell"."clear-history" = "none,,Effacer l'historique du presse-papier";
       "plasmashell"."clipboard_action" = "Meta+Ctrl+X";
       "plasmashell"."cycle-panels" = "Meta+Alt+P";
       "plasmashell"."cycleNextAction" = "none,,Élément suivant de l'historique";
@@ -349,12 +349,13 @@
       "kcminputrc"."Libinput/1739/31251/DLL07BF:01 06CB:7A13 Touchpad"."ScrollFactor" = 0.3;
       "kcminputrc"."Libinput/1739/31251/DLL07BF:01 06CB:7A13 Touchpad"."TapToClick" = true;
       "kcminputrc"."Mouse"."X11LibInputXAccelProfileFlat" = true;
+      "kcminputrc"."Mouse"."cursorTheme" = "volantes_cursors";
       "kcminputrc"."Tmp"."update_info" = "delete_cursor_old_default_size.upd:DeleteCursorOldDefaultSize";
       "kded5rc"."Module-browserintegrationreminder"."autoload" = false;
       "kded5rc"."Module-device_automounter"."autoload" = false;
       "kded5rc"."PlasmaBrowserIntegration"."shownCount" = 4;
       "kdeglobals"."DirSelect Dialog"."DirSelectDialog Size" = "906,600";
-      "kdeglobals"."General"."AccentColor" = "102,105,178";
+      "kdeglobals"."General"."AccentColor" = "122,125,188";
       "kdeglobals"."General"."AllowKDEAppsToRememberWindowPositions" = true;
       "kdeglobals"."General"."BrowserApplication" = "firefox.desktop";
       "kdeglobals"."General"."TerminalApplication" = "ghostty";
@@ -368,6 +369,7 @@
       "kdeglobals"."General"."menuFont" = "Inter,11,-1,5,50,0,0,0,0,0";
       "kdeglobals"."General"."smallestReadableFont" = "Inter,9,-1,5,50,0,0,0,0,0";
       "kdeglobals"."General"."toolBarFont" = "Inter,11,-1,5,50,0,0,0,0,0";
+      "kdeglobals"."Icons"."Theme" = "breeze-dark";
       "kdeglobals"."KDE"."ShowDeleteCommand" = false;
       "kdeglobals"."KDE"."SingleClick" = false;
       "kdeglobals"."KFileDialog Settings"."Allow Expansion" = false;
@@ -391,13 +393,13 @@
       "kdeglobals"."PreviewSettings"."EnableRemoteFolderThumbnail" = false;
       "kdeglobals"."PreviewSettings"."MaximumRemoteSize" = 0;
       "kdeglobals"."Toolbar style"."ToolButtonStyle" = "TextUnderIcon";
-      "kdeglobals"."WM"."activeBackground" = "36,39,47";
-      "kdeglobals"."WM"."activeBlend" = "255,255,255";
+      "kdeglobals"."WM"."activeBackground" = "54,56,62";
+      "kdeglobals"."WM"."activeBlend" = "59,62,68";
       "kdeglobals"."WM"."activeFont" = "Inter,11,-1,5,50,0,0,0,0,0";
-      "kdeglobals"."WM"."activeForeground" = "239,240,241";
-      "kdeglobals"."WM"."inactiveBackground" = "36,39,44";
-      "kdeglobals"."WM"."inactiveBlend" = "74,83,101";
-      "kdeglobals"."WM"."inactiveForeground" = "127,140,141";
+      "kdeglobals"."WM"."activeForeground" = "221,221,221";
+      "kdeglobals"."WM"."inactiveBackground" = "62,65,71";
+      "kdeglobals"."WM"."inactiveBlend" = "67,71,77";
+      "kdeglobals"."WM"."inactiveForeground" = "120,120,120";
       "khotkeysrc"."Data"."DataCount" = 3;
       "khotkeysrc"."Data_1"."Comment" = "KMenuEdit Global Shortcuts";
       "khotkeysrc"."Data_1"."DataCount" = 1;
@@ -958,6 +960,8 @@
       "kservicemenurc"."Show"."sharefileitemaction" = true;
       "kservicemenurc"."Show"."tagsfileitemaction" = true;
       "kservicemenurc"."Show"."wallpaperfileitemaction" = true;
+      "ksplashrc"."KSplash"."Engine" = "none";
+      "ksplashrc"."KSplash"."Theme" = "None";
       "ktrashrc"."\\/home\\/deck\\/.local\\/share\\/Trash"."Days" = 7;
       "ktrashrc"."\\/home\\/deck\\/.local\\/share\\/Trash"."LimitReachedAction" = 0;
       "ktrashrc"."\\/home\\/deck\\/.local\\/share\\/Trash"."Percent" = 10;
@@ -990,13 +994,16 @@
       "kwinrc"."Tiling/2acf6bee-2db5-5631-9db1-e81ec3db3335"."tiles" = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.5148982558139533},{\"layoutDirection\":\"vertical\",\"tiles\":[{\"height\":0.4105902777777778},{\"height\":0.5894097222222222}],\"width\":0.4851017441860467}]}";
       "kwinrc"."Tiling/58ca410b-ce44-58d6-82b9-fefe44aba0e3"."tiles" = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.25},{\"width\":0.5},{\"width\":0.25}]}";
       "kwinrc"."Tiling/fa47f5a0-bff8-5773-b930-b3fe2d68ea58"."tiles" = "{\"layoutDirection\":\"horizontal\",\"tiles\":[{\"width\":0.4},{\"width\":0.599999999999997}]}";
-      "kwinrc"."Wayland"."InputMethod[$d]" = "";
+      "kwinrc"."Wayland"."InputMethod\x5b$d\x5d" = "";
       "kwinrc"."Wayland"."VirtualKeyboardEnabled" = true;
       "kwinrc"."Xwayland"."Scale" = 1;
+      "kwinrc"."org.kde.kdecoration2"."theme" = "Breeze";
       "plasma-localerc"."Formats"."LANG" = "fr_FR.UTF-8";
       "plasmanotifyrc"."Applications/org.gnome.Ptyxis"."Seen" = true;
+      "plasmarc"."Theme"."name" = "Layan";
       "spectaclerc"."ImageSave"."translatedScreenshotsFolder" = "Copies d'écran";
       "spectaclerc"."VideoSave"."translatedScreencastsFolder" = "Copies d'écran";
+      "systemsettingsrc"."KFileDialog Settings"."iconViewIconSize" = 256;
     };
     dataFile = {
       "kate/anonymous.katesession"."Kate Plugins"."cmaketoolsplugin" = true;
