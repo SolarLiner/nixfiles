@@ -4,7 +4,7 @@ let
 in
 {
   programs.zed-editor = {
-    enable = true;
+    enable = false;
     package = gl pkgs.zed-editor;
     #extraPackages = with pkgs; [nil];
     userSettings = {
