@@ -13,11 +13,8 @@ in {
   nixGL.enable = !isDarwin;
   home.packages = with pkgs;
     [
-      # Utilities
-      # Language tooling
-      #coq
+      ccache
       docker-compose
-      # Other
       git-crypt
     ]
     ++ optionals (!isWSL) [
