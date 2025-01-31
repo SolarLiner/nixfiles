@@ -14,6 +14,7 @@ in {
   home.packages = with pkgs;
     [
       ccache
+      sccache
       docker-compose
       git-crypt
     ]
