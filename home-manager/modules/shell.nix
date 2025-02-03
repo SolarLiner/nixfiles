@@ -47,7 +47,11 @@ in {
     VISUAL = config.home.sessionVariables.EDITOR;
   };
   programs.autojump.enable = true;
-  programs.bat.enable = true;
+  programs.bat = {
+    enable = true;
+    extraPackages = 
+      with pkgs.bat-extras; [ batdiff batman batgrep batwatch ];
+  };
   programs.eza.enable = true;
   programs.bash.enable = false;
   programs.direnv = {
