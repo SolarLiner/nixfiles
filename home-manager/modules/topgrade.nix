@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       misc.assume_yes = true;
-      misc.disable = ["brew_cask" "brew_formula" "flatpak" "home_manager" "node" "rubygems" "poetry"];
+      misc.disable = ["brew_cask" "brew_formula" "flatpak" "home_manager" "node" "gem" "poetry"];
       commands = {
         "home-manager" = let
           extraTargets = lib.optionals pkgs.stdenv.isDarwin ["system"];
