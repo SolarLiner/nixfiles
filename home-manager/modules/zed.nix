@@ -1,10 +1,11 @@
 { config, pkgs, ... }:
 let
+  inherit (pkgs.stdenv) isDarwin;
   gl = config.nixGL.wrapper;
 in
 {
   programs.zed-editor = {
-    enable = true;
+    enable = isDarwin;
     package = gl pkgs.zed-editor;
     #extraPackages = with pkgs; [nil];
     userSettings = {
