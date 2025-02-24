@@ -25,6 +25,7 @@ in {
       nerd-fonts
       # Programs
       (gl gimp)
+      localsend
     ]
     ++ optionals isWSL [curl wget]
     ++ optionals (!isDarwin) [ocenaudio];
