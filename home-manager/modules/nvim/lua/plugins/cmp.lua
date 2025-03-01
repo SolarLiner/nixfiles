@@ -50,7 +50,7 @@ return {
         },
       },
       documentation = { auto_show = true },
-      ghost_text = { enabled = true },
+      ghost_text = { enabled = true, show_without_selection = true },
     },
 
     signature = { enabled = true },

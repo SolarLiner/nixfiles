@@ -5,6 +5,8 @@ return {
     config = function()
       vim.opt.background = "dark"
 
+      local colors = require("vscode.colors").get_colors()
+
       require("vscode").setup({
         -- Enable transparent background
         transparent = true,
@@ -17,6 +19,9 @@ return {
       })
 
       vim.cmd.colorscheme("vscode")
+      -- Support for blink ghost text feature
+      vim.api.nvim_set_hl(0, "NonText", { fg = colors["vscDimHighlight"] })
+      vim.api.nvim_set_hl(0, "BlinkCmpGhostText", { fg = colors["vscDimHighlight"] })
     end,
   },
 }
