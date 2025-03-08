@@ -12,8 +12,8 @@ return {
       },
     },
     keys = {
-      { "<leader>h", "<cmd>Gitsigns preview_hunk", "Preview hunk in tooptip" },
-      { "<leader>b", "<cmd>Gitsigns blame_line", "Show blame for this line" }
+      { "<leader>h", "<cmd>Gitsigns preview_hunk<cr>", "Preview hunk in tooptip" },
+      { "<leader>b", "<cmd>Gitsigns blame_line<cr>", "Show blame for this line" }
     },
   },
 }
