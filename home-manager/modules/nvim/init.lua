@@ -26,7 +26,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
   end,
 })
 vim.api.nvim_create_autocmd("InsertLeave", {
-  desc = 'Set "absolute" line numbers when entering insert mode',
+  desc = 'Set "relative" line numbers when exiting insert mode',
   group = augroup,
   callback = function()
     vim.opt.relativenumber = true
