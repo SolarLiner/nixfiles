@@ -15,7 +15,6 @@ in {
     cargo-expand
     cargo-flamegraph
     cargo-fuzz
-    cargo-geiger
     cargo-generate
     cargo-insta
     cargo-release
