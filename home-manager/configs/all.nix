@@ -4,6 +4,7 @@
     ../modules/flatpak.nix
     ../modules/intellij.nix
     ../modules/lapce.nix
+    ../modules/mpd.nix
     ../modules/node.nix
     ../modules/ocaml.nix
     ../modules/plasma.nix
