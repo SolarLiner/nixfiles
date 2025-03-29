@@ -21,4 +21,20 @@ return {
       })
     end,
   },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    lazy = true,
+    event = "BufEnter",
+    cmd = {"TSContextEnable", "TSContextDisable", "TSContextToggle"},
+    init = function ()
+      local augroup = vim.api.nvim_create_augroup("nvim-treesitter-context", { clear = true })
+      vim.api.nvim_create_autocmd("BufEnter", {
+        group = augroup,
+        pattern = "*",
+        callback = function ()
+          vim.cmd('TSContextEnable')
+        end
+      })
+    end
+  }
 }
