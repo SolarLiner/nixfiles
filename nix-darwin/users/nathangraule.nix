@@ -32,7 +32,7 @@
     "/Applications/FL Studio 2024.app"
     "/Applications/Bitwig Studio.app"
     "/System/Applications/Calendar.app"
-    "/System/Applications/Notes.app"
+    "/Applications/Obsidian.app"
     "/System/Applications/System Settings.app"
   ];
 }
