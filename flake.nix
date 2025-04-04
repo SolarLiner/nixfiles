@@ -108,22 +108,33 @@
     darwinConfigurations = let
       mkSystem = {
         system,
-        username,
+        mainUsername,
+        userConfiguration,
+        useDeterminateNix ? false,
       }:
         nix-darwin.lib.darwinSystem {
           modules = [
             nix-homebrew.darwinModules.nix-homebrew
             ./nix-darwin/configuration.nix
+            userConfiguration
+            { nix.enable = !useDeterminateNix; }
           ];
           specialArgs = {
-            inherit inputs outputs self system username;
+            inherit inputs outputs self system mainUsername;
             overlays = builtins.attrValues outputs.overlays;
           };
         };
     in {
       "SolarM3" = mkSystem {
         system = "aarch64-darwin";
-        username = "nathangraule";
+        mainUsername = "nathangraule";
+        userConfiguration = ./nix-darwin/users/nathangraule.nix;
+      };
+      "SolarM4" = mkSystem {
+        system = "aarch64-darwin";
+        mainUsername = "solarliner";
+        userConfiguration = ./nix-darwin/users/solarliner.nix;
+        useDeterminateNix = true;
       };
     };
 
@@ -158,6 +169,8 @@
         mkConfig "x86_64-linux" ./home-manager/users/solarliner.nix;
       "nathangraule@SolarM3" =
         mkConfig "aarch64-darwin" ./home-manager/users/nathangraule.nix;
+      "solarliner@SolarM4" =
+        mkConfig "aarch64-darwin" ./home-manager/users/solarliner.nix;
     };
   };
 }

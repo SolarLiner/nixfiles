@@ -8,7 +8,6 @@
   ...
 }: {
   imports = [
-    ./users
     ./i18n.nix
     ./homebrew.nix
     ./system-settings.nix
@@ -45,7 +44,7 @@
     '';
 
   # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
+  # services.nix-daemon.enable = true;
   # nix.package = pkgs.nix;
 
   # Necessary for using flakes on this system.

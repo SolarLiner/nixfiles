@@ -1,6 +1,6 @@
 {
   inputs,
-  username,
+  mainUsername,
   ...
 }: let
   inherit (inputs) homebrew-core homebrew-bundle homebrew-cask;
@@ -13,7 +13,7 @@ in {
     enableRosetta = true;
 
     # User owning the Homebrew prefix
-    user = username;
+    user = mainUsername;
 
     # Optional: Declarative tap management
     taps = {

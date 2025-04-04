@@ -8,7 +8,7 @@ ifeq ($(shell uname), Linux)
 	SYSTEM_CURGEN := $(SYSTEM_REBUILD) list-generations 2> /dev/null | grep current | cut -d' ' -f-4 | tr -cs '[:alnum:]' ' '
 	REBUILD_SUDO := sudo
 else
-	SYSTEM_REBUILD := darwin-rebuild
+	SYSTEM_REBUILD := nix run nix-darwin/nix-darwin-24.11\#darwin-rebuild --
 	SYSTEM_CURGEN := $(SYSTEM_REBUILD) --list-generations | grep current | cut -w -f-3 | tr -cs '[:alnum:]' ' '
 	REBUILD_SUDO := 
 endif
