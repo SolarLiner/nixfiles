@@ -14,7 +14,7 @@
     enable = true;
   };
   programs.ghostty = {
-    enable = false;
+    enable = !isWSL;
     package = if stdenv.isDarwin then ghostty-homebrew-wrapper else gl pkgs.ghostty;
     enableZshIntegration = true;
     installVimSyntax = true;
