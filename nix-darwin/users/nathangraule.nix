@@ -23,7 +23,7 @@
   system.defaults.dock.persistent-apps = [
     "/Applications/Firefox.app"
     "/Applications/Thunderbird.app"
-    "/Applications/Skype.app"
+    "/Applications/Microsoft Teams.app"
     "/Applications/Mattermost 5.10.2.app"
     "${pkgs.kitty}/Applications/kitty.app"
     "/Users/nathangraule/Applications/CLion.app"
