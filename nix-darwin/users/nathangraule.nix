@@ -25,7 +25,7 @@
     "/Applications/Thunderbird.app"
     "/Applications/Microsoft Teams.app"
     "/Applications/Mattermost 5.10.2.app"
-    "${pkgs.kitty}/Applications/kitty.app"
+    "/Applications/Ghostty.app"
     "/Users/nathangraule/Applications/CLion.app"
     "/Users/nathangraule/Applications/PyCharm Professional Edition.app"
     "${pkgs.vscode}/Applications/Visual Studio Code.app"

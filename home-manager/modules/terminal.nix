@@ -3,19 +3,25 @@
   config,
   isWSL ? false,
   ...
-}: let inherit(pkgs) lib stdenv; gl = config.nixGL.wrapper; in {
+}: let inherit(pkgs) lib stdenv; gl = config.nixGL.wrapper; ghostty-homebrew-wrapper = pkgs.writeShellApplication {
+  name = "ghostty-homebrew-wrapper";
+  text = ''
+    #!/usr/bin/env bash
+    /opt/homebrew/bin/ghostty "$@"
+  '';
+}; in {
   programs.zellij = {
     enable = true;
   };
   programs.ghostty = {
     enable = !isWSL;
-    package = if stdenv.isDarwin then pkgs.emptyDirectory else gl pkgs.ghostty;
+    package = if stdenv.isDarwin then ghostty-homebrew-wrapper else gl pkgs.ghostty;
     enableZshIntegration = true;
     installVimSyntax = true;
     settings = {
       command = "${pkgs.zellij}/bin/zellij";
       font-family = "IosevkaTerm Nerd Font";
-      font-size = 11;
+      font-size = if stdenv.isDarwin then 14 else 11;
       theme = "material-darker";
       macos-titlebar-style = "transparent";
     };
