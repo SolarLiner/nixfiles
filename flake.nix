@@ -130,7 +130,7 @@
         mainUsername = "nathangraule";
         userConfiguration = ./nix-darwin/users/nathangraule.nix;
       };
-      "SolarM4" = mkSystem {
+      "SolarM4.local" = mkSystem {
         system = "aarch64-darwin";
         mainUsername = "solarliner";
         userConfiguration = ./nix-darwin/users/solarliner.nix;
@@ -169,7 +169,7 @@
         mkConfig "x86_64-linux" ./home-manager/users/solarliner.nix;
       "nathangraule@SolarM3" =
         mkConfig "aarch64-darwin" ./home-manager/users/nathangraule.nix;
-      "solarliner@SolarM4" =
+      "solarliner@SolarM4.local" =
         mkConfig "aarch64-darwin" ./home-manager/users/solarliner.nix;
     };
   };
