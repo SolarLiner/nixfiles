@@ -22,7 +22,7 @@
   system.defaults.dock.persistent-apps = [
     "/Applications/Firefox.app"
     "/System/Applications/Mail.app"
-    "${pkgs.kitty}/Applications/kitty.app"
+    "/Applications/Ghostty.app"
     "/Users/solarliner/Applications/RustRover.app"
     "/Users/solarliner/Applications/PyCharm Professional Edition.app"
     "${pkgs.vscode}/Applications/Visual Studio Code.app"
