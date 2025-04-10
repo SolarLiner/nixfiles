@@ -1,7 +1,7 @@
 SYSTEM ?= $(shell hostname)
 USER ?= $(shell whoami)
 FLAKE ?= .
-EXTRA_ARGS ?= -L --keep-failed -j 10
+EXTRA_ARGS ?= -L --keep-failed -j 20 --show-trace
 
 ifeq ($(shell uname), Linux)
 	SYSTEM_REBUILD := nixos-rebuild

@@ -51,6 +51,7 @@ in {
     enable = true;
     extraPackages = 
       with pkgs.bat-extras; [ batdiff batman batgrep batwatch ];
+    syntaxes = lib.mkForce {};
   };
   programs.eza.enable = true;
   programs.bash.enable = false;

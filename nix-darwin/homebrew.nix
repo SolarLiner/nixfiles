@@ -34,8 +34,8 @@ in {
     onActivation.upgrade = true;
     casks = [
       "firefox"
-      "warp"
       "unnaturalscrollwheels"
+      "ghostty"
     ];
   };
 }
