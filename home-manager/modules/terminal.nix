@@ -12,6 +12,7 @@
 }; in {
   programs.zellij = {
     enable = true;
+    settings.theme = "ansi";
   };
   programs.ghostty = {
     enable = !isWSL;
