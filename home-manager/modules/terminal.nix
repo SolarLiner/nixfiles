@@ -19,11 +19,12 @@
     enableZshIntegration = true;
     installVimSyntax = true;
     settings = {
-      command = "${pkgs.zellij}/bin/zellij";
       font-family = "IosevkaTerm Nerd Font";
       font-size = if stdenv.isDarwin then 14 else 11;
       theme = "material-darker";
-      macos-titlebar-style = "transparent";
+      macos-titlebar-style = "tabs";
+      window-padding-x = 12;
+      window-padding-y = 8;
     };
     themes = {
       material-darker = {
@@ -78,7 +79,6 @@
       visual_bell_duration = "0.1";
       window_margin_width = 0;
       tab_bar_style = "powerline";
-      shell = "${pkgs.zellij}/bin/zellij";
     };
     shellIntegration = {
       mode = "enabled";
