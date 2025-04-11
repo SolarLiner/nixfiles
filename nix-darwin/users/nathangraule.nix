@@ -16,7 +16,6 @@
     #"fl-studio"
   ];
   homebrew.masApps = {
-    "Mattermost Desktop" = 1614666244;
     Bitwarden = 1352778147;
     Xcode = 497799835;
   };
