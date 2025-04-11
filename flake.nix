@@ -28,6 +28,10 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    alienator88-homebrew-cask = {
+      url = "github:alienator88/homebrew-cask";
+      flake = false;
+    };
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-24.11";
@@ -130,7 +134,7 @@
         mainUsername = "nathangraule";
         userConfiguration = ./nix-darwin/users/nathangraule.nix;
       };
-      "SolarM4.local" = mkSystem {
+      SolarM4.local = mkSystem {
         system = "aarch64-darwin";
         mainUsername = "solarliner";
         userConfiguration = ./nix-darwin/users/solarliner.nix;

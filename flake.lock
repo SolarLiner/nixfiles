@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "alienator88-homebrew-cask": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1736355349,
+        "narHash": "sha256-CKXrZvCL+WL7JlthceGa57ChW4qVyhFxs6ZL7iCnjMw=",
+        "owner": "alienator88",
+        "repo": "homebrew-cask",
+        "rev": "02e7065ca93b12cc751a8bf05de15fcdee8cb158",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alienator88",
+        "repo": "homebrew-cask",
+        "type": "github"
+      }
+    },
     "brew-src": {
       "flake": false,
       "locked": {
@@ -367,6 +383,7 @@
     },
     "root": {
       "inputs": {
+        "alienator88-homebrew-cask": "alienator88-homebrew-cask",
         "declarative-flatpaks": "declarative-flatpaks",
         "hardware": "hardware",
         "home-manager": "home-manager_2",

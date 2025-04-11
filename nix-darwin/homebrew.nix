@@ -3,7 +3,7 @@
   mainUsername,
   ...
 }: let
-  inherit (inputs) homebrew-core homebrew-bundle homebrew-cask;
+  inherit (inputs) homebrew-core homebrew-bundle homebrew-cask alienator88-homebrew-cask;
 in {
   nix-homebrew = {
     # Install Homebrew under the default prefix
@@ -20,6 +20,7 @@ in {
       "homebrew/homebrew-core" = homebrew-core;
       "homebrew/homebrew-bundle" = homebrew-bundle;
       "homebrew/homebrew-cask" = homebrew-cask;
+      "alienator88/homebrew-cask" = alienator88-homebrew-cask;
     };
 
     # Optional: Enable fully-declarative tap management
@@ -36,6 +37,7 @@ in {
       "firefox"
       "unnaturalscrollwheels"
       "ghostty"
+      "alienator88/homebrew-cask/sentinel-app"
     ];
   };
 }
