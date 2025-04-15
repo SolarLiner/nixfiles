@@ -10,8 +10,13 @@ return {
     opts = {
       -- add any opts here
       -- for example
-      provider = "mistral",
+      provider = "lmstudio",
       vendors = {
+        lmstudio = {
+          __inherited_from = "openai",
+          endpoint = "http://localhost:1234/v1",
+          model = "mistral-nemo-instruct-2407",
+        },
         mistral = {
           __inherited_from = "openai",
           api_key_name = "MISTRAL_API_KEY",
