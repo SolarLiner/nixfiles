@@ -26,7 +26,7 @@
     "/Applications/Mattermost 5.10.2.app"
     "/Applications/Ghostty.app"
     "/Users/nathangraule/Applications/CLion.app"
-    "/Users/nathangraule/Applications/PyCharm Professional Edition.app"
+    "/Users/nathangraule/Applications/PyCharm.app"
     "${pkgs.vscode}/Applications/Visual Studio Code.app"
     "/Applications/FL Studio 2024.app"
     "/Applications/Bitwig Studio.app"
