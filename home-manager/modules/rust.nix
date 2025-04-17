@@ -17,6 +17,7 @@ in {
     cargo-fuzz
     cargo-generate
     cargo-insta
+    cargo-make
     cargo-release
     cargo-semver-checks
     cargo-update
