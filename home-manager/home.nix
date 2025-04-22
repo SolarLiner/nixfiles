@@ -6,7 +6,7 @@
   ...
 }:
 with lib.lists; let
-  inherit (pkgs.stdenv) isDarwin;
+  inherit (pkgs.stdenv) isLinux isDarwin;
   gl = config.nixGL.wrapper;
 in {
   home.environmentd.enable = !isDarwin;
@@ -34,6 +34,12 @@ in {
   fonts.fontconfig.enable = !isWSL && !isDarwin;
 
   programs.home-manager.enable = true;
+  services.home-manager.autoExpire = {
+    enable = isLinux;
+    frequency = "weekly";
+    store.cleanup = true;
+    timestamp = "-14 days";
+  };
 
   nixpkgs.config = {
     allowUnfree = true;
