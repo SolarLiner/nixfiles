@@ -3,11 +3,18 @@ return {
   "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
   {
     "pocco81/auto-save.nvim",
-    config = function()
-      require("auto-save").setup({
-        debounce_delay = 500,
-      })
-    end,
+    opts = {
+      enabled = true,
+      debounce_delay = 500,
+      condition = function(buf)
+        local ftypes_excluded = { "gitcommit", "gitrebase", "gitsigns", "oil", "vimwiki" }
+        local buf_ftype = vim.fn.getbufvar(buf, "&filetype")
+
+        local included = not vim.tbl_contains(ftypes_excluded, buf_ftype)
+        local is_modifiable = vim.fn.getbufvar(buf, "&modifiable") == 1
+        return included and is_modifiable
+      end
+    }
   },
   {
     "windwp/nvim-autopairs",
