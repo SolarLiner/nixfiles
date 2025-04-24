@@ -20,4 +20,5 @@
       git_protocol = "ssh";
     };
   };
+  programs.lazygit.enable = true;
 }
