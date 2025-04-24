@@ -10,7 +10,7 @@ return {
     opts = {
       -- add any opts here
       -- for example
-      provider = "mistral",
+      provider = "lmstudio",
       vendors = {
         lmstudio = {
           __inherited_from = "openai",
