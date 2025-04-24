@@ -10,14 +10,14 @@ return {
         function()
           require("gitsigns").preview_hunk()
         end,
-        "Preview hunk in tooptip",
+        desc = "Preview hunk in tooptip",
       },
       {
         "<leader>gb",
         function()
           require("gitsigns").blame_line()
         end,
-        "Show blame for this line",
+        desc = "Show blame for this line",
       },
       {
         "<leader>gd",
@@ -31,7 +31,7 @@ return {
         function ()
           require("gitsigns").diffthis("~")
         end,
-        "Diff this against the index",
+        desc = "Diff this against the index",
       },
       {
         "<leader>gs",
@@ -40,7 +40,7 @@ return {
           local end_ = vim.api.line('v')
           require("gitsigns").stage_hunk({ start, end_ })
         end,
-        "Stage hunk",
+        desc = "Stage hunk",
       },
       {
         "<leader>gr",
@@ -48,21 +48,22 @@ return {
           local start = vim.fn.line('.')
           local end_ = vim.api.line('v')
           require("gitsigns").reset_hunk({ start, end_ })
-        end
+        end,
+        desc = "Reset hunk",
       },
       {
         "<leader>gS",
         function ()
           require("gitsigns").stage_buffer()
         end,
-        "Stage buffer",
+        desc = "Stage buffer",
       },
       {
         "<leader>gR",
         function ()
           require("gitsigns").reset_buffer()
         end,
-        "Reset buffer",
+        desc = "Reset buffer",
       }
     },
   },
