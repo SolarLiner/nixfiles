@@ -1,7 +1,19 @@
 return {
   "saghen/blink.cmp",
   -- optional: provides snippets for the snippet source
-  dependencies = { "rafamadriz/friendly-snippets", "echasnovski/mini.nvim" },
+  dependencies = {
+    "rafamadriz/friendly-snippets",
+    "echasnovski/mini.nvim",
+    "Kaiser-Yang/blink-cmp-avante",
+    "huijiro/blink-cmp-supermaven",
+    {
+      "supermaven-inc/supermaven-nvim",
+      opts = {
+        disable_inline_completion = true, -- disables inline completion for use with cmp
+        disable_keymaps = true, -- disables built in keymaps for more manual control
+      },
+    },
+  },
 
   -- use a release tag to download pre-built binaries
   version = "*",
@@ -58,7 +70,21 @@ return {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { "lsp", "path", "snippets", "buffer" },
+      default = { "avante", "supermaven", "lsp", "path", "snippets", "buffer" },
+      providers = {
+        avante = {
+          module = "blink-cmp-avante",
+          name = "Avante",
+          opts = {
+            -- options for blink-cmp-avante
+          },
+        },
+        supermaven = {
+          name = "supermaven",
+          module = "blink-cmp-supermaven",
+          async = true,
+        },
+      },
     },
   },
   opts_extend = { "sources.default" },

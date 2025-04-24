@@ -27,13 +27,11 @@ return {
     event = "BufEnter",
     cmd = {"TSContextEnable", "TSContextDisable", "TSContextToggle"},
     init = function ()
-      vim.print("Treesitter Context")
       local augroup = vim.api.nvim_create_augroup("nvim-treesitter-context", { clear = true })
       vim.api.nvim_create_autocmd("BufEnter", {
         group = augroup,
         pattern = "*",
         callback = function ()
-          vim.print("Enabling Treesitter Context")
           vim.cmd('TSContextEnable')
         end
       })
