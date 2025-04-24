@@ -21,6 +21,10 @@
     installVimSyntax = true;
     settings = {
       font-family = "IosevkaTerm Nerd Font";
+      font-style = "Medium";
+      font-style-bold = "Heavy";
+      font-style-italic = "Medium Italic";
+      font-style-bold-italic = "Heavy Italic";
       font-size = if stdenv.isDarwin then 14 else 11;
       theme = "material-darker";
       macos-titlebar-style = "tabs";
