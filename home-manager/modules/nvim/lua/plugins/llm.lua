@@ -10,13 +10,12 @@ return {
     opts = {
       -- add any opts here
       -- for example
-      provider = "lmstudio",
+      provider = "mistral",
       vendors = {
         lmstudio = {
           __inherited_from = "openai",
           endpoint = "http://localhost:1234/v1",
           model = "mistral-nemo-instruct-2407",
-          max_tokens = 8192, -- to avoid using max_completion_tokens
         },
         mistral = {
           __inherited_from = "openai",
