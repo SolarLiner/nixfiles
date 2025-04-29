@@ -9,6 +9,7 @@
       inherit system;
       config.allowUnfree = true;
     };
+  mkUnstableOverlay = packages: final: _prev: lib.attrsets.genAttrs packages (name: final.unstable.${name});
 in {
   nixgl = inputs.nixgl.overlay;
   # This one brings our custom packages from the 'pkgs' directory
@@ -22,7 +23,6 @@ in {
   # You can change versions, add patches, set compilation flags, anything really.
   # https://nixos.wiki/wiki/Overlays
   modifications = final: prev: {
-    plugdata = (mkUnstable final.system).plugdata;
     jetbrains-toolbox = prev.jetbrains-toolbox.overrideAttrs (oldAttrs: {
       nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [prev.makeWrapper];
       postFixup = let
@@ -32,9 +32,13 @@ in {
           --set PATH ${binPath}
       '';
     });
+    nodejs = prev.nodejs.overrideAttrs {doCheck = false;};
+    nodejs-slim = final.nodejs;
   };
 
-  # When applied, the unstable nixpkgs set (declared in the flake inputs) will
+  unstableModifications = mkUnstableOverlay ["plugdata" "yarnConfigHook"];
+
+  # When applied, the unstable <C> (declaredC in the flake inputsC  where C: ops::Deref, C::Target: HasP  will
   # be accessible through 'pkgs.unstable'
   unstable-packages = final: _prev: {
     unstable = mkUnstable final.system;
