@@ -2,9 +2,7 @@
   inputs,
   mainUsername,
   ...
-}: let
-  inherit (inputs) homebrew-core homebrew-bundle homebrew-cask alienator88-homebrew-cask;
-in {
+}: {
   nix-homebrew = {
     # Install Homebrew under the default prefix
     enable = true;
@@ -17,10 +15,11 @@ in {
 
     # Optional: Declarative tap management
     taps = {
-      "homebrew/homebrew-core" = homebrew-core;
-      "homebrew/homebrew-bundle" = homebrew-bundle;
-      "homebrew/homebrew-cask" = homebrew-cask;
-      "alienator88/homebrew-cask" = alienator88-homebrew-cask;
+      "homebrew/homebrew-core" = inputs.homebrew-core;
+      "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
+      "homebrew/homebrew-cask" = inputs.homebrew-cask;
+      "alienator88/homebrew-cask" = inputs.alienator88-homebrew-cask;
+      "gromgit/homebrew-fuse" = inputs.gromgit-homebrew-fuse;
     };
 
     # Optional: Enable fully-declarative tap management

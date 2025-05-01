@@ -8,12 +8,17 @@
       tracy
     ];
   };
+  homebrew.brews = [
+    "gromgit/fuse/ntfs-3g-mac"
+  ];
   homebrew.casks = [
     "reaper"
     "bitwig-studio"
     # "fl-studio" # Disabled on homebrew
     "obsidian"
     "blender"
+    "macfuse"
+    "mounty"
   ];
   homebrew.masApps = {
     Bitwarden = 1352778147;

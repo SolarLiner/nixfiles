@@ -69,6 +69,22 @@
         "type": "github"
       }
     },
+    "gromgit-homebrew-fuse": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1745815041,
+        "narHash": "sha256-jcoY+Ik1HvxQjlcG5yLJLlYSu8YaXgW3wpeIojLpydY=",
+        "owner": "gromgit",
+        "repo": "homebrew-fuse",
+        "rev": "9c39b158c52e8bc7e0c0c225e6681ffaad8316e8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gromgit",
+        "repo": "homebrew-fuse",
+        "type": "github"
+      }
+    },
     "hardware": {
       "locked": {
         "lastModified": 1745907084,
@@ -385,6 +401,7 @@
       "inputs": {
         "alienator88-homebrew-cask": "alienator88-homebrew-cask",
         "declarative-flatpaks": "declarative-flatpaks",
+        "gromgit-homebrew-fuse": "gromgit-homebrew-fuse",
         "hardware": "hardware",
         "home-manager": "home-manager_2",
         "homebrew-bundle": "homebrew-bundle",

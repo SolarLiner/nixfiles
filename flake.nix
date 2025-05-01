@@ -32,6 +32,10 @@
       url = "github:alienator88/homebrew-cask";
       flake = false;
     };
+    gromgit-homebrew-fuse = {
+      url = "github:gromgit/homebrew-fuse";
+      flake = false;
+    };
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-24.11";
