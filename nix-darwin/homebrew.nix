@@ -38,6 +38,7 @@
       "ghostty"
       "alienator88/homebrew-cask/sentinel-app"
       "betterdisplay"
+      "docker"
     ];
   };
 }
