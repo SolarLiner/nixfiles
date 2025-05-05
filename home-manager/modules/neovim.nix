@@ -41,6 +41,14 @@
     ];
     extraPackages = with pkgs; [zig fzf nodejs unzip];
   };
+  programs.neovide = {
+    enable = true;
+    settings = {
+      frame = if pkgs.stdenv.isDarwin then "transparent" else "full";
+      grid = "145x52";
+      srgb = true;
+    };
+  };
   home.file."./.config/nvim/lua/plugins" = {
     source = ./nvim/lua/plugins;
     recursive = true;
