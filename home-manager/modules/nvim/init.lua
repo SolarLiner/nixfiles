@@ -182,5 +182,11 @@ require("lazy").setup("plugins", {
   },
 })
 
+if vim.g.neovide then
+  vim.o.guifont = "Iosevka:h13"
+  vim.g.neovide_position_animation_length = 0.07
+  vim.g.neovide_scroll_animation_length = 0.1
+end
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
