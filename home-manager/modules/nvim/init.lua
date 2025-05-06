@@ -99,9 +99,8 @@ vim.keymap.set("n", "<leader>(", "<cmd>cprev<CR>", { desc = "Prev Quickfix Entry
 vim.keymap.set("n", "<leader>)", "<cmd>cnext<CR>", { desc = "Next Quickfix Entry" })
 
 -- Interaction with system system clipboard
-vim.keymap.set("n", "<leader>y", "<cmd>lua require('utils').copy_to_clipboard()<CR>", { desc = "Copy to system clipboard" })
-vim.keymap.set("n", "<leader>p", "<cmd>lua require('utils').paste_from_clipboard()<CR>", { desc = "Paste from system clipboard" })
-vim.keymap.set("v", "<leader>y", "<esc><cmd>lua require('utils').copy_to_clipboard()<CR>", { desc = "Copy to system clipboard" })
+vim.keymap.set("n", "<leader>y", '"+y', { desc = "Copy to system clipboard" })
+vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste from system clipboard" })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
