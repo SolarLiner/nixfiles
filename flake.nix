@@ -16,6 +16,7 @@
     nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-24.11";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    mac-app-util.url = "github:hraban/mac-app-util";
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
       flake = false;
@@ -56,6 +57,7 @@
     plasma-manager,
     nix-homebrew,
     nixgl,
+    mac-app-util,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -124,6 +126,7 @@
           modules = [
             nix-homebrew.darwinModules.nix-homebrew
             ./nix-darwin/configuration.nix
+            mac-app-util.darwinModules.default
             userConfiguration
             { nix.enable = !useDeterminateNix; }
           ];
@@ -163,6 +166,7 @@
           modules = [
             declarative-flatpaks.homeManagerModules.declarative-flatpak
             plasma-manager.homeManagerModules.plasma-manager
+            mac-app-util.homeManagerModules.default
             ./modules/home-manager/environmentd.nix
             ./modules/home-manager/google-drive.nix
             ./modules/home-manager/nixgl.nix
