@@ -13,8 +13,8 @@ return {
         local included = not vim.tbl_contains(ftypes_excluded, buf_ftype)
         local is_modifiable = vim.fn.getbufvar(buf, "&modifiable") == 1
         return included and is_modifiable
-      end
-    }
+      end,
+    },
   },
   {
     "windwp/nvim-autopairs",
@@ -147,7 +147,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     opts = {
-      ensure_installed = { "bash", "c", "html", "lua", "luadoc", "markdown", "vim", "vimdoc" },
+      ensure_installed = { "bash", "c", "cpp", "html", "lua", "luadoc", "markdown", "python", "vim", "vimdoc" },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -172,5 +172,9 @@ return {
       --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
+  },
+  {
+    "tris203/precognition.nvim",
+    opts = {},
   },
 }
