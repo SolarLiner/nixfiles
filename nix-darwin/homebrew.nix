@@ -33,12 +33,13 @@
     onActivation.autoUpdate = true;
     onActivation.upgrade = true;
     casks = [
-      "firefox"
-      "unnaturalscrollwheels"
-      "ghostty"
       "alienator88/homebrew-cask/sentinel-app"
       "betterdisplay"
       "docker"
+      "firefox"
+      "ghostty"
+      "google-drive"
+      "unnaturalscrollwheels"
     ];
   };
 }
