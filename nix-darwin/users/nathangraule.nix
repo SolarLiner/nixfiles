@@ -20,6 +20,7 @@
     Xcode = 497799835;
   };
   system.defaults.dock.persistent-apps = [
+    "/Applications/Zen.app"
     "/Applications/Firefox.app"
     "/Applications/Thunderbird.app"
     "/Applications/Microsoft Teams.app"
