@@ -40,6 +40,7 @@
       "ghostty"
       "google-drive"
       "unnaturalscrollwheels"
+      "zen"
     ];
   };
 }
