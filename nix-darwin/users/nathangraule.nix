@@ -21,7 +21,6 @@
   };
   system.defaults.dock.persistent-apps = [
     "/Applications/Zen.app"
-    "/Applications/Firefox.app"
     "/Applications/Thunderbird.app"
     "/Applications/Microsoft Teams.app"
     "/Applications/Mattermost 5.10.2.app"
