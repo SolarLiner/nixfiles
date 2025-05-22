@@ -9,8 +9,6 @@
     ];
   };
   homebrew.casks = [
-    "thunderbird"
-    "skype"
     "bitwig-studio"
     "obsidian"
     #"fl-studio"
@@ -21,7 +19,6 @@
   };
   system.defaults.dock.persistent-apps = [
     "/Applications/Zen.app"
-    "/Applications/Thunderbird.app"
     "/Applications/Microsoft Teams.app"
     "/Applications/Mattermost 5.10.2.app"
     "/Applications/Ghostty.app"
