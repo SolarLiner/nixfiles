@@ -29,7 +29,7 @@ in {
     ]
     ++ optionals isWSL [curl wget]
     ++ optionals (!isDarwin) [ocenaudio];
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.05";
 
   fonts.fontconfig.enable = !isWSL && !isDarwin;
 
