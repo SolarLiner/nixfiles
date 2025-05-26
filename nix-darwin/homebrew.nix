@@ -1,8 +1,10 @@
 {
   inputs,
-  mainUsername,
+  config,
   ...
-}: {
+}: let
+  inherit (config.system) primaryUser;
+in {
   nix-homebrew = {
     # Install Homebrew under the default prefix
     enable = true;
@@ -11,7 +13,7 @@
     enableRosetta = true;
 
     # User owning the Homebrew prefix
-    user = mainUsername;
+    user = primaryUser;
 
     # Optional: Declarative tap management
     taps = {

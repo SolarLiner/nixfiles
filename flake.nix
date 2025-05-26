@@ -46,6 +46,9 @@
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
     nixgl.url = "github:nix-community/nixGL";
+
+    # Secrets
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
   outputs = {
@@ -58,6 +61,7 @@
     nix-homebrew,
     nixgl,
     mac-app-util,
+    sops-nix,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -108,7 +112,11 @@
           inherit system;
           overlays = builtins.attrValues import outputs.overlays;
           specialArgs = {inherit inputs outputs isServer;};
-          modules = [./nixos/configuration.nix specific-path];
+          modules = [
+            sops-nix.nixosModules.sops
+            ./nixos/configuration.nix
+            specific-path
+          ];
         };
     in {
       #home-server = config "x86_64-linux" ./nixos/hardware/home-server {isServer = true;};
@@ -118,32 +126,30 @@
     darwinConfigurations = let
       mkSystem = {
         system,
-        mainUsername,
         userConfiguration,
         useDeterminateNix ? false,
       }:
         nix-darwin.lib.darwinSystem {
           modules = [
             nix-homebrew.darwinModules.nix-homebrew
+            sops-nix.darwinModules.sops
             ./nix-darwin/configuration.nix
             mac-app-util.darwinModules.default
             userConfiguration
             { nix.enable = !useDeterminateNix; }
           ];
           specialArgs = {
-            inherit inputs outputs self system mainUsername;
+            inherit inputs outputs self system;
             overlays = builtins.attrValues outputs.overlays;
           };
         };
     in {
       "SolarM3" = mkSystem {
         system = "aarch64-darwin";
-        mainUsername = "nathangraule";
         userConfiguration = ./nix-darwin/users/nathangraule.nix;
       };
       SolarM4.local = mkSystem {
         system = "aarch64-darwin";
-        mainUsername = "solarliner";
         userConfiguration = ./nix-darwin/users/solarliner.nix;
         useDeterminateNix = true;
       };
@@ -160,13 +166,13 @@
           };
           extraSpecialArgs = {
             inherit inputs outputs;
-            username = "solarliner";
             isWSL = false;
           };
           modules = [
             declarative-flatpaks.homeManagerModules.declarative-flatpak
             plasma-manager.homeManagerModules.plasma-manager
             mac-app-util.homeManagerModules.default
+            sops-nix.homeManagerModules.sops
             ./modules/home-manager/environmentd.nix
             ./modules/home-manager/google-drive.nix
             ./modules/home-manager/nixgl.nix
