@@ -22,7 +22,9 @@ in {
       # Fonts
       jetbrains-mono
       iosevka
-      nerd-fonts
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.iosevka
+      nerd-fonts.iosevka-term
       # Programs
       (gl gimp)
       localsend

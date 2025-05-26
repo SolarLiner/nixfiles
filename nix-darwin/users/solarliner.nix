@@ -8,6 +8,7 @@
       tracy
     ];
   };
+  system.primaryUser = "solarliner";
   homebrew.brews = [
     "gromgit/fuse/ntfs-3g-mac"
   ];
@@ -31,7 +32,7 @@
     "/Applications/Ghostty.app"
     "/Users/solarliner/Applications/RustRover.app"
     "/Users/solarliner/Applications/PyCharm.app"
-    "${pkgs.vscode}/Applications/Visual Studio Code.app"
+    "/Applications/Nix Apps/Visual Studio Code.app"
     "/Applications/REAPER.app"
     "/Applications/Bitwig Studio.app"
     "/System/Applications/Calendar.app"

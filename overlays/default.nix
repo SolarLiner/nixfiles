@@ -44,8 +44,8 @@ in {
           --set PATH ${binPath}
       '';
     });
-    nodejs = prev.nodejs.overrideAttrs {doCheck = false;};
-    nodejs-slim = final.nodejs;
+    #nodejs = prev.nodejs.overrideAttrs {doCheck = false;};
+    #nodejs-slim = final.nodejs;
   };
 
   unstableModifications = mkUnstableOverlay ["plugdata" "yarnConfigHook"];

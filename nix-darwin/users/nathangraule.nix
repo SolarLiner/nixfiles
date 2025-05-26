@@ -5,9 +5,10 @@
     packages = with pkgs; [
       cmake
       ninja
-      tracy_0_9_1
+      #tracy_0_9_1
     ];
   };
+  system.primaryUser = "nathangraule";
   homebrew.casks = [
     "bitwig-studio"
     "obsidian"
@@ -25,7 +26,7 @@
     "/Applications/Ghostty.app"
     "/Users/nathangraule/Applications/CLion.app"
     "/Users/nathangraule/Applications/PyCharm.app"
-    "${pkgs.vscode}/Applications/Visual Studio Code.app"
+    "/Applications/Nix Apps/Visual Studio Code.app"
     "/Applications/FL Studio 2024.app"
     "/Applications/Bitwig Studio.app"
     "/System/Applications/Calendar.app"
