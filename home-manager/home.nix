@@ -13,6 +13,8 @@ in {
   nixGL.enable = !isDarwin;
   home.packages = with pkgs;
     [
+      cmake
+      ninja
       ccache
       sccache
       docker-compose

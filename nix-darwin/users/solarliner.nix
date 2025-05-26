@@ -1,10 +1,8 @@
 {pkgs, ...}: {
-  users.users.nathangraule = {
+  users.users.solarliner = {
     name = "Nathan Graule";
     home = "/Users/solarliner";
     packages = with pkgs; [
-      cmake
-      ninja
       tracy
     ];
   };
