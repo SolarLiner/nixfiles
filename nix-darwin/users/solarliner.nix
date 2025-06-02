@@ -9,6 +9,8 @@
   system.primaryUser = "solarliner";
   homebrew.brews = [
     "gromgit/fuse/ntfs-3g-mac"
+    "pkgconf"
+    "openssl"
   ];
   homebrew.casks = [
     "reaper"
