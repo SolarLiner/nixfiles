@@ -21,6 +21,7 @@
     "macfuse"
     "mounty"
     "godot-mono"
+    "utm"
   ];
   homebrew.masApps = {
     Bitwarden = 1352778147;
