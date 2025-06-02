@@ -2,9 +2,6 @@
   pkgs,
   ...
 }: {
-  imports = [
-    ../configs/all.nix
-  ];
   home = {
     username = "solarliner";
     homeDirectory =

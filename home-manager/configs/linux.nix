@@ -6,7 +6,6 @@
     ../modules/lapce.nix
     ../modules/mpd.nix
     ../modules/node.nix
-    ../modules/ocaml.nix
     ../modules/plasma.nix
     ../modules/python.nix
     ../modules/rust.nix

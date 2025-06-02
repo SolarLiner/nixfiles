@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   outputs,
   self,
   pkgs,
@@ -7,6 +8,7 @@
   ...
 }: {
   imports = [
+    inputs.mac-app-util.darwinModules.default
     ./i18n.nix
     ./homebrew.nix
     ./system-settings.nix

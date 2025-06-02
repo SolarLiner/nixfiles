@@ -9,6 +9,7 @@ with lib.lists; let
   inherit (pkgs.stdenv) isLinux isDarwin;
   gl = config.nixGL.wrapper;
 in {
+  imports = [../modules/home-manager/nixgl.nix ../modules/home-manager/environmentd.nix];
   home.environmentd.enable = !isDarwin;
   nixGL.enable = !isDarwin;
   home.packages = with pkgs;

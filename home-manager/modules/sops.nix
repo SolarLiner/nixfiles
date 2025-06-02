@@ -1,4 +1,5 @@
-{ config, ... }: let inherit (config) home; in {
+{ config, inputs, ... }: let inherit (config) home; in {
+  imports = [inputs.sops-nix.homeManagerModules.sops];
   sops = {
     age.keyFile = "${home.homeDirectory}/.config/sops/age/keys.txt";
     defaultSopsFile = ../../secrets/sops.yaml;

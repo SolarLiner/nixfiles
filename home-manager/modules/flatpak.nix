@@ -1,12 +1,15 @@
 {
-  config,
   pkgs,
+  inputs,
   ...
 }: let
-  inherit (pkgs) stdenv;
+  inherit (pkgs.stdenv) isLinux;
 in {
+  imports = [
+    inputs.declarative-flatpaks.homeModule
+  ];
   services.flatpak = {
-    enableModule = !stdenv.isDarwin;
+    enableModule = isLinux;
     remotes = {
       "flathub" = "https://dl.flathub.org/repo/flathub.flatpakrepo";
       "flathub-beta" = "https://dl.flathub.org/beta-repo/flathub-beta.flatpakrepo";

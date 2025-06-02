@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ../configs/work.nix
+    ../configs/mac.nix
   ];
   home = {
     username = "nathangraule";

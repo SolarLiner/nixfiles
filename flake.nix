@@ -131,10 +131,7 @@
       }:
         nix-darwin.lib.darwinSystem {
           modules = [
-            nix-homebrew.darwinModules.nix-homebrew
-            sops-nix.darwinModules.sops
             ./nix-darwin/configuration.nix
-            mac-app-util.darwinModules.default
             userConfiguration
             { nix.enable = !useDeterminateNix; }
           ];
@@ -158,7 +155,7 @@
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = let
-      mkConfig = system: specific-path:
+      mkConfig = system: module:
         home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
             inherit system;
@@ -169,26 +166,17 @@
             isWSL = false;
           };
           modules = [
-            declarative-flatpaks.homeManagerModules.declarative-flatpak
-            plasma-manager.homeManagerModules.plasma-manager
-            mac-app-util.homeManagerModules.default
-            sops-nix.homeManagerModules.sops
-            ./modules/home-manager/environmentd.nix
-            ./modules/home-manager/google-drive.nix
-            ./modules/home-manager/nixgl.nix
             ./home-manager/home.nix
-            specific-path
+            module
           ];
         };
     in {
-      "solarliner@precision5520" =
-        mkConfig "x86_64-linux" ./home-manager/users/solarliner.nix;
       "solarliner@homepc" =
-        mkConfig "x86_64-linux" ./home-manager/users/solarliner.nix;
+        mkConfig "x86_64-linux" { imports = [./home-manager/configs/linux.nix ./home-manager/users/solarliner.nix]; };
       "nathangraule@SolarM3" =
-        mkConfig "aarch64-darwin" ./home-manager/users/nathangraule.nix;
+        mkConfig "aarch64-darwin" { imports = [./home-manager/configs/mac.nix ./home-manager/users/nathangraule.nix]; };
       "solarliner@SolarM4.local" =
-        mkConfig "aarch64-darwin" ./home-manager/users/solarliner.nix;
+        mkConfig "aarch64-darwin" { imports = [./home-manager/configs/mac.nix ./home-manager/users/solarliner.nix]; };
     };
   };
 }

@@ -7,7 +7,6 @@
 with lib; let
   cfg = config.nixGL;
   none = types.uniq types.anything;
-  lambda = arg: ret: {name = "(${arg.name}) -> ${arg.ret} lambda";};
   mkModule = moduleName: {
     enable = mkEnableOption moduleName;
     wrapper = mkOption {
