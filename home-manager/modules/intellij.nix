@@ -21,7 +21,7 @@ in {
       set surround
     '';
   };
-  programs.zsh.initExtra = let
+  programs.zsh.initContent = let
     toolboxPath =
       if stdenv.isDarwin
       then "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
@@ -31,7 +31,7 @@ in {
   '';
   home.sessionVariables = {
     _JAVA_AWT_WM_NONREPARENTING = "1";
-    JETBRAINS_TOOLBOX_HOME = "$HOME/.local/share/JetBrains/Toolbox/"; 
+    JETBRAINS_TOOLBOX_HOME = "$HOME/.local/share/JetBrains/Toolbox/";
   };
   home.sessionPath = ["$JETBRAINS_TOOLBOX_HOME/scripts"];
 }

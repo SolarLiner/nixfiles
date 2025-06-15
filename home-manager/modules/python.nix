@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  programs.zsh.initExtra = ''
+  programs.zsh.initContent = ''
     # Pyenv
     if [[ ! -e $PYENV_ROOT ]]; then
       git clone https://github.com/pyenv/pyenv.git $PYENV_ROOT

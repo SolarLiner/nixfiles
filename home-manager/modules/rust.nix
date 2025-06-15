@@ -23,7 +23,7 @@ in {
     cargo-watch
     cargo-wipe
   ];
-  programs.zsh.initExtra = lib.mkIf stdenv.isDarwin ''
+  programs.zsh.initContent = lib.mkIf stdenv.isDarwin ''
     export CARGO_HOME=$HOME/.cargo
     export PATH=$CARGO_HOME/bin:$PATH
   '';
