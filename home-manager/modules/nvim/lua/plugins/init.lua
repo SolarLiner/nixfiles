@@ -173,8 +173,4 @@ return {
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
   },
-  {
-    "tris203/precognition.nvim",
-    opts = {},
-  },
 }
