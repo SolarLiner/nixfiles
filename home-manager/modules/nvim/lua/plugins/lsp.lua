@@ -178,11 +178,7 @@ return {
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(opts.servers or {})
       vim.list_extend(ensure_installed, {
-        "lua-language-server",
-        "blackd-client",
         "nil",
-        "pyright",
-        "stylua", -- Used to format Lua code
         "harper-ls",
       })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })

@@ -7,7 +7,6 @@ in
   programs.zed-editor = {
     enable = isDarwin;
     package = gl pkgs.zed-editor;
-    #extraPackages = with pkgs; [nil];
     userSettings = {
       ui_font_size = 15;
       buffer_font_size = 13;
@@ -16,11 +15,12 @@ in
       format_on_save = "off";
       remove_trailing_whitespace_on_save = true;
       ensure_final_newline_on_save = true;
-      #theme = "VSCode Dark Modern";
-      #features.copilot = false;
+      theme = "Catppuccin Mocha";
+      icon_theme = "Catppuccin Mocha";
+      features.copilot = false;
       vim_mode = true;
       lsp = {
-        nil.binary = "${pkgs.nil}/bin/nil";
+        nil.binary.path = "${pkgs.nil}/bin/nil";
         nil.settings.nix.flake = {
           autoArchive = true;
           autoEvalInputs = true;
@@ -37,6 +37,8 @@ in
       "nix"
       "wgsl"
       "git-firefly"
+      "catppuccin"
+      "catppuccin-icons"
     ];
   };
 }

@@ -22,5 +22,10 @@ return {
         dapui.close()
       end
     end,
+    keys = {
+      n = {
+        ["<leader>db"] = { "<cmd>DapToggleBreakpoint<CR>", desc = "Toggle Breakpoint" },
+      },
+    },
   },
 }
