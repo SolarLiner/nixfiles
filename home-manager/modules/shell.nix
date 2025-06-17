@@ -60,17 +60,13 @@ in {
   };
   programs.nushell = {
     enable = true;
-    configFile = {
-      text = lib.mkIf config.programs.starship.enable ''
-        mkdir ($nu.data-dir | path join "vendor/autoload")
-        starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
-      '';
-    };
+    plugins = lib.attrsets.attrVals ["query" "skim" "units" "formats" "polars"] pkgs.nushellPlugins;
   };
   programs.starship = {
     enable = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
+    enableNushellIntegration = true;
   };
   programs.zsh = {
     enable = true;
