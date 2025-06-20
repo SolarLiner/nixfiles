@@ -44,6 +44,7 @@ in {
       "google-drive"
       "unnaturalscrollwheels"
       "zen"
+      "libndi"
     ];
   };
 }
