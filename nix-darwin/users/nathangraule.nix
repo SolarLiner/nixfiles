@@ -16,8 +16,6 @@
   system.defaults.dock.persistent-apps = [
     "/Applications/Zen.app"
     "/System/Applications/Mail.app"
-    "/Applications/Microsoft Teams.app"
-    "/Applications/Mattermost 5.10.2.app"
     "/Applications/Ghostty.app"
     "/Users/nathangraule/Applications/CLion.app"
     "/Users/nathangraule/Applications/PyCharm.app"
