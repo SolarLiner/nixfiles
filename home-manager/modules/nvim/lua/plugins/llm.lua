@@ -8,8 +8,6 @@ return {
     event = "VeryLazy",
     version = false, -- Never set this value to "*"! Never!
     opts = {
-      -- add any opts here
-      -- for example
       provider = "mistral",
       providers = {
         lmstudio = {
@@ -22,7 +20,9 @@ return {
           api_key_name = "MISTRAL_API_KEY",
           endpoint = "https://api.mistral.ai/v1/",
           model = "devstral-small-2505",
-          max_tokens = 128000,
+          extra_request_body = {
+            max_tokens = 32768,
+          },
         },
       },
       system_prompt = function()
