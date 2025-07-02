@@ -5,7 +5,7 @@ return {
       local configs = require("nvim-treesitter.configs")
 
       configs.setup({
-        ensure_installed = { "c", "cpp", "lua", "rust", "vim", "query", "wgsl" },
+        ensure_installed = { "c", "cpp", "lua", "rust", "vim", "nix", "query", "wgsl" },
         sync_install = false,
         indent = { enable = true },
         autopairs = { enable = true },
@@ -23,18 +23,5 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
-    lazy = true,
-    event = "BufEnter",
-    cmd = {"TSContextEnable", "TSContextDisable", "TSContextToggle"},
-    init = function ()
-      local augroup = vim.api.nvim_create_augroup("nvim-treesitter-context", { clear = true })
-      vim.api.nvim_create_autocmd("BufEnter", {
-        group = augroup,
-        pattern = "*",
-        callback = function ()
-          vim.cmd('TSContextEnable')
-        end
-      })
-    end
   }
 }

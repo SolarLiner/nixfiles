@@ -11,23 +11,43 @@ return {
       -- add any opts here
       -- for example
       provider = "mistral",
-      vendors = {
+      providers = {
         lmstudio = {
           __inherited_from = "openai",
           endpoint = "http://localhost:1234/v1",
           model = "mistral-nemo-instruct-2407",
+        },
+        anthropic = {
+          api_key_name = "ANTHROPIC_API_KEY",
         },
         mistral = {
           __inherited_from = "openai",
           api_key_name = "MISTRAL_API_KEY",
           endpoint = "https://api.mistral.ai/v1/",
           model = "devstral-small-2505",
-          max_tokens = 8192, -- to avoid using max_completion_tokens
+          max_tokens = 128000,
         },
       },
+      system_prompt = function()
+        local hub = require("mcphub").get_hub_instance()
+        return hub and hub:get_active_servers_prompt() or ""
+      end,
+
+      custom_tools = function()
+        return {
+          require("mcphub.extensions.avante").mcp_tool(),
+        }
+      end,
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-    build = "make",
+    build = function()
+      -- conditionally use the correct build system for the current OS
+      if vim.fn.has("win32") == 1 then
+        return "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+      else
+        return "make"
+      end
+    end,
     -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
@@ -65,6 +85,14 @@ return {
           file_types = { "markdown", "Avante" },
         },
         ft = { "markdown", "Avante" },
+      },
+      {
+        "ravitemer/mcphub.nvim",
+        dependencies = {
+          "nvim-lua/plenary.nvim",
+        },
+        build = "npm install -g mcp-hub@latest", -- Installs `mcp-hub` node binary globally
+        opts = {},
       },
     },
   },
