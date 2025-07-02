@@ -17,9 +17,6 @@ return {
           endpoint = "http://localhost:1234/v1",
           model = "mistral-nemo-instruct-2407",
         },
-        anthropic = {
-          api_key_name = "ANTHROPIC_API_KEY",
-        },
         mistral = {
           __inherited_from = "openai",
           api_key_name = "MISTRAL_API_KEY",
