@@ -1,3 +1,4 @@
 /result
 lazy-lock.json
 nixos.qcow2
+/.pre-commit-config.yaml

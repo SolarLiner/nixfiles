@@ -9,12 +9,16 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
+    pre-commit-hooks.url = "github:cachix/git-hooks.nix";
+
     # NixOS
     hardware.url = "github:nixos/nixos-hardware";
 
     # Nix Darwin
     nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-25.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Homebrew
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     mac-app-util.url = "github:hraban/mac-app-util";
     homebrew-core = {
@@ -54,6 +58,7 @@
   outputs = {
     self,
     nixpkgs,
+    pre-commit-hooks,
     nix-darwin,
     home-manager,
     declarative-flatpaks,
@@ -77,6 +82,24 @@
     # pass to it, with each system as an argument
     forAllSystems = nixpkgs.lib.genAttrs systems;
   in {
+    checks = forAllSystems (system: {
+      pre-commit-check = pre-commit-hooks.lib.${system}.run {
+        src = ./.;
+        hooks = {
+          alejandra.enable = true;
+          stylua.enable = true;
+          shellcheck.enable = true;
+        };
+      };
+    });
+
+    devShells = forAllSystems (system: {
+      default = nixpkgs.legacyPackages.${system}.mkShell {
+        inherit (self.checks.${system}.pre-commit-check) shellHook;
+        buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
+      };
+    });
+
     # Your custom packages
     # Accessible through 'nix build', 'nix shell', etc
     packages = forAllSystems (system: let
@@ -133,7 +156,7 @@
           modules = [
             ./nix-darwin/configuration.nix
             userConfiguration
-            { nix.enable = !useDeterminateNix; }
+            {nix.enable = !useDeterminateNix;}
           ];
           specialArgs = {
             inherit inputs outputs self system;
@@ -172,11 +195,11 @@
         };
     in {
       "solarliner@homepc" =
-        mkConfig "x86_64-linux" { imports = [./home-manager/configs/linux.nix ./home-manager/users/solarliner.nix]; };
+        mkConfig "x86_64-linux" {imports = [./home-manager/configs/linux.nix ./home-manager/users/solarliner.nix];};
       "nathangraule@SolarM3" =
-        mkConfig "aarch64-darwin" { imports = [./home-manager/configs/mac.nix ./home-manager/users/nathangraule.nix]; };
+        mkConfig "aarch64-darwin" {imports = [./home-manager/configs/mac.nix ./home-manager/users/nathangraule.nix];};
       "solarliner@SolarM4.local" =
-        mkConfig "aarch64-darwin" { imports = [./home-manager/configs/mac.nix ./home-manager/users/solarliner.nix]; };
+        mkConfig "aarch64-darwin" {imports = [./home-manager/configs/mac.nix ./home-manager/users/solarliner.nix];};
     };
   };
 }
