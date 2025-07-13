@@ -2,14 +2,14 @@
   config,
   pkgs,
   lib,
-  isWSL ? false,
   ...
 }:
 with lib.lists; let
   inherit (pkgs.stdenv) isLinux isDarwin;
   gl = config.nixGL.wrapper;
+  isWSL = isLinux && !config.home.isGraphical;
 in {
-  imports = [../modules/home-manager/nixgl.nix ../modules/home-manager/environmentd.nix];
+  imports = [../modules/home-manager/nixgl.nix ../modules/home-manager/environmentd.nix ../modules/home-manager/customization.nix];
   home.environmentd.enable = !isDarwin;
   nixGL.enable = !isDarwin;
   home.packages = with pkgs;

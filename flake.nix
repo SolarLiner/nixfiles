@@ -45,7 +45,7 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    declarative-flatpaks.url = "github:GermanBread/declarative-flatpak/stable-v3";
+    declarative-flatpaks.url = "github:in-a-dil-emma/declarative-flatpak/stable-v3";
     plasma-manager.url = "github:pjones/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
@@ -186,7 +186,6 @@
           };
           extraSpecialArgs = {
             inherit inputs outputs;
-            isWSL = false;
           };
           modules = [
             ./home-manager/home.nix
@@ -197,9 +196,9 @@
       "solarliner@homepc" =
         mkConfig "x86_64-linux" {imports = [./home-manager/configs/linux.nix ./home-manager/users/solarliner.nix];};
       "nathangraule@SolarM3" =
-        mkConfig "aarch64-darwin" {imports = [./home-manager/configs/mac.nix ./home-manager/users/nathangraule.nix];};
+        mkConfig "aarch64-darwin" {imports = [./home-manager/configs/mac.nix ./home-manager/users/nathangraule.nix { home.isGraphical = true; }];};
       "solarliner@SolarM4.local" =
-        mkConfig "aarch64-darwin" {imports = [./home-manager/configs/mac.nix ./home-manager/users/solarliner.nix];};
+        mkConfig "aarch64-darwin" {imports = [./home-manager/configs/mac.nix ./home-manager/users/solarliner.nix { home.isGraphical = true; }];};
     };
   };
 }

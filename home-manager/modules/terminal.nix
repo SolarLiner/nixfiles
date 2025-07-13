@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  isWSL ? false,
   ...
 }: let inherit(pkgs) lib stdenv; gl = config.nixGL.wrapper; ghostty-homebrew-wrapper = pkgs.writeShellApplication {
   name = "ghostty-homebrew-wrapper";
@@ -9,7 +8,8 @@
     #!/usr/bin/env bash
     /opt/homebrew/bin/ghostty "$@"
   '';
-}; in {
+};
+  isWSL = stdenv.isLinux && !config.home.isGraphical; in {
   programs.zellij = {
     enable = true;
     settings.theme = "ansi";
