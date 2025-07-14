@@ -1,11 +1,13 @@
-{ config, pkgs, ... }:
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   inherit (pkgs.stdenv) isDarwin;
   gl = config.nixGL.wrapper;
-in
-{
+in {
   programs.zed-editor = {
-    enable = isDarwin;
+    enable = false;
     package = gl pkgs.zed-editor;
     userSettings = {
       ui_font_size = 15;

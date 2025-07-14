@@ -87,7 +87,7 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic keymaps
 local diagnostic_move = function(direction)
-  return function ()
+  return function()
     vim.diagnostic.jump({ count = direction, float = true })
   end
 end
@@ -98,9 +98,10 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 vim.keymap.set("n", "<leader>(", "<cmd>cprev<CR>", { desc = "Prev Quickfix Entry" })
 vim.keymap.set("n", "<leader>)", "<cmd>cnext<CR>", { desc = "Next Quickfix Entry" })
 
--- Interaction with system system clipboard
-vim.keymap.set("n", "<leader>y", '"+y', { desc = "Copy to system clipboard" })
-vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste from system clipboard" })
+-- Interaction with system clipboard
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to system clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from system clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>P", '"+P', { desc = "Paste from system clipboard" })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which

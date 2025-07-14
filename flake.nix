@@ -83,7 +83,7 @@
     forAllSystems = nixpkgs.lib.genAttrs systems;
   in {
     checks = forAllSystems (system: {
-      pre-commit-check = pre-commit-hooks.lib.${system}.run {
+      pre-commit = pre-commit-hooks.lib.${system}.run {
         src = ./.;
         hooks = {
           alejandra.enable = true;
