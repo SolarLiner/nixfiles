@@ -15,6 +15,7 @@
   };
   system.defaults.dock.persistent-apps = [
     "/Applications/Zen.app"
+    "/Applications/Google Chrome.app"
     "/System/Applications/Mail.app"
     "/Applications/Ghostty.app"
     "/Users/nathangraule/Applications/CLion.app"
