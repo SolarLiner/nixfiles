@@ -35,7 +35,7 @@ in {
     casks = [
       "alienator88/homebrew-cask/sentinel-app"
       "betterdisplay"
-      "docker"
+      "docker-desktop"
       "ghostty"
       "google-drive"
       "unnaturalscrollwheels"
