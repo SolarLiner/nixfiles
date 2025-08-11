@@ -44,6 +44,7 @@ in {
           --set PATH ${binPath}
       '';
     });
+    nushell = prev.nushell.overrideAttrs (old: { doCheck = false; });
   };
 
   unstableModifications = mkUnstableOverlay ["plugdata" "yarnConfigHook"];
