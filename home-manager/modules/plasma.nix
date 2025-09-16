@@ -1,5 +1,5 @@
 {pkgs, inputs, config, ...}: {
-  imports = [inputs.plasma-manager.homeManagerModules.plasma-manager];
+  imports = [inputs.plasma-manager.homeModules.plasma-manager];
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     nerd-fonts.iosevka
