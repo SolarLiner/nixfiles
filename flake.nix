@@ -45,7 +45,7 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    declarative-flatpaks.url = "github:in-a-dil-emma/declarative-flatpak/stable-v3";
+    declarative-flatpaks.url = "github:in-a-dil-emma/declarative-flatpak/v4.0.1";
     plasma-manager.url = "github:pjones/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
