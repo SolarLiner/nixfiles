@@ -22,6 +22,7 @@
     "mounty"
     "godot-mono"
     "utm"
+    "vcv-rack"
   ];
   homebrew.masApps = {
     Bitwarden = 1352778147;
