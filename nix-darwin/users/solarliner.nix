@@ -22,6 +22,7 @@
     "mounty"
     "godot-mono"
     "utm"
+    "cardinal"
     "vcv-rack"
   ];
   homebrew.masApps = {
