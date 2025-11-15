@@ -7,11 +7,9 @@
   homebrew.casks = [
     "bitwig-studio"
     "obsidian"
+    "bitwarden"
     #"fl-studio"
   ];
-  homebrew.masApps = {
-    Bitwarden = 1352778147;
-  };
   system.defaults.dock.persistent-apps = [
     "/Applications/Zen.app"
     "/Applications/Google Chrome.app"

@@ -15,6 +15,7 @@
   homebrew.casks = [
     "reaper"
     "bitwig-studio"
+    "bitwarden"
     # "fl-studio" # Disabled on homebrew
     "obsidian"
     "blender"
@@ -25,9 +26,6 @@
     "cardinal"
     "vcv-rack"
   ];
-  homebrew.masApps = {
-    Bitwarden = 1352778147;
-  };
   system.defaults.dock.persistent-apps = [
     "/Applications/Zen.app"
     "/System/Applications/Mail.app"
