@@ -13,18 +13,19 @@
     "openssl"
   ];
   homebrew.casks = [
-    "reaper"
-    "bitwig-studio"
+    "audacity"
     "bitwarden"
-    # "fl-studio" # Disabled on homebrew
-    "obsidian"
+    "bitwig-studio"
     "blender"
+    "cardinal"
+    "godot-mono"
     "macfuse"
     "mounty"
-    "godot-mono"
+    "obsidian"
+    "reaper"
     "utm"
-    "cardinal"
     "vcv-rack"
+    # "fl-studio" # Disabled on homebrew
   ];
   system.defaults.dock.persistent-apps = [
     "/Applications/Zen.app"
