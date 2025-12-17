@@ -10,6 +10,7 @@
 in {
   home.file.".ideavimrc" = {
     text = ''
+      let mapleader=" "
       set scrolloff=5
       set clipboard=unnamedplus
       set clipboard+=ideaput
@@ -24,6 +25,10 @@ in {
       set switch
       nnoremap <leader>s :Switch<CR>
       nnoremap <leader>S :SwitchReverse<CR>
+      nnoremap gr :action FindUsages<CR>
+      nnoremap <leader>sf :action SearchEverywhere<CR>
+      nnoremap <leader>sg :action FindInPath<CR>
+      nnoremap <leader>rn :action RenameElement<CR>
 
       set which-key
       set notimeout
