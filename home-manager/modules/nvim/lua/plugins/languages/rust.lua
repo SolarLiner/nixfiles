@@ -1,8 +1,8 @@
 return {
   {
     "mrcjkb/rustaceanvim",
-    version = "^4", -- Recommended
-    lazy = false, -- This plugin is already lazy
+    version = "^6",
+    lazy = false, -- plugin is already lazy
     config = function()
       vim.g.rustaceanvim = {
         server = {
@@ -34,14 +34,12 @@ return {
   },
   {
     "nvim-neotest/neotest",
-    {
-      dependencies = {
-        "mrcjkb/rustaceanvim",
-      },
-      opts = {
-        adapters = {
-          ["rustaceanvim.neotest"] = {},
-        },
+    dependencies = {
+      "mrcjkb/rustaceanvim",
+    },
+    opts = {
+      adapters = {
+        ["rustaceanvim.neotest"] = {},
       },
     },
   },

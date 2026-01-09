@@ -28,4 +28,12 @@ return {
       },
     },
   },
+  {
+    "theHamsta/nvim-dap-virtual-text",
+    dependencies = { "mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter" },
+    opts = {
+      highlight_changed_variables = true,
+      virt_text_pos = "inline",
+    },
+  },
 }

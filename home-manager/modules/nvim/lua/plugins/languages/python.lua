@@ -5,10 +5,9 @@ return {
       "mfussenegger/nvim-dap",
       "mfussenegger/nvim-dap-ui",
     },
-    config = function ()
-      local path = vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python"
-      require("nvim-dap-python").setup(path)
-    end,
+    config = function()
+      require("dap-python").setup("uv")
+    end
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
