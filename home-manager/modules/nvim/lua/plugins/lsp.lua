@@ -139,6 +139,11 @@ return {
           --  For example, in C this would take you to the header.
           map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
+          -- Switches between header and source in C/C++
+          -- TODO: Only activate mapping on C/C++ buffers
+          map("gH", ":LspClangdSwitchSourceHeader<CR>", "[G]oto [H]eader")
+          map("gS", ":LspClangdSwitchSourceHeader<CR>", "[G]oto [S]ource")
+
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
           --    See `:help CursorHold` for information about when this is executed
