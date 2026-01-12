@@ -50,9 +50,6 @@
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
     nixgl.url = "github:nix-community/nixGL";
-
-    # Secrets
-    sops-nix.url = "github:Mic92/sops-nix";
   };
 
   outputs = {
@@ -66,7 +63,6 @@
     nix-homebrew,
     nixgl,
     mac-app-util,
-    sops-nix,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -136,7 +132,6 @@
           overlays = builtins.attrValues import outputs.overlays;
           specialArgs = {inherit inputs outputs isServer;};
           modules = [
-            sops-nix.nixosModules.sops
             ./nixos/configuration.nix
             specific-path
           ];
