@@ -25,6 +25,7 @@
     "reaper"
     "utm"
     "vcv-rack"
+    "kopiaui"
     # "fl-studio" # Disabled on homebrew
   ];
   system.defaults.dock.persistent-apps = [
