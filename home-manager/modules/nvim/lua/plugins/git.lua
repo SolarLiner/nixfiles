@@ -7,65 +7,73 @@ return {
     },
     keys = {
       {
-        "<leader>gh",
+        "<leader>hh",
         function()
           require("gitsigns").preview_hunk()
         end,
         desc = "Preview hunk in tooptip",
       },
       {
-        "<leader>gb",
+        "<leader>hb",
         function()
           require("gitsigns").blame_line()
         end,
         desc = "Show blame for this line",
       },
       {
-        "<leader>gd",
-        function ()
+        "<leader>hd",
+        function()
           require("gitsigns").diffthis()
         end,
         "Diff this",
       },
       {
-        "<leader>gD",
-        function ()
+        "<leader>hD",
+        function()
           require("gitsigns").diffthis("~")
         end,
         desc = "Diff this against the index",
       },
       {
-        "<leader>gs",
-        function ()
-          local start = vim.fn.line('.')
-          local end_ = vim.api.line('v')
-          require("gitsigns").stage_hunk({ start, end_ })
+        "<leader>hs",
+        function()
+          if vim.fn.mode() == "v" then
+            local start = vim.fn.line(".")
+            local end_ = vim.api.line("v")
+            require("gitsigns").stage_hunk({ start, end_ })
+          else
+            require("gitsigns").stage_hunk()
+          end
         end,
         desc = "Stage hunk",
       },
       {
-        "<leader>gr",
-        function (bufnr)
-          local start = vim.fn.line('.')
-          local end_ = vim.api.line('v')
-          require("gitsigns").reset_hunk({ start, end_ })
+        "<leader>hr",
+        function ()
+          if vim.fn.mode() == "v" then
+            local start = vim.fn.line(".")
+            local end_ = vim.api.line("v")
+            require("gitsigns").reset_hunk({ start, end_ })
+          else
+            require("gitsigns").reset_hunk()
+          end
         end,
         desc = "Reset hunk",
       },
       {
-        "<leader>gS",
-        function ()
+        "<leader>hS",
+        function()
           require("gitsigns").stage_buffer()
         end,
         desc = "Stage buffer",
       },
       {
-        "<leader>gR",
-        function ()
+        "<leader>hR",
+        function()
           require("gitsigns").reset_buffer()
         end,
         desc = "Reset buffer",
-      }
+      },
     },
   },
 }
