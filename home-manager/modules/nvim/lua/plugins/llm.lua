@@ -8,33 +8,20 @@ return {
     event = "VeryLazy",
     version = false, -- Never set this value to "*"! Never!
     opts = {
-      provider = "mistral",
+      acp_providers = {
+        opencode = {
+          command = "opencode",
+          args = { "acp" },
+        },
+      },
+      provider = "opencode",
       providers = {
         lmstudio = {
           __inherited_from = "openai",
           endpoint = "http://localhost:1234/v1",
-          model = "mistral-nemo-instruct-2407",
-        },
-        mistral = {
-          __inherited_from = "openai",
-          api_key_name = "MISTRAL_API_KEY",
-          endpoint = "https://api.mistral.ai/v1/",
-          model = "devstral-small-2505",
-          extra_request_body = {
-            max_tokens = 32768,
-          },
+          model = "mistralai/magistral-small-2509",
         },
       },
-      system_prompt = function()
-        local hub = require("mcphub").get_hub_instance()
-        return hub and hub:get_active_servers_prompt() or ""
-      end,
-
-      custom_tools = function()
-        return {
-          require("mcphub.extensions.avante").mcp_tool(),
-        }
-      end,
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = function()
