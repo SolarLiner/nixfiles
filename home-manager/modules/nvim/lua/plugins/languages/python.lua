@@ -16,7 +16,7 @@ return {
         "black",
         "debugpy",
         "mypy",
-        "pyright",
+        "basedpyright",
         "ruff",
       },
     },
