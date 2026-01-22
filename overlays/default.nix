@@ -47,7 +47,7 @@ in {
     nushell = prev.nushell.overrideAttrs (old: {doCheck = false;});
   };
 
-  unstableModifications = mkUnstableOverlay ["plugdata" "yarnConfigHook"];
+  unstableModifications = mkUnstableOverlay ["plugdata" "yarnConfigHook" "dotnet-sdk"];
 
   # When applied, the unstable <C> (declaredC in the flake inputsC  where C: ops::Deref, C::Target: HasP  will
   # be accessible through 'pkgs.unstable'
