@@ -1,10 +1,17 @@
-{ config, lib, ... }: with lib; let
+{
+  config,
+  lib,
+  ...
+}:
+with lib; let
   cfg = config.home.environmentd;
   genEnvdFile = variables: strings.concatStringsSep "\n" (attrsets.mapAttrsToList (name: value: "${name}=${value}") variables);
-  sessionPathAttrset = let userPaths = strings.concatStringsSep ":" config.home.sessionPath; in
+  sessionPathAttrset = let
+    userPaths = strings.concatStringsSep ":" config.home.sessionPath;
+  in
     if builtins.stringLength userPaths > 0
-      then { PATH = "${userPaths}:$PATH"; }
-      else {};
+    then {PATH = "${userPaths}:$PATH";}
+    else {};
 in {
   options.home.environmentd = {
     enable = mkEnableOption "environment.d";

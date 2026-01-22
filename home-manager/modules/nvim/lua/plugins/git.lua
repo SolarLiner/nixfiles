@@ -49,7 +49,7 @@ return {
       },
       {
         "<leader>hr",
-        function ()
+        function()
           if vim.fn.mode() == "v" then
             local start = vim.fn.line(".")
             local end_ = vim.api.line("v")

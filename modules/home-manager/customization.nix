@@ -1,3 +1,8 @@
-{ config, lib, ... }: with lib; {
+{
+  config,
+  lib,
+  ...
+}:
+with lib; {
   options.home.isGraphical = mkEnableOption "isGraphical";
 }

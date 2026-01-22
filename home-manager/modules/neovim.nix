@@ -44,7 +44,10 @@
   programs.neovide = {
     enable = true;
     settings = {
-      frame = if pkgs.stdenv.isDarwin then "transparent" else "full";
+      frame =
+        if pkgs.stdenv.isDarwin
+        then "transparent"
+        else "full";
       grid = "145x52";
       srgb = true;
     };
@@ -53,5 +56,5 @@
     source = ./nvim/lua/plugins;
     recursive = true;
   };
-  home.sessionVariables = { EDITOR = "${config.programs.neovim.package}/bin/nvim"; };
+  home.sessionVariables = {EDITOR = "${config.programs.neovim.package}/bin/nvim";};
 }

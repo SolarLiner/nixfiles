@@ -20,7 +20,7 @@
       winetricks
       wineasio
       # Programming
-      kate
+      kdePackages.kate
       vscode-fhs
       jetbrains-toolbox
       # Audio
@@ -28,7 +28,6 @@
       yabridgectl
       carla
       cardinal
-      distrho
       vcv-rack
       vital
       surge-XT

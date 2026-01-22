@@ -1,4 +1,9 @@
-{pkgs, inputs, config, ...}: {
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}: {
   imports = [inputs.plasma-manager.homeModules.plasma-manager];
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
@@ -10,7 +15,10 @@
   programs.plasma = {
     input.keyboard = {
       layouts = [
-        { layout = "fr"; variant = "mac"; }
+        {
+          layout = "fr";
+          variant = "mac";
+        }
       ];
       model = "applealu_ansi";
     };

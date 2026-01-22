@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   inherit (pkgs) stdenv;
   toolboxPath =
     if stdenv.isDarwin

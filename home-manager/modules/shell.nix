@@ -48,8 +48,7 @@ in {
   programs.autojump.enable = true;
   programs.bat = {
     enable = true;
-    extraPackages =
-      with pkgs.bat-extras; [ batdiff batman batgrep batwatch ];
+    extraPackages = with pkgs.bat-extras; [batdiff batman batgrep batwatch];
     syntaxes = lib.mkForce {};
   };
   programs.eza.enable = true;
@@ -86,7 +85,7 @@ in {
     };
   };
   home.sessionVariables = {
-    NIX_PATH=''$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH'';
+    NIX_PATH = ''$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH'';
   };
   home.sessionPath = ["$HOME/.nix-profile/bin" "$HOME/.local/bin"];
   # services.google-drive-ocamlfuse.enable = false; # Disabled while waiting for dev to re-enable authentication

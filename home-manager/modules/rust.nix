@@ -36,8 +36,8 @@ in {
       ]
     '';
   };
-home.sessionVariables = {
-  CARGO_HOME = "$HOME/.local/share/cargo";
-};
-home.sessionPath = ["$CARGO_HOME/bin"];
+  home.sessionVariables = {
+    CARGO_HOME = "$HOME/.local/share/cargo";
+  };
+  home.sessionPath = ["$CARGO_HOME/bin"];
 }

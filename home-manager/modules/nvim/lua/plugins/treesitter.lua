@@ -1,8 +1,8 @@
 return {
   {
-    'nvim-treesitter/nvim-treesitter',
+    "nvim-treesitter/nvim-treesitter",
     lazy = false,
-    build = ':TSUpdate',
+    build = ":TSUpdate",
     dependencies = {
       "nvim-treesitter/nvim-treesitter-context",
     },
@@ -19,7 +19,7 @@ return {
       modules = {},
       ignore_install = {},
       auto_install = false,
-      parser_install_dir = vim.call("stdpath", "data")
+      parser_install_dir = vim.call("stdpath", "data"),
     },
   },
 }

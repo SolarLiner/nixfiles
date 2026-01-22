@@ -7,7 +7,7 @@ return {
     },
     config = function()
       require("dap-python").setup("uv")
-    end
+    end,
   },
   {
     "jose-elias-alvarez/null-ls.nvim",

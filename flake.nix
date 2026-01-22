@@ -91,8 +91,8 @@
 
     devShells = forAllSystems (system: {
       default = nixpkgs.legacyPackages.${system}.mkShell {
-        inherit (self.checks.${system}.pre-commit-check) shellHook;
-        buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
+        inherit (self.checks.${system}.pre-commit) shellHook;
+        buildInputs = self.checks.${system}.pre-commit.enabledPackages;
       };
     });
 
@@ -108,8 +108,15 @@
 
     # Formatter for your nix files, available through 'nix fmt'
     # Other options beside 'alejandra' include 'nixpkgs-fmt'
-    formatter =
-      forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+    formatter = forAllSystems (system: let
+      pkgs = import nixpkgs {inherit system;};
+      config = self.checks.${system}.pre-commit.config;
+      inherit (config) package configFile;
+      script = ''
+        ${pkgs.lib.getExe package} run --all-files --config ${configFile}
+      '';
+    in
+      pkgs.writeShellScriptBin "pre-commit-run" script);
 
     # Your custom packages and modifications, exported as overlays
     overlays = import ./overlays {
@@ -129,7 +136,7 @@
       config = system: specific-path: {isServer ? false, ...}:
         nixpkgs.lib.nixosSystem {
           inherit system;
-          overlays = builtins.attrValues import outputs.overlays;
+          # overlays = builtins.attrValues import outputs.overlays;
           specialArgs = {inherit inputs outputs isServer;};
           modules = [
             ./nixos/configuration.nix
@@ -191,9 +198,9 @@
       "solarliner@homepc" =
         mkConfig "x86_64-linux" {imports = [./home-manager/configs/linux.nix ./home-manager/users/solarliner.nix];};
       "nathangraule@SolarM3" =
-        mkConfig "aarch64-darwin" {imports = [./home-manager/configs/mac.nix ./home-manager/users/nathangraule.nix { home.isGraphical = true; }];};
+        mkConfig "aarch64-darwin" {imports = [./home-manager/configs/mac.nix ./home-manager/users/nathangraule.nix {home.isGraphical = true;}];};
       "solarliner@SolarM4.local" =
-        mkConfig "aarch64-darwin" {imports = [./home-manager/configs/mac.nix ./home-manager/users/solarliner.nix { home.isGraphical = true; }];};
+        mkConfig "aarch64-darwin" {imports = [./home-manager/configs/mac.nix ./home-manager/users/solarliner.nix {home.isGraphical = true;}];};
     };
   };
 }

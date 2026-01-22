@@ -13,9 +13,9 @@ return {
       view_options = {
         show_hidden = true,
         natural_order = "fast",
-        is_hidden_file = function ()
+        is_hidden_file = function()
           return false
-        end
+        end,
       },
     },
     -- Optional dependencies

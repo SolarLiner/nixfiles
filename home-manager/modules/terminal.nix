@@ -2,21 +2,28 @@
   pkgs,
   config,
   ...
-}: let inherit(pkgs) lib stdenv; gl = config.nixGL.wrapper; ghostty-homebrew-wrapper = pkgs.writeShellApplication {
-  name = "ghostty-homebrew-wrapper";
-  text = ''
-    #!/usr/bin/env bash
-    /opt/homebrew/bin/ghostty "$@"
-  '';
-};
-  isWSL = stdenv.isLinux && !config.home.isGraphical; in {
+}: let
+  inherit (pkgs) lib stdenv;
+  gl = config.nixGL.wrapper;
+  ghostty-homebrew-wrapper = pkgs.writeShellApplication {
+    name = "ghostty-homebrew-wrapper";
+    text = ''
+      #!/usr/bin/env bash
+      /opt/homebrew/bin/ghostty "$@"
+    '';
+  };
+  isWSL = stdenv.isLinux && !config.home.isGraphical;
+in {
   programs.zellij = {
     enable = true;
     settings.theme = "ansi";
   };
   programs.ghostty = {
     enable = !isWSL;
-    package = if stdenv.isDarwin then ghostty-homebrew-wrapper else gl pkgs.ghostty;
+    package =
+      if stdenv.isDarwin
+      then ghostty-homebrew-wrapper
+      else gl pkgs.ghostty;
     enableZshIntegration = true;
     installVimSyntax = true;
     settings = {
@@ -25,7 +32,10 @@
       font-style-bold = "Heavy";
       font-style-italic = "Medium Italic";
       font-style-bold-italic = "Heavy Italic";
-      font-size = if stdenv.isDarwin then 14 else 11;
+      font-size =
+        if stdenv.isDarwin
+        then 14
+        else 11;
       theme = "catppuccin-mocha";
       macos-titlebar-style = "tabs";
       window-padding-x = 12;

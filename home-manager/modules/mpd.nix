@@ -1,4 +1,11 @@
-{ lib, pkgs, ... }: let inherit(lib) mkIf; inherit(pkgs) stdenv; in {
+{
+  lib,
+  pkgs,
+  ...
+}: let
+  inherit (lib) mkIf;
+  inherit (pkgs) stdenv;
+in {
   services.mpd = mkIf (!stdenv.isDarwin) {
     enable = true;
     musicDirectory = "/var/mnt/Nathan 1TB/Musiques/";

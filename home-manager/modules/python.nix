@@ -8,8 +8,8 @@
       # eval "$(pyenv virtualenv-init -)"
     fi
   '';
-home.sessionVariables = {
-PYENV_ROOT = "$HOME/.local/share/pyenv";
-};
-home.sessionPath = ["$PYENV_ROOT/bin"];
+  home.sessionVariables = {
+    PYENV_ROOT = "$HOME/.local/share/pyenv";
+  };
+  home.sessionPath = ["$PYENV_ROOT/bin"];
 }
