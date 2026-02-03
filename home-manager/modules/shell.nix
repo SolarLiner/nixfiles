@@ -59,7 +59,7 @@ in {
   };
   programs.nushell = {
     enable = true;
-    plugins = lib.attrsets.attrVals ["query" "skim" "units" "formats" "polars"] pkgs.nushellPlugins;
+    plugins = lib.attrsets.attrVals ["query" "skim" "formats" "polars"] pkgs.nushellPlugins;
   };
   programs.starship = {
     enable = true;
@@ -76,7 +76,7 @@ in {
     plugins = [zsh-256color zsh-autopair zsh-you-should-use zsh-vi-mode];
     oh-my-zsh = {
       enable = true;
-      plugins = ["git" "sudo" "rust" "autojump" "vscode"];
+      plugins = ["git" "sudo" "rust" "autojump"];
     };
     shellAliases = mkIf config.programs.zellij.enable {
       zr = "zellij run --";

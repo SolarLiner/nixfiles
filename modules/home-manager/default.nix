@@ -7,5 +7,4 @@
   google-drive = ./google-drive.nix;
   lldb = ./lldb.nix;
   lldbinit = ./lldbinit.nix;
-  nixgl = ./nixgl.nix;
 }

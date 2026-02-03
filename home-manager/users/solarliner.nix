@@ -6,8 +6,8 @@
       then "/Users/solarliner"
       else "/home/solarliner";
   };
-  programs.git = {
-    userName = "Nathan Graule";
-    userEmail = "solarliner@gmail.com";
+  programs.git.settings.user = {
+    name = "Nathan Graule";
+    email = "solarliner@gmail.com";
   };
 }

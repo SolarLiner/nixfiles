@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  gl = config.nixGL.wrapper;
+  gl = config.lib.nixGL.wrap;
 in {
   home.packages = [(gl pkgs.lapce)];
 }

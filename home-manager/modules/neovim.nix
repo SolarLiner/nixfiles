@@ -15,7 +15,7 @@
       nodePackages.typescript
       nodePackages.typescript-language-server
       unstable.nodePackages.vscode-langservers-extracted
-      sumneko-lua-language-server
+      lua-language-server
       #wgsl-analyzer
       #clangd
       zig

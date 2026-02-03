@@ -6,13 +6,12 @@
 }:
 with lib.lists; let
   inherit (pkgs.stdenv) isLinux isDarwin;
-  gl = config.nixGL.wrapper;
+  gl = config.lib.nixGL.wrap;
   isWSL = isLinux && !config.home.isGraphical;
   imports = lib.attrsets.attrValues (import ../modules/home-manager);
 in {
   inherit imports;
   home.environmentd.enable = !isDarwin;
-  nixGL.enable = !isDarwin;
   home.packages = with pkgs;
     [
       cmake
@@ -30,11 +29,10 @@ in {
       nerd-fonts.iosevka
       nerd-fonts.iosevka-term
       # Programs
-      (gl gimp)
       localsend
     ]
     ++ optionals isWSL [curl wget]
-    ++ optionals (!isDarwin) [ocenaudio];
+    ++ optionals (!isDarwin) [ocenaudio (gl gimp)];
   home.stateVersion = "25.05";
 
   fonts.fontconfig.enable = !isWSL && !isDarwin;

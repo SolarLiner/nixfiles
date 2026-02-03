@@ -4,7 +4,7 @@
   ...
 }: let
   inherit (pkgs.stdenv) isDarwin;
-  gl = config.nixGL.wrapper;
+  gl = config.lib.nixGL.wrap;
 in {
   programs.zed-editor = {
     enable = true;
@@ -34,7 +34,6 @@ in {
       "make"
       "slint"
       "sql"
-      "vscode-dark-modern"
       "http"
       "nix"
       "wgsl"

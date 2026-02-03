@@ -21,7 +21,6 @@
       wineasio
       # Programming
       kdePackages.kate
-      vscode-fhs
       jetbrains-toolbox
       # Audio
       yabridge

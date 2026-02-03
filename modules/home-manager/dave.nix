@@ -18,11 +18,20 @@ with lib; let
       rev = "v${version}";
       hash = "sha256-ACVf7JJxXCDZkWTaBWsNNY2UGXwY/QXSo3Yuh5SWw7w=";
     };
+    pyproject = true;
+    dontCheckRuntimeDeps = true;
+    build-system = with pyPkgs; [setuptools];
+    buildInputs = with pyPkgs; [
+      pyside6
+      scipy
+      pyqtgraph
+      darkdetect
+    ];
   };
 in {
   options.programs.lldb.dave = {
     enable = mkEnableOption "dave";
-    python = mkPackageOption pkgs "python310" {};
+    python = mkPackageOption pkgs "python312" {};
   };
   config = mkIf enable {
     programs.lldb.initContent = ''
@@ -33,7 +42,7 @@ in {
       venv = py.withPackages (_: [davext]);
     in ''
       export PATH=${venv}/bin:$PATH
-      if [ -n "${PYTHONHOME:-}" ] ; then
+      if [ -n "''${PYTHONHOME:-}" ] ; then
         unset PYTHONHOME
       fi
       hash -r 2> /dev/null

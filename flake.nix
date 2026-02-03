@@ -3,7 +3,7 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/release-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/release-25.11";
     # HACK:: pin nixpkgs-unstable to before the swift breakage
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/70801e06d9730c4f1704fbd3bbf5b8e11c03a2a7";
 
@@ -13,7 +13,7 @@
     hardware.url = "github:nixos/nixos-hardware";
 
     # Nix Darwin
-    nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-25.05";
+    nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-25.11";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     # Homebrew
@@ -41,13 +41,12 @@
     };
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     declarative-flatpaks.url = "github:in-a-dil-emma/declarative-flatpak/v4.0.1";
     plasma-manager.url = "github:pjones/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
-    nixgl.url = "github:nix-community/nixGL";
   };
 
   outputs = {
@@ -59,7 +58,6 @@
     declarative-flatpaks,
     plasma-manager,
     nix-homebrew,
-    nixgl,
     mac-app-util,
     ...
   } @ inputs: let
@@ -193,8 +191,6 @@
           ];
         };
     in {
-      "solarliner@homepc" =
-        mkConfig "x86_64-linux" {imports = [./home-manager/configs/linux.nix ./home-manager/users/solarliner.nix];};
       "nathangraule@SolarM3" =
         mkConfig "aarch64-darwin" {imports = [./home-manager/configs/mac.nix ./home-manager/users/nathangraule.nix {home.isGraphical = true;}];};
       "solarliner@SolarM4.local" =

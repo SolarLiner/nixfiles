@@ -23,7 +23,6 @@
     };
   mkUnstableOverlay = packages: final: _prev: lib.attrsets.genAttrs packages (name: final.unstable.${name});
 in {
-  nixgl = inputs.nixgl.overlay;
   # This one brings our custom packages from the 'pkgs' directory
   additions = _final: prev:
     import ../pkgs {

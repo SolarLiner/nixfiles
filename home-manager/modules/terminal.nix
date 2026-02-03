@@ -4,7 +4,7 @@
   ...
 }: let
   inherit (pkgs) lib stdenv;
-  gl = config.nixGL.wrapper;
+  gl = config.lib.nixGL.wrap;
   ghostty-homebrew-wrapper = pkgs.writeShellApplication {
     name = "ghostty-homebrew-wrapper";
     text = ''
@@ -102,30 +102,5 @@ in {
       };
       syntaxes = lib.mkForce {};
     };
-  };
-  programs.kitty = {
-    enable = false;
-    package = gl pkgs.kitty;
-    font = {
-      package = pkgs.nerd-fonts;
-      name = "Iosevka";
-      size =
-        if pkgs.stdenv.isDarwin
-        then 13
-        else 10;
-    };
-    settings = {
-      adjust_line_height = "130%";
-      disable_ligatures = "cursor";
-      enable_audio_bell = false;
-      visual_bell_duration = "0.1";
-      window_margin_width = 0;
-      tab_bar_style = "powerline";
-    };
-    shellIntegration = {
-      mode = "enabled";
-      enableZshIntegration = true;
-    };
-    themeFile = "VSCode_Dark";
   };
 }
