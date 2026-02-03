@@ -7,7 +7,7 @@
   gl = config.lib.nixGL.wrap;
 in {
   programs.zed-editor = {
-    enable = true;
+    enable = !isDarwin;
     package = gl pkgs.zed-editor;
     userSettings = {
       ui_font_size = 15;
