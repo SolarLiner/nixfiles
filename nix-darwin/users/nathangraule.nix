@@ -17,7 +17,7 @@
     "/Applications/Ghostty.app"
     "/Users/nathangraule/Applications/CLion.app"
     "/Users/nathangraule/Applications/PyCharm.app"
-    "/Applications/Nix Apps/Visual Studio Code.app"
+    "/Applications/Zed.app"
     "/Applications/FL Studio 2024.app"
     "/Applications/Bitwig Studio.app"
     "/System/Applications/Calendar.app"

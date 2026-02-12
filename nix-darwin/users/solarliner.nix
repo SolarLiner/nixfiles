@@ -34,7 +34,7 @@
     "/Applications/Ghostty.app"
     "/Users/solarliner/Applications/RustRover.app"
     "/Users/solarliner/Applications/PyCharm.app"
-    "/Applications/Nix Apps/Visual Studio Code.app"
+    "/Applications/Zed.app"
     "/Applications/REAPER.app"
     "/Applications/Bitwig Studio.app"
     "/System/Applications/Calendar.app"
