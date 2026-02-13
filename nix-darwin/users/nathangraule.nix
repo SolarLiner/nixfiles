@@ -8,6 +8,7 @@
     "bitwig-studio"
     "obsidian"
     "bitwarden"
+    "zed"
     #"fl-studio"
   ];
   system.defaults.dock.persistent-apps = [

@@ -26,6 +26,7 @@
     "utm"
     "vcv-rack"
     "kopiaui"
+    "zed"
     # "fl-studio" # Disabled on homebrew
   ];
   system.defaults.dock.persistent-apps = [
