@@ -44,6 +44,23 @@ in {
       '';
     });
     nushell = prev.nushell.overrideAttrs (old: {doCheck = false;});
+    inetutils = prev.inetutils.overrideAttrs (old: {
+      hardeningDisable = (old.hardeningDisable or []) ++ ["format"];
+      postPatch =
+        (old.postPatch or "")
+        + ''
+          # Remove ping-localhost from the test lists
+            substituteInPlace tests/Makefile.am \
+              --replace "dist_check_SCRIPTS += ping-localhost.sh" ""
+
+            substituteInPlace tests/Makefile.in \
+              --replace " ping-localhost.sh \\" " \\" \
+              --replace " ping-localhost.sh" "" \
+              --replace "@ENABLE_ping_TRUE@am__append_4 = ping-localhost.sh" "@ENABLE_ping_TRUE@am__append_4 =" \
+              --replace "ping-localhost.sh.log: ping-localhost.sh" "" \
+              --replace "ping-localhost.sh.log:" ""
+        '';
+    });
   };
 
   unstableModifications = mkUnstableOverlay ["plugdata" "yarnConfigHook" "dotnet-sdk"];
