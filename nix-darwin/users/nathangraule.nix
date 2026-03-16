@@ -4,6 +4,7 @@
     home = "/Users/nathangraule";
   };
   system.primaryUser = "nathangraule";
+  homebrew.brews = ["tracy"];
   homebrew.casks = [
     "bitwig-studio"
     "obsidian"

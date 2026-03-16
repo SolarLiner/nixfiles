@@ -2,9 +2,6 @@
   users.users.solarliner = {
     name = "Nathan Graule";
     home = "/Users/solarliner";
-    packages = with pkgs; [
-      tracy
-    ];
   };
   system.primaryUser = "solarliner";
   homebrew.brews = [
