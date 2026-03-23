@@ -63,7 +63,7 @@ in {
     });
   };
 
-  unstableModifications = mkUnstableOverlay ["plugdata" "yarnConfigHook" "dotnet-sdk"];
+  unstableModifications = mkUnstableOverlay ["plugdata" "yarnConfigHook" "dotnet-sdk" "direnv"];
 
   # When applied, the unstable <C> (declaredC in the flake inputsC  where C: ops::Deref, C::Target: HasP  will
   # be accessible through 'pkgs.unstable'
