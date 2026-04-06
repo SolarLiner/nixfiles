@@ -38,7 +38,7 @@
   };
   keymaps = let
     utils = pkgs.callPackage ./utils.nix {};
-    inherit (utils) mkNormal;
+    inherit (utils) mkNormal mkKeymap;
   in [
     (mkNormal " " "<Nop>" {
       desc = "Ignore space";
@@ -46,6 +46,26 @@
     })
     (mkNormal "<esc>" "<cmd>nohl<CR>" {
       desc = "Clear search highlight";
+      silent = true;
+    })
+    (mkNormal "<C-h>" "<C-w><C-h>" {desc = "Move to left pane";})
+    (mkNormal "<C-l>" "<C-w><C-l>" {desc = "Move to right pane";})
+    (mkNormal "<C-j>" "<C-w><C-j>" {desc = "Move to lower pane";})
+    (mkNormal "<C-k>" "<C-w><C-k>" {desc = "Move to upper pane";})
+    (mkKeymap ["n" "v"] "<leader>y" ''"+y'' {
+      desc = "System [Y]ank";
+      silent = true;
+    })
+    (mkKeymap ["n" "v"] "<leader>p" ''"+p'' {
+      desc = "System [P]aste";
+      silent = true;
+    })
+    (mkKeymap ["n" "v"] "<leader>P" ''"+P'' {
+      desc = "System [P]aste";
+      silent = true;
+    })
+    (mkKeymap "t" "<esc><esc>" "<C-\\><C-n>" {
+      desc = "Escape from Terminal";
       silent = true;
     })
   ];

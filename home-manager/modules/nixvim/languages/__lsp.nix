@@ -8,6 +8,9 @@
   inherit (lib.nixvim.utils) mkRaw;
   telescope = s: mkRaw ''require('telescope.builtin').${s}'';
   lsp = s: mkRaw "vim.lsp.buf.${s}";
+  cmd = s: "<cmd>${s}<CR>";
+  diag = s: mkRaw "vim.diagnostic.${s}";
+  diagmove = dir: mkRaw ''function() vim.diagnostic.jump({ count = direction, float = true }) end'';
 in {
   plugins.lspconfig.enable = true;
   lsp.onAttach = builtins.readFile ./lsp__on_attach.lua;
@@ -22,5 +25,11 @@ in {
     (mkNormal "<leader>ca" (lsp "code_action") {desc = "[C]ode [A]ctions";})
     (mkNormal "K" (lsp "hover") {desc = "Hover Documentation";})
     (mkNormal "gD" (lsp "declaration") {desc = "[G]oto [D]eclaration";})
+    (mkNormal "(d" (diagmove "-1") {desc = "Previous [D]iagnostic";})
+    (mkNormal ")d" (diagmove "1") {desc = "Next [D]iagnostic";})
+    (mkNormal "<leader>e" (diag "open_float") {desc = "Show [E]error under cursor";})
+    (mkNormal "<leader>q" (diag "setloclist") {desc = "Diagnostic [Q]uickfix list";})
+    (mkNormal "<leader>(" (cmd "cprev") {desc = "Prev Quickfix Entry";})
+    (mkNormal "<leader>)" (cmd "cnext") {desc = "Next Quickfix Entry";})
   ];
 }
