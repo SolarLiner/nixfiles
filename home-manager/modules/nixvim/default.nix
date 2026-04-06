@@ -4,9 +4,14 @@
   ...
 }: {
   imports = let
-    plugins = lib.filesystem.listFilesRecursive ./plugins;
+    loadNixFiles = folder:
+      lib.lists.filter
+      (lib.strings.hasSuffix ".nix")
+      (lib.filesystem.listFilesRecursive folder);
+    plugins = loadNixFiles ./plugins;
+    languages = loadNixFiles ./languages;
   in
-    plugins ++ [./term.nix];
+    plugins ++ languages ++ [./term.nix];
 
   enable = true;
   viAlias = true;

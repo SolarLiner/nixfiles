@@ -1,11 +1,11 @@
 {
   pkgs,
-  helpers,
+  lib,
   ...
 }: let
   utils = pkgs.callPackage ../utils.nix {};
   inherit (utils) mkNormal;
-  inherit (helpers.utils) mkRaw;
+  inherit (lib.nixvim.utils) mkRaw;
 in {
   plugins.telescope = {
     enable = true;
