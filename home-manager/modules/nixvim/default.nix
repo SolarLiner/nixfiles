@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   imports = let
     plugins = lib.filesystem.listFilesRecursive ./plugins;
   in
@@ -26,6 +30,19 @@
     mapleader = " ";
     maplocalleader = mapleader;
   };
+  keymaps = let
+    utils = pkgs.callPackage ./utils.nix {};
+    inherit (utils) mkNormal;
+  in [
+    (mkNormal " " "<Nop>" {
+      desc = "Ignore space";
+      silent = true;
+    })
+    (mkNormal "<esc>" "<cmd>nohl<CR>" {
+      desc = "Clear search highlight";
+      silent = true;
+    })
+  ];
   opts = {
     colorcolumn = "100"; # Columns to highlight
     cursorline = true; # Highlight the screen line of the cursor
