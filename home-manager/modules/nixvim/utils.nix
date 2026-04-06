@@ -5,4 +5,5 @@
   mkNormal = mkKeymap "n";
   mkInsert = mkKeymap "i";
   mkVisual = mkKeymap "v";
+  cmd = s: "<cmd>${s}<CR>";
 }

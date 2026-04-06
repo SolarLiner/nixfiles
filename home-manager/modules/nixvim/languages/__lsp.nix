@@ -4,11 +4,10 @@
   ...
 }: let
   utils = pkgs.callPackage ../utils.nix {};
-  inherit (utils) mkNormal;
+  inherit (utils) mkNormal cmd;
   inherit (lib.nixvim.utils) mkRaw;
   telescope = s: mkRaw ''require('telescope.builtin').${s}'';
   lsp = s: mkRaw "vim.lsp.buf.${s}";
-  cmd = s: "<cmd>${s}<CR>";
   diag = s: mkRaw "vim.diagnostic.${s}";
   diagmove = dir: mkRaw ''function() vim.diagnostic.jump({ count = direction, float = true }) end'';
 in {
