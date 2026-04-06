@@ -10,8 +10,9 @@
       (lib.filesystem.listFilesRecursive folder);
     plugins = loadNixFiles ./plugins;
     languages = loadNixFiles ./languages;
+    config = [./term.nix];
   in
-    plugins ++ languages ++ [./term.nix];
+    plugins ++ languages ++ config;
 
   enable = true;
   viAlias = true;
