@@ -28,6 +28,7 @@ in {
     (mkNormal ")d" (diagmove "1") {desc = "Next [D]iagnostic";})
     (mkNormal "<leader>e" (diag "open_float") {desc = "Show [E]error under cursor";})
     (mkNormal "<leader>q" (diag "setloclist") {desc = "Diagnostic [Q]uickfix list";})
+    (mkNormal "<leader>f" (lsp "format") {desc = "[F]ormat Document/Selection";})
     (mkNormal "<leader>(" (cmd "cprev") {desc = "Prev Quickfix Entry";})
     (mkNormal "<leader>)" (cmd "cnext") {desc = "Next Quickfix Entry";})
   ];
