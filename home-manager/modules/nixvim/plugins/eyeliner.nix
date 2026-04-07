@@ -1,0 +1,3 @@
+{
+  plugins.eyeliner.enable = true;
+}

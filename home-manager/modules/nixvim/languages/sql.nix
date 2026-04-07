@@ -1,0 +1,3 @@
+{
+  plugins.dbee.enable = true;
+}

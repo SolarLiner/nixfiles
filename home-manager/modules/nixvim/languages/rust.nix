@@ -1,4 +1,5 @@
 {
+  plugins.crates.enable = true;
   plugins.rustaceanvim.enable = true;
   plugins.rustaceanvim.settings = {
     tools.on_initialized.__raw = ''
