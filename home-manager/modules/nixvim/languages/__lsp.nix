@@ -11,6 +11,7 @@
   diag = s: mkRaw "vim.diagnostic.${s}";
   diagmove = dir: mkRaw ''function() vim.diagnostic.jump({ count = ${dir}, float = true }) end'';
 in {
+  plugins.fidget.enable = true;
   plugins.lspconfig.enable = true;
   lsp.onAttach = builtins.readFile ./lsp__on_attach.lua;
   keymaps = [
