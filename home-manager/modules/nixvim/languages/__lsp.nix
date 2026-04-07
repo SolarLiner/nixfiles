@@ -9,7 +9,7 @@
   telescope = s: mkRaw ''require('telescope.builtin').${s}'';
   lsp = s: mkRaw "vim.lsp.buf.${s}";
   diag = s: mkRaw "vim.diagnostic.${s}";
-  diagmove = dir: mkRaw ''function() vim.diagnostic.jump({ count = direction, float = true }) end'';
+  diagmove = dir: mkRaw ''function() vim.diagnostic.jump({ count = ${dir}, float = true }) end'';
 in {
   plugins.lspconfig.enable = true;
   lsp.onAttach = builtins.readFile ./lsp__on_attach.lua;
