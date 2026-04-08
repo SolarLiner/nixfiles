@@ -1,6 +1,14 @@
 {
   plugins.crates.enable = true;
-  plugins.rustaceanvim.enable = true;
+
+  lsp.servers.rust_analyzer.enable = true;
+  lsp.servers.rust_analyzer.packageFallback = true;
+  plugins.lsp.servers.rust_analyzer.enable = true;
+  plugins.lsp.servers.rust_analyzer.packageFallback = true;
+  plugins.lsp.servers.rust_analyzer.installCargo = false;
+  plugins.lsp.servers.rust_analyzer.installRustc = false;
+
+  plugins.rustaceanvim.enable = false; # TODO: re-enable once we can use `dependencies.rust-analyzer.packageFallback = true`;
   plugins.rustaceanvim.settings = {
     tools.on_initialized.__raw = ''
       function(_health)

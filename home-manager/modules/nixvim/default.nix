@@ -87,7 +87,7 @@
     signcolumn = "yes"; # Whether to show the signcolumn
     smartcase = true; # Override the 'ignorecase' option if the search pattern contains upper case characters
     spell = true; # Highlight spelling mistakes (local to window)
-    spelllang = lib.mkDefault ["en_us" "fr"]; # Spell check languages
+    spelllang = lib.mkDefault ["en_us"]; # Spell check languages
     splitbelow = true; # A new window is put below the current one
     splitright = true; # A new window is put right of the current one
     termguicolors = true; # Enables 24-bit RGB color in the |TUI|
