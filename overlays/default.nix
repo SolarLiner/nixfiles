@@ -61,9 +61,25 @@ in {
               --replace "ping-localhost.sh.log:" ""
         '';
     });
+    pythonPackagesExtensions =
+      prev.pythonPackagesExtensions
+      ++ [
+        (_final: pprev: {
+          setproctitle = pprev.setproctitle.overrideAttrs (_: {
+            # nixpkgs #481408
+            disabledTests = builtins.trace "setproctitle.disabledTests" (lib.optionals final.stdenv.hostPlatform.isDarwin [
+              # Setting the process title fails on macOS in the Nix builder environment (regardless of sandboxing)
+              "test_setproctitle_darwin"
+              # *** multi-threaded process forked ***; crashed on child side of fork pre-exec. fork without exec is unsafe.
+              "test_fork_segfault"
+              "test_thread_fork_segfault"
+            ]);
+          });
+        })
+      ];
   };
 
-  unstableModifications = mkUnstableOverlay ["plugdata" "yarnConfigHook" "dotnet-sdk" "direnv"];
+  unstableModifications = mkUnstableOverlay ["plugdata" "yarnConfigHook" "dotnet-sdk" "direnv" "cmake-language-server"];
 
   # When applied, the unstable <C> (declaredC in the flake inputsC  where C: ops::Deref, C::Target: HasP  will
   # be accessible through 'pkgs.unstable'
