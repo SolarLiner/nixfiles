@@ -21,8 +21,8 @@
   defaultEditor = true;
 
   diagnostic.settings = {
-    virtual_text = false;
-    virtual_lines = true;
+    virtual_text = true;
+    virtual_lines = false;
   };
 
   editorconfig.enable = true;
