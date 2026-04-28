@@ -5,6 +5,9 @@ EXTRA_ARGS ?= -L --keep-failed -j 20 --show-trace
 
 ifeq ($(shell uname), Linux)
 	SYSTEM_REBUILD := nixos-rebuild
+ifeq ($(shell hostname), nixos)
+	SYSTEM_REBUILD := $(SYSTEM_REBUILD) --option extra-substituters https://install.determinate.systems --option extra-trusted-public-keys cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM=
+endif
 else
 	SYSTEM_REBUILD := darwin-rebuild
 endif

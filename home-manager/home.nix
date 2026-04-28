@@ -32,7 +32,7 @@ in {
       localsend
     ]
     ++ optionals isWSL [curl wget]
-    ++ optionals (!isDarwin) [ocenaudio (gl gimp)];
+    ++ optionals (!isDarwin && !isWSL) [ocenaudio (gl gimp)];
   home.stateVersion = "25.05";
 
   fonts.fontconfig.enable = !isWSL && !isDarwin;
