@@ -11,6 +11,8 @@
 
     # NixOS
     hardware.url = "github:nixos/nixos-hardware";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     # Nix Darwin
     nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-25.11";
@@ -55,6 +57,8 @@
   outputs = {
     self,
     nixpkgs,
+    determinate,
+    nixos-wsl,
     pre-commit-hooks,
     nix-darwin,
     home-manager,
@@ -132,19 +136,19 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = let
-      config = system: specific-path: {isServer ? false, ...}:
+      config = system: module:
         nixpkgs.lib.nixosSystem {
           inherit system;
           # overlays = builtins.attrValues import outputs.overlays;
-          specialArgs = {inherit inputs outputs isServer;};
+          specialArgs = {inherit inputs outputs;};
           modules = [
-            ./nixos/configuration.nix
-            specific-path
+            nixos-wsl.nixosModules.default
+            determinate.nixosModules.default
+            module
           ];
         };
     in {
-      #home-server = config "x86_64-linux" ./nixos/hardware/home-server {isServer = true;};
-      precision5520 = config "x86_64-linux" ./nixos/hardware/precision5520 {};
+      nixos = config "x86_64-linux" ./nixos/hardware/wsl-nixos;
     };
 
     darwinConfigurations = let
@@ -199,6 +203,10 @@
         mkConfig "aarch64-darwin" {imports = [./home-manager/configs/mac.nix ./home-manager/users/nathangraule.nix {home.isGraphical = true;}];};
       "solarliner@SolarM4.local" =
         mkConfig "aarch64-darwin" {imports = [./home-manager/configs/mac.nix ./home-manager/users/solarliner.nix {home.isGraphical = true;}];};
+      "nixos@nixos" = mkConfig "x86_64-linux" {
+        imports = [./home-manager/configs/minimal.nix ./home-manager/users/nixos.nix];
+        home.isGraphical = false;
+      };
     };
   };
 }
