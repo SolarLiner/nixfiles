@@ -23,7 +23,7 @@ in {
     ]
     ++ optionals (!isWSL) [
       # Fonts
-      jetbrains-mono
+      #jetbrains-mono
       iosevka
       nerd-fonts.jetbrains-mono
       nerd-fonts.iosevka
