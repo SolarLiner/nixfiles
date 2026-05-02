@@ -204,7 +204,7 @@
       "solarliner@SolarM4.local" =
         mkConfig "aarch64-darwin" {imports = [./home-manager/configs/mac.nix ./home-manager/users/solarliner.nix {home.isGraphical = true;}];};
       "nixos@nixos" = mkConfig "x86_64-linux" {
-        imports = [./home-manager/configs/minimal.nix ./home-manager/users/nixos.nix];
+        imports = [./home-manager/configs/linux.nix ./home-manager/users/nixos.nix];
         home.isGraphical = false;
       };
     };

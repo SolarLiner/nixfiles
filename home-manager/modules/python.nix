@@ -10,4 +10,9 @@
     PYENV_ROOT = "$HOME/.local/share/pyenv";
   };
   home.sessionPath = ["$PYENV_ROOT/bin"];
+  home.packages = with pkgs; [
+    python3
+    uv
+    poetry
+  ];
 }
