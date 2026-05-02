@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: let
+{lib, ...}: let
   loadNixFiles = folder:
     lib.lists.filter
     (lib.strings.hasSuffix ".nix")
