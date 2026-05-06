@@ -34,6 +34,7 @@ in {
     tree
     jq
     jiq
+    fd
     ripgrep
     htop
     fastfetch
