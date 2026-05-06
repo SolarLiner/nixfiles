@@ -108,4 +108,7 @@
       end,
     })
   '';
+
+  # Plugins
+  plugins.guess-indent.enable = true;
 }
