@@ -15,6 +15,7 @@ in {
 
     # Optional: Declarative tap management
     taps = {
+      "deskflow/homebrew-tap" = inputs.homebrew-deskflow;
       "homebrew/homebrew-core" = inputs.homebrew-core;
       "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
       "homebrew/homebrew-cask" = inputs.homebrew-cask;
@@ -35,6 +36,7 @@ in {
     casks = [
       "alienator88/homebrew-cask/sentinel-app"
       "betterdisplay"
+      "deskflow"
       "docker-desktop"
       "ghostty"
       "google-drive"

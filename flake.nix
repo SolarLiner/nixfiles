@@ -33,6 +33,10 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    homebrew-deskflow = {
+      url = "github:deskflow/homebrew-tap";
+      flake = false;
+    };
     alienator88-homebrew-cask = {
       url = "github:alienator88/homebrew-cask";
       flake = false;
