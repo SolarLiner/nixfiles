@@ -25,7 +25,8 @@ home:
 	home-manager switch $(EXTRA_ARGS) --flake "$(FLAKE)#$(USER)@$(SYSTEM)"
 
 commit:
+	nix develop --command true
 	git commit -a
 
 
-.PHONY: home-init update system home fmt commit
+.PHONY: home-init update system home commit
