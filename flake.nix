@@ -37,10 +37,6 @@
       url = "github:deskflow/homebrew-tap";
       flake = false;
     };
-    alienator88-homebrew-cask = {
-      url = "github:alienator88/homebrew-cask";
-      flake = false;
-    };
     gromgit-homebrew-fuse = {
       url = "github:gromgit/homebrew-fuse";
       flake = false;

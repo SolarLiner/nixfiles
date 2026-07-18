@@ -19,7 +19,6 @@ in {
       "homebrew/homebrew-core" = inputs.homebrew-core;
       "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
       "homebrew/homebrew-cask" = inputs.homebrew-cask;
-      "alienator88/homebrew-cask" = inputs.alienator88-homebrew-cask;
       "gromgit/homebrew-fuse" = inputs.gromgit-homebrew-fuse;
     };
 
@@ -34,7 +33,6 @@ in {
     onActivation.autoUpdate = true;
     onActivation.upgrade = true;
     casks = [
-      "alienator88/homebrew-cask/sentinel-app"
       "betterdisplay"
       "deskflow"
       "docker-desktop"
