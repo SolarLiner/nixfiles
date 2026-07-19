@@ -3,7 +3,7 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/release-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/release-26.05";
     # HACK:: pin nixpkgs-unstable to before the swift breakage
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/70801e06d9730c4f1704fbd3bbf5b8e11c03a2a7";
 
@@ -15,7 +15,7 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     # Nix Darwin
-    nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-25.11";
+    nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-26.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     # Homebrew
@@ -43,10 +43,10 @@
     };
 
     # Neovim
-    nixvim.url = "github:nix-community/nixvim/nixos-25.11";
+    nixvim.url = "github:nix-community/nixvim/nixos-26.05";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     declarative-flatpaks.url = "github:in-a-dil-emma/declarative-flatpak/v4.0.1";
     plasma-manager.url = "github:pjones/plasma-manager";
