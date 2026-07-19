@@ -33,7 +33,7 @@ in {
     ]
     ++ optionals isWSL [curl wget]
     ++ optionals (!isDarwin && !isWSL) [ocenaudio (gl gimp)];
-  home.stateVersion = "25.05";
+  home.stateVersion = "26.05";
 
   fonts.fontconfig.enable = !isWSL && !isDarwin;
 
