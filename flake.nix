@@ -51,6 +51,12 @@
     plasma-manager.url = "github:pjones/plasma-manager";
     plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager.inputs.home-manager.follows = "home-manager";
+
+    # Nushell
+    nu_scripts = {
+      url = "github:nushell/nu_scripts";
+      flake = false;
+    };
   };
 
   outputs = {

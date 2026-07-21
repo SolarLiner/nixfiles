@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: let
   inherit (lib) mkIf;
@@ -61,6 +62,24 @@ in {
   programs.nushell = {
     enable = true;
     plugins = lib.attrsets.attrVals ["query" "skim" "formats" "polars"] pkgs.nushellPlugins;
+    extraConfig = ''
+      const NU_LIB_DIRS = [
+          ($nu.default-config-dir | path join 'scripts')
+          ($nu.data-dir | path join 'completions')
+          ${./nushell-scripts}
+          "${inputs.nu_scripts}"
+      ]
+
+      use custom-completions/cargo/cargo-completions.nu *
+      use custom-completions/git/git-completions.nu *
+      use custom-completions/rg/rg-completions.nu *
+      use custom-completions/ssh/ssh-completions.nu *
+      use custom-completions/uv/uv-completions.nu *
+
+      use autoload *
+
+      source autojump.nu
+    '';
   };
   programs.starship = {
     enable = true;
