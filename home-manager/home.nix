@@ -24,7 +24,7 @@ in {
     ++ optionals (!isWSL) [
       # Fonts
       #jetbrains-mono
-      iosevka
+      iosevka-bin
       nerd-fonts.jetbrains-mono
       nerd-fonts.iosevka
       nerd-fonts.iosevka-term

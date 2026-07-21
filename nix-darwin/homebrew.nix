@@ -19,7 +19,6 @@ in {
       "homebrew/homebrew-core" = inputs.homebrew-core;
       "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
       "homebrew/homebrew-cask" = inputs.homebrew-cask;
-      "alienator88/homebrew-cask" = inputs.alienator88-homebrew-cask;
     };
 
     # Optional: Enable fully-declarative tap management
@@ -27,9 +26,6 @@ in {
     # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
     mutableTaps = false;
     trust = {
-      formulae = [
-        "alienator88/homebrew-cask/sentinel-app"
-      ];
       casks = [
         "deskflow/homebrew-tap/deskflow"
       ];
