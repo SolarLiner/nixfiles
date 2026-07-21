@@ -4,14 +4,16 @@
     home = "/Users/nathangraule";
   };
   system.primaryUser = "nathangraule";
-  homebrew.brews = ["tracy"];
-  homebrew.casks = [
-    "bitwig-studio"
-    "obsidian"
-    "bitwarden"
-    "zed"
-    #"fl-studio"
-  ];
+  homebrew = {
+    brews = ["tracy"];
+    casks = [
+      "bitwig-studio"
+      "obsidian"
+      "bitwarden"
+      "zed"
+      #"fl-studio"
+    ];
+  };
   system.defaults.dock.persistent-apps = [
     "/Applications/Zen.app"
     "/Applications/Google Chrome.app"

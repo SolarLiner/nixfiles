@@ -1,31 +1,43 @@
-{pkgs, ...}: {
+{inputs, ...}: {
   users.users.solarliner = {
     name = "Nathan Graule";
     home = "/Users/solarliner";
   };
   system.primaryUser = "solarliner";
-  homebrew.brews = [
-    "gromgit/fuse/ntfs-3g-mac"
-    "pkgconf"
-    "openssl"
-  ];
-  homebrew.casks = [
-    "audacity"
-    "bitwarden"
-    "bitwig-studio"
-    "blender"
-    "cardinal"
-    "godot-mono"
-    "macfuse"
-    "mounty"
-    "obsidian"
-    "reaper"
-    "utm"
-    "vcv-rack"
-    "kopiaui"
-    "zed"
-    # "fl-studio" # Disabled on homebrew
-  ];
+  nix-homebrew = {
+    taps = {
+      "gromgit/homebrew-fuse" = inputs.gromgit-homebrew-fuse;
+    };
+    trust = {
+      formulae = [
+        "gromgit/fuse/ntfs-3g-mac"
+      ];
+    };
+  };
+  homebrew = {
+    brews = [
+      "gromgit/fuse/ntfs-3g-mac"
+      "pkgconf"
+      "openssl"
+    ];
+    casks = [
+      "audacity"
+      "bitwarden"
+      "bitwig-studio"
+      "blender"
+      "cardinal"
+      "godot-mono"
+      "macfuse"
+      "mounty"
+      "obsidian"
+      "reaper"
+      "utm"
+      "vcv-rack"
+      "kopiaui"
+      "zed"
+      # "fl-studio" # Disabled on homebrew
+    ];
+  };
   system.defaults.dock.persistent-apps = [
     "/Applications/Zen.app"
     "/System/Applications/Mail.app"

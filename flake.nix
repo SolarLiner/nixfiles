@@ -4,8 +4,7 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/release-26.05";
-    # HACK:: pin nixpkgs-unstable to before the swift breakage
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/70801e06d9730c4f1704fbd3bbf5b8e11c03a2a7";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/master";
 
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
 
@@ -62,10 +61,6 @@
     pre-commit-hooks,
     nix-darwin,
     home-manager,
-    declarative-flatpaks,
-    plasma-manager,
-    nix-homebrew,
-    mac-app-util,
     ...
   } @ inputs: let
     inherit (self) outputs;
