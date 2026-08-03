@@ -17,8 +17,9 @@
   homebrew = {
     brews = [
       "gromgit/fuse/ntfs-3g-mac"
-      "pkgconf"
+      "molten-vk"
       "openssl"
+      "pkgconf"
     ];
     casks = [
       "audacity"
