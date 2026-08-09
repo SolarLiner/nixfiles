@@ -27,7 +27,7 @@ in {
     mutableTaps = false;
     trust = {
       casks = [
-        "deskflow/homebrew-tap/deskflow"
+        "deskflow/tap/deskflow"
       ];
     };
   };
