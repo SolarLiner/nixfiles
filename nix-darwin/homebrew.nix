@@ -40,11 +40,12 @@ in {
       "betterdisplay"
       "deskflow"
       "docker-desktop"
+      "firefox"
       "ghostty"
       "google-drive"
-      "unnaturalscrollwheels"
-      "zen"
       "libndi"
+      "unnaturalscrollwheels"
+      "zed"
     ];
   };
 }

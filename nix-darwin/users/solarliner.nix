@@ -35,12 +35,11 @@
       "utm"
       "vcv-rack"
       "kopiaui"
-      "zed"
       # "fl-studio" # Disabled on homebrew
     ];
   };
   system.defaults.dock.persistent-apps = [
-    "/Applications/Zen.app"
+    "/Applications/Firefox.app"
     "/System/Applications/Mail.app"
     "/Applications/Ghostty.app"
     "/Users/solarliner/Applications/RustRover.app"

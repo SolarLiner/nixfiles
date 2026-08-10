@@ -10,12 +10,10 @@
       "bitwig-studio"
       "obsidian"
       "bitwarden"
-      "zed"
-      #"fl-studio"
     ];
   };
   system.defaults.dock.persistent-apps = [
-    "/Applications/Zen.app"
+    "/Applications/Firefox.app"
     "/Applications/Google Chrome.app"
     "/System/Applications/Mail.app"
     "/Applications/Ghostty.app"
