@@ -41,7 +41,6 @@ in {
     fastfetch
     pv
     kubeseal
-    nix-output-monitor
     pre-commit
   ];
   home.sessionVariables = {
