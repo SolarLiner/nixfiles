@@ -1,7 +1,10 @@
 SYSTEM ?= $(shell hostname)
 USER ?= $(shell whoami)
 FLAKE ?= .
-EXTRA_ARGS ?= -L --keep-failed -j 20 --show-trace
+EXTRA_ARGS ?= --log-format internal-json -v -L --keep-failed -j 20 --show-trace
+OUTPUT_MONITOR ?= nix run nixpkgs\#nix-output-monitor -- --json
+
+SHELL := nix run nixpkgs\#bash -- -c
 
 ifeq ($(shell uname), Linux)
 	SYSTEM_REBUILD := nixos-rebuild
@@ -18,11 +21,11 @@ update:
 	nix flake update --flake $(FLAKE)
 
 system:
-	$(SYSTEM_REBUILD) build $(EXTRA_ARGS) --flake "$(FLAKE)#$(SYSTEM)"
+	$(SYSTEM_REBUILD) build $(EXTRA_ARGS) --flake "$(FLAKE)#$(SYSTEM)" |& $(OUTPUT_MONITOR)
 	sudo $(SYSTEM_REBUILD) switch $(EXTRA_ARGS) --flake "$(FLAKE)#$(SYSTEM)"
 
 home:
-	home-manager switch $(EXTRA_ARGS) --flake "$(FLAKE)#$(USER)@$(SYSTEM)"
+	home-manager switch $(EXTRA_ARGS) --flake "$(FLAKE)#$(USER)@$(SYSTEM)" |& $(OUTPUT_MONITOR)
 
 commit:
 	nix develop --command true
