@@ -22,7 +22,7 @@ update:
 
 system:
 	$(SYSTEM_REBUILD) build $(EXTRA_ARGS) --flake "$(FLAKE)#$(SYSTEM)" |& $(OUTPUT_MONITOR)
-	sudo $(SYSTEM_REBUILD) switch $(EXTRA_ARGS) --flake "$(FLAKE)#$(SYSTEM)"
+	sudo $(SYSTEM_REBUILD) switch $(EXTRA_ARGS) --flake "$(FLAKE)#$(SYSTEM)" |& $(OUTPUT_MONITOR)
 
 home:
 	home-manager switch $(EXTRA_ARGS) --flake "$(FLAKE)#$(USER)@$(SYSTEM)" |& $(OUTPUT_MONITOR)
