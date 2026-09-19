@@ -90,6 +90,10 @@ in {
     enable = true;
     enableCompletion = true;
     enableVteIntegration = true;
+    envExtra = ''
+      export PAGER='bat -p'
+      export MANPAGER='nvim +Man!'
+    '';
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     plugins = [zsh-256color zsh-autopair zsh-you-should-use zsh-vi-mode];
