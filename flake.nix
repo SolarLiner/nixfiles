@@ -40,6 +40,11 @@
       url = "github:gromgit/homebrew-fuse";
       flake = false;
     };
+    homebrew-reactor = {
+      # DaVinci Reactor plugin manager
+      url = "github:Kartaverse/homebrew-reactor";
+      flake = false;
+    };
 
     # Neovim
     nixvim.url = "github:nix-community/nixvim/nixos-26.05";

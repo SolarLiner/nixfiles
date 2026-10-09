@@ -7,11 +7,13 @@
   nix-homebrew = {
     taps = {
       "gromgit/homebrew-fuse" = inputs.gromgit-homebrew-fuse;
+      "Kartaverse/homebrew-reactor" = inputs.homebrew-reactor;
     };
     trust = {
       formulae = [
         "gromgit/fuse/ntfs-3g-mac"
       ];
+      casks = ["kartaverse/reactor/reactor"];
     };
   };
   homebrew = {
@@ -28,13 +30,15 @@
       "blender"
       "cardinal"
       "godot-mono"
+      "insta360-studio"
+      "kartaverse/reactor/reactor"
+      "kopiaui"
       "macfuse"
       "mounty"
       "obsidian"
       "reaper"
       "utm"
       "vcv-rack"
-      "kopiaui"
       # "fl-studio" # Disabled on homebrew
     ];
   };
