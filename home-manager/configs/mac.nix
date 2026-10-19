@@ -1,6 +1,7 @@
 {...}: {
   imports = [
     ../modules/debugging.nix
+    ../modules/dotnet.nix
     ../modules/intellij.nix
     ../modules/node.nix
     ../modules/python.nix

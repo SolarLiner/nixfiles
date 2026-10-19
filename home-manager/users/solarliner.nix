@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+  imports = [../modules/dotnet.nix];
   home = {
     username = "solarliner";
     homeDirectory =

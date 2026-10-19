@@ -179,7 +179,7 @@
         system = "aarch64-darwin";
         userConfiguration = ./nix-darwin/users/nathangraule.nix;
       };
-      solarm4.home = mkSystem {
+      SolarM4.local = mkSystem {
         system = "aarch64-darwin";
         userConfiguration = ./nix-darwin/users/solarliner.nix;
         useDeterminateNix = true;
@@ -207,7 +207,7 @@
     in {
       "nathangraule@SolarM3" =
         mkConfig "aarch64-darwin" {imports = [./home-manager/configs/mac.nix ./home-manager/users/nathangraule.nix {home.isGraphical = true;}];};
-      "solarliner@solarm4.home" =
+      "solarliner@SolarM4.local" =
         mkConfig "aarch64-darwin" {imports = [./home-manager/configs/mac.nix ./home-manager/users/solarliner.nix {home.isGraphical = true;}];};
       "nixos@nixos" = mkConfig "x86_64-linux" {
         imports = [./home-manager/configs/linux.nix ./home-manager/users/nixos.nix];
