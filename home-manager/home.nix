@@ -30,6 +30,7 @@ in {
       nerd-fonts.iosevka-term
       # Programs
       localsend
+      neovide
     ]
     ++ optionals isWSL [curl wget]
     ++ optionals (!isDarwin && !isWSL) [ocenaudio (gl gimp)];
