@@ -36,6 +36,7 @@ in {
     onActivation.cleanup = "uninstall";
     onActivation.autoUpdate = true;
     onActivation.upgrade = true;
+    brews = ["openssl@4"];
     casks = [
       "betterdisplay"
       "deskflow"
