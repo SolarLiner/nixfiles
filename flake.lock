@@ -350,6 +350,22 @@
         "type": "github"
       }
     },
+    "homebrew-bun": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1792705527,
+        "narHash": "sha256-iVs6sQWbBIE1W4WJGsq4uhHrwkzWGmNZIr+WPlkXi34=",
+        "owner": "oven-sh",
+        "repo": "homebrew-bun",
+        "rev": "4f25321cd463434e7deb0dddf60f1081f47754d1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oven-sh",
+        "repo": "homebrew-bun",
+        "type": "github"
+      }
+    },
     "homebrew-bundle": {
       "flake": false,
       "locked": {
@@ -852,6 +868,7 @@
         "gromgit-homebrew-fuse": "gromgit-homebrew-fuse",
         "hardware": "hardware",
         "home-manager": "home-manager",
+        "homebrew-bun": "homebrew-bun",
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",

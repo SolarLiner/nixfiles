@@ -24,6 +24,10 @@
       url = "github:homebrew/homebrew-core";
       flake = false;
     };
+    homebrew-bun = {
+      url = "github:oven-sh/homebrew-bun";
+      flake = false;
+    };
     homebrew-bundle = {
       url = "github:homebrew/homebrew-bundle";
       flake = false;
