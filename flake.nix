@@ -109,7 +109,9 @@
     devShells = forAllSystems (system: {
       default = nixpkgs.legacyPackages.${system}.mkShell {
         inherit (self.checks.${system}.pre-commit) shellHook;
-        buildInputs = self.checks.${system}.pre-commit.enabledPackages;
+        buildInputs =
+          self.checks.${system}.pre-commit.enabledPackages
+          ++ [nixpkgs.legacyPackages.${system}.just];
       };
     });
 
@@ -201,11 +203,11 @@
         ./nix-darwin/users/nathangraule.nix
         {nix.enable = false;}
       ];
-      SolarM4.local = mkSystem "aarch64-darwin" [
+      SolarM4 = mkSystem "aarch64-darwin" [
         ./nix-darwin/users/solarliner.nix
         {nix.enable = false;}
       ];
-      solarm4.home = SolarM4.local;
+      solarm4 = SolarM4;
     };
   };
 }

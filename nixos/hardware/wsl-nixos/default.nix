@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    ../configuration.nix
     ../../users/nixos.nix
   ];
   system.stateVersion = "25.11";
