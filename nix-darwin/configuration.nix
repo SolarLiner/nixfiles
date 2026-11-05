@@ -9,6 +9,8 @@
 }: {
   imports = [
     inputs.mac-app-util.darwinModules.default
+    inputs.determinate.darwinModules.default
+    ./determinate.nix
     ./i18n.nix
     ./homebrew.nix
     ./system-settings.nix
