@@ -32,9 +32,9 @@ in {
   };
   homebrew = {
     enable = true;
-    # Keep `brew bundle --cleanup` from untapping the taps managed by nix-homebrew.
+    # Keep `brew bundle --cleanup` from removing packages not declared here.
     taps = builtins.attrNames config.nix-homebrew.taps;
-    onActivation.cleanup = "uninstall";
+    onActivation.cleanup = "none";
     onActivation.autoUpdate = true;
     onActivation.upgrade = true;
     brews = ["openssl@4" "oven-sh/bun/bun"];
