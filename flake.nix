@@ -182,6 +182,7 @@
       "SolarM3" = mkSystem {
         system = "aarch64-darwin";
         userConfiguration = ./nix-darwin/users/nathangraule.nix;
+        useDeterminateNix = true;
       };
       SolarM4.local = mkSystem {
         system = "aarch64-darwin";
