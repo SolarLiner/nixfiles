@@ -24,18 +24,21 @@ in {
   system.primaryUser = "solarliner";
   nix-homebrew = {
     taps = {
+      "borgbackup/homebrew-tap" = inputs.homebrew-borgbackup;
       "gromgit/homebrew-fuse" = inputs.gromgit-homebrew-fuse;
-      "Kartaverse/homebrew-reactor" = inputs.homebrew-reactor;
+      # "Kartaverse/homebrew-reactor" = inputs.homebrew-reactor;
     };
     trust = {
       formulae = [
+        "borgbackup/tap/borgbackup-fuse"
         "gromgit/fuse/ntfs-3g-mac"
       ];
-      casks = ["kartaverse/reactor/reactor"];
+      # casks = ["kartaverse/reactor/reactor"];
     };
   };
   homebrew = {
     brews = [
+      "borgbackup/tap/borgbackup-fuse"
       "gromgit/fuse/ntfs-3g-mac"
       "molten-vk"
       "openssl"
@@ -49,7 +52,7 @@ in {
       "cardinal"
       "godot-mono"
       "insta360-studio"
-      "kartaverse/reactor/reactor"
+      # "kartaverse/reactor/reactor"
       "kopiaui"
       "macfuse"
       "mounty"

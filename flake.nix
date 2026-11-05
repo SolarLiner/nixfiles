@@ -12,6 +12,8 @@
     hardware.url = "github:nixos/nixos-hardware";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
 
     # Nix Darwin
     nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-26.05";
@@ -22,6 +24,10 @@
     mac-app-util.url = "github:hraban/mac-app-util";
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-borgbackup = {
+      url = "github:borgbackup/homebrew-tap";
       flake = false;
     };
     homebrew-bun = {
@@ -182,6 +188,9 @@
             {home.isGraphical = false;}
           ];
         })
+      ];
+      ovh-vpn-de1 = config "x86_64-linux" [
+        ./nixos/hardware/ovh-vpn-de1
       ];
     };
 

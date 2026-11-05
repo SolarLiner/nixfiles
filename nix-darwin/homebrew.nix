@@ -13,6 +13,9 @@ in {
     # User owning the Homebrew prefix
     user = primaryUser;
 
+    # Repair existing Homebrew installations before managing taps.
+    autoMigrate = true;
+
     # Optional: Declarative tap management
     taps = {
       "deskflow/homebrew-tap" = inputs.homebrew-deskflow;
