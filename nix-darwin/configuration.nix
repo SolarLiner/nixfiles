@@ -33,6 +33,11 @@
   programs.zsh.enable = true; # default shell on catalina
   # programs.fish.enable = true;
 
+  # Allow Touch ID to authenticate sudo (written to /etc/pam.d/sudo_local).
+  security.pam.services.sudo_local.touchIdAuth = true;
+  # Make Touch ID work inside tmux/screen sessions.
+  security.pam.services.sudo_local.reattach = true;
+
   # Set Git commit hash for darwin-version.
   system.configurationRevision = self.rev or self.dirtyRev or null;
 
