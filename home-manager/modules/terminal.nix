@@ -9,7 +9,7 @@
     name = "ghostty-homebrew-wrapper";
     text = ''
       #!/usr/bin/env bash
-      /opt/homebrew/bin/ghostty "$@"
+      /Applications/Ghostty.app/Contents/MacOS/ghostty "$@"
     '';
   };
   isWSL = stdenv.isLinux && !config.home.isGraphical;

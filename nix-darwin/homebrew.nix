@@ -17,7 +17,6 @@ in {
     taps = {
       "deskflow/homebrew-tap" = inputs.homebrew-deskflow;
       "homebrew/homebrew-core" = inputs.homebrew-core;
-      "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
       "homebrew/homebrew-cask" = inputs.homebrew-cask;
       "oven-sh/homebrew-bun" = inputs.homebrew-bun;
     };
@@ -33,13 +32,15 @@ in {
   };
   homebrew = {
     enable = true;
+    # Keep `brew bundle --cleanup` from untapping the taps managed by nix-homebrew.
+    taps = builtins.attrNames config.nix-homebrew.taps;
     onActivation.cleanup = "uninstall";
     onActivation.autoUpdate = true;
     onActivation.upgrade = true;
     brews = ["openssl@4" "oven-sh/bun/bun"];
     casks = [
       "betterdisplay"
-      "deskflow"
+      "deskflow/tap/deskflow"
       "docker-desktop"
       "firefox"
       "ghostty"

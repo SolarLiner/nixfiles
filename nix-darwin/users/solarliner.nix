@@ -11,6 +11,7 @@ in {
       inherit inputs outputs;
       user = "solarliner";
       modules = [
+        ../../home-manager/configs/mac.nix
         ../../home-manager/users/solarliner.nix
       ];
     })
