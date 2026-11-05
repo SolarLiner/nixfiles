@@ -1,0 +1,3 @@
+{
+  mkHomeConfig = import ./mkHomeConfig.nix;
+}

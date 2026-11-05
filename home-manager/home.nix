@@ -45,12 +45,4 @@ in {
     store.cleanup = true;
     timestamp = "-14 days";
   };
-
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowUnfreePredicate = pkg:
-      builtins.elem (nixpkgs.lib.getName pkg) [
-        "ocenaudio"
-      ];
-  };
 }

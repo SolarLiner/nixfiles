@@ -15,21 +15,20 @@ else
 	SYSTEM_REBUILD := darwin-rebuild
 endif
 
-all: system home commit
+all: system commit
 
 update:
 	nix flake update --flake $(FLAKE)
 
-system:
+switch:
 	$(SYSTEM_REBUILD) build $(EXTRA_ARGS) --flake "$(FLAKE)#$(SYSTEM)" |& $(OUTPUT_MONITOR)
-	sudo $(SYSTEM_REBUILD) switch $(EXTRA_ARGS) --flake "$(FLAKE)#$(SYSTEM)" |& $(OUTPUT_MONITOR)
 
-home:
-	home-manager switch $(EXTRA_ARGS) --flake "$(FLAKE)#$(USER)@$(SYSTEM)" |& $(OUTPUT_MONITOR)
+system: build
+	sudo $(SYSTEM_REBUILD) switch $(EXTRA_ARGS) --flake "$(FLAKE)#$(SYSTEM)" |& $(OUTPUT_MONITOR)
 
 commit:
 	nix develop --command true
 	git commit -a
 
 
-.PHONY: home-init update system home commit
+.PHONY: update build switch commit

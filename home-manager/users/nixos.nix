@@ -1,8 +1,5 @@
+# home.username / home.homeDirectory are derived from the system's users.users entry.
 {
-  home = {
-    username = "nixos";
-    homeDirectory = "/home/nixos";
-  };
   programs.git.settings.user = {
     name = "Nathan Graule";
     email = "solarliner@gmail.com";

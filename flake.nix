@@ -90,6 +90,10 @@
     # This is a function that generates an attribute by calling a function you
     # pass to it, with each system as an argument
     forAllSystems = nixpkgs.lib.genAttrs systems;
+
+    # Home Manager, integrated into the NixOS / nix-darwin configurations.
+    # `user` is the system user to configure; `modules` are its home-manager modules.
+    mkHomeManager = import ./utils/mkHomeConfig.nix;
   in {
     checks = forAllSystems (system: {
       pre-commit = pre-commit-hooks.lib.${system}.run {
@@ -108,6 +112,8 @@
         buildInputs = self.checks.${system}.pre-commit.enabledPackages;
       };
     });
+
+    utils = import ./utils;
 
     # Your custom packages
     # Accessible through 'nix build', 'nix shell', etc
@@ -146,78 +152,60 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = let
-      config = system: module:
+      config = system: modules:
         nixpkgs.lib.nixosSystem {
           inherit system;
-          # overlays = builtins.attrValues import outputs.overlays;
           specialArgs = {inherit inputs outputs;};
-          modules = [
-            nixos-wsl.nixosModules.default
-            determinate.nixosModules.default
-            module
-          ];
+          modules =
+            [
+              nixos-wsl.nixosModules.default
+              determinate.nixosModules.default
+              home-manager.nixosModules.home-manager
+              {
+                nixpkgs.overlays = builtins.attrValues outputs.overlays;
+                nixpkgs.config.allowUnfree = true;
+              }
+            ]
+            ++ modules;
         };
     in {
-      nixos = config "x86_64-linux" ./nixos/hardware/wsl-nixos;
+      nixos = config "x86_64-linux" [
+        ./nixos/hardware/wsl-nixos
+        (mkHomeManager {
+          inherit inputs outputs;
+          user = "nixos";
+          modules = [
+            ./home-manager/configs/linux.nix
+            ./home-manager/users/nixos.nix
+            {home.isGraphical = false;}
+          ];
+        })
+      ];
     };
 
     darwinConfigurations = let
-      mkSystem = {
-        system,
-        userConfiguration,
-        useDeterminateNix ? false,
-      }:
+      mkSystem = system: modules:
         nix-darwin.lib.darwinSystem {
-          modules = [
-            ./nix-darwin/configuration.nix
-            userConfiguration
-            {nix.enable = !useDeterminateNix;}
-          ];
+          modules =
+            [
+              ./nix-darwin/configuration.nix
+            ]
+            ++ modules;
           specialArgs = {
             inherit inputs outputs self system;
             overlays = builtins.attrValues outputs.overlays;
           };
         };
-    in {
-      "SolarM3" = mkSystem {
-        system = "aarch64-darwin";
-        userConfiguration = ./nix-darwin/users/nathangraule.nix;
-        useDeterminateNix = true;
-      };
-      SolarM4.local = mkSystem {
-        system = "aarch64-darwin";
-        userConfiguration = ./nix-darwin/users/solarliner.nix;
-        useDeterminateNix = true;
-      };
-    };
-
-    # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager --flake .#your-username@your-hostname'
-    homeConfigurations = let
-      mkConfig = system: module:
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            inherit system;
-            overlays = builtins.attrValues outputs.overlays;
-          };
-          extraSpecialArgs = {
-            inherit inputs outputs;
-          };
-          modules = [
-            inputs.nixvim.homeModules.nixvim
-            ./home-manager/home.nix
-            module
-          ];
-        };
-    in {
-      "nathangraule@SolarM3" =
-        mkConfig "aarch64-darwin" {imports = [./home-manager/configs/mac.nix ./home-manager/users/nathangraule.nix {home.isGraphical = true;}];};
-      "solarliner@SolarM4.local" =
-        mkConfig "aarch64-darwin" {imports = [./home-manager/configs/mac.nix ./home-manager/users/solarliner.nix {home.isGraphical = true;}];};
-      "nixos@nixos" = mkConfig "x86_64-linux" {
-        imports = [./home-manager/configs/linux.nix ./home-manager/users/nixos.nix];
-        home.isGraphical = false;
-      };
+    in rec {
+      SolarM3 = mkSystem "aarch64-darwin" [
+        ./nix-darwin/users/nathangraule.nix
+        {nix.enable = false;}
+      ];
+      SolarM4.local = mkSystem "aarch64-darwin" [
+        ./nix-darwin/users/solarliner.nix
+        {nix.enable = false;}
+      ];
+      solarm4.home = SolarM4.local;
     };
   };
 }

@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   programs.zsh.enable = true;
   nix.settings.trusted-users = ["solarliner"];
   users.users.solarliner = {

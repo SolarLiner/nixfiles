@@ -1,6 +1,23 @@
-{inputs, ...}: {
+{
+  inputs,
+  outputs,
+  ...
+}: let
+  mkHomeConfig = import ../../utils/mkHomeConfig.nix;
+in {
+  imports = [
+    inputs.home-manager.darwinModules.home-manager
+    (mkHomeConfig {
+      inherit inputs outputs;
+      user = "solarliner";
+      modules = [
+        ../../home-manager/users/solarliner.nix
+      ];
+    })
+  ];
   users.users.solarliner = {
-    name = "Nathan Graule";
+    name = "solarliner";
+    description = "Nathan Graule";
     home = "/Users/solarliner";
   };
   system.primaryUser = "solarliner";
