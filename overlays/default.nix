@@ -2,6 +2,7 @@
 {
   inputs,
   lib,
+  pkgs,
   ...
 }: let
   fixMissingMaintainers = pkg:
@@ -41,5 +42,14 @@ in {
   # be accessible through 'pkgs.unstable'
   unstable-packages = final: _prev: {
     unstable = mkUnstable final.system;
+  };
+
+  # deploy-rs reuse (cached) derivation
+  deploy-rs-default = inputs.deploy-rs.overlays.default;
+  deploy-rs = self: super: {
+    deploy-rs = {
+      inherit (pkgs) deploy-rs;
+      lib = super.deploy-rs.lib;
+    };
   };
 }
