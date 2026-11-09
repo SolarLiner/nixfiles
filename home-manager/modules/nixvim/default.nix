@@ -10,9 +10,11 @@
       (lib.filesystem.listFilesRecursive folder);
     plugins = loadNixFiles ./plugins;
     languages = loadNixFiles ./languages;
+    packages = loadNixFiles ./packages;
+    modules = loadNixFiles ./modules;
     config = [./term.nix ./neovide.nix];
   in
-    plugins ++ languages ++ config;
+    packages ++ modules ++ plugins ++ languages ++ config;
 
   enable = true;
   viAlias = true;
