@@ -27,6 +27,7 @@ in {
     brews = ["tracy"];
     casks = [
       "bitwig-studio"
+      "claude-code"
       "obsidian"
       "bitwarden"
     ];
