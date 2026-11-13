@@ -17,7 +17,7 @@ in {
     cargo-generate
     cargo-insta
     cargo-make
-    cargo-release
+    # cargo-release
     cargo-semver-checks
     cargo-update
     cargo-watch
