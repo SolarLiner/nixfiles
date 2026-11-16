@@ -34,8 +34,8 @@ in {
       font-style-bold-italic = "Heavy Italic";
       font-size =
         if stdenv.isDarwin
-        then 14
-        else 11;
+        then 13
+        else 10;
       theme = "catppuccin-mocha";
       macos-titlebar-style = "tabs";
       window-padding-x = 12;
