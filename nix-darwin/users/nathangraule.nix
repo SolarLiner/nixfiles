@@ -26,19 +26,20 @@ in {
   homebrew = {
     brews = ["tracy"];
     casks = [
+      "bitwarden"
       "bitwig-studio"
       "claude-code"
+      "multipass"
       "obsidian"
-      "bitwarden"
     ];
   };
   system.defaults.dock.persistent-apps = [
-    "/Applications/Firefox.app"
     "/Applications/Google Chrome.app"
+    "/Applications/Firefox.app"
     "/System/Applications/Mail.app"
     "/Applications/Ghostty.app"
     "/Users/nathangraule/Applications/CLion.app"
-    "/Users/nathangraule/Applications/PyCharm.app"
+    "/Users/nathangraule/Applications/RustRover.app"
     "/Applications/Zed.app"
     "/Applications/FL Studio 2024.app"
     "/Applications/Bitwig Studio.app"
