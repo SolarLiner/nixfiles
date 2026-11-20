@@ -49,6 +49,7 @@ in {
       "ghostty"
       "google-drive"
       "libndi"
+      "rectangle"
       "unnaturalscrollwheels"
       "zed"
     ];
