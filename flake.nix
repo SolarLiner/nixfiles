@@ -25,6 +25,7 @@
 
     # Homebrew
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    nix-homebrew.inputs.brew-src.url = "github:Homebrew/brew/7.0.15"; # TEMP: remove when upstream updates dependency
     mac-app-util.url = "github:hraban/mac-app-util";
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
